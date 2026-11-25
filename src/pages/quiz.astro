@@ -18,6 +18,7 @@ const total = quiz.preguntas.length;
       </header>
       <div class="pagina__cuerpo">
         <noscript><p>El quiz necesita JavaScript para sumar los puntos.</p></noscript>
+        <div class="quiz-caja">
         <form id="quiz" class="quiz" data-preguntas={total}>
           <p class="avance"><span id="avance" role="status">Pregunta 1 de {total}</span><span class="barra" aria-hidden="true"><span id="barra"></span></span></p>
           {quiz.preguntas.map((p, i) => (
@@ -34,6 +35,10 @@ const total = quiz.preguntas.length;
             <button class="btn btn--primary" type="submit" id="seguir">Ver la pregunta 2</button>
           </div>
         </form>
+        <ul class="blasones" aria-hidden="true">
+          {escuadrones.map(({ e }) => <li><Escudo color={e.data.color} trama={e.data.trama} emblema={e.data.emblema} /></li>)}
+        </ul>
+        </div>
 
         <div id="resultado" hidden tabindex="-1">
           {escuadrones.map(({ e, capitan }) => (
@@ -60,7 +65,10 @@ const total = quiz.preguntas.length;
 </Base>
 
 <style>
-  .quiz { max-width: 845px; }
+  .quiz-caja { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .quiz { grid-column: span 8; min-width: 0; }
+  .blasones { grid-column: 10 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 18px; justify-items: end; padding-top: 4px; --esc: 82px; }
+  .quiz-caja:has(.quiz[hidden]) { display: none; }
   .avance { display: grid; gap: 10px; margin-bottom: 36px; color: var(--muted); }
   .barra { display: block; height: 4px; background: var(--linea); }
   .barra span { display: block; height: 100%; background: var(--trebol); transform-origin: 0 50%; transform: scaleX(0.125); transition: transform 240ms var(--ease); }
@@ -80,12 +88,13 @@ const total = quiz.preguntas.length;
   .frase { font-size: 22px; line-height: 1.4; max-width: 46ch; }
   .resultado .btn-row { margin-top: 26px; }
   .resultado .btn--primary { background: #2a1d0c; color: #f4e9cd; box-shadow: none; }
-  .resultado .btn--secondary { color: var(--hoja-ink); border-color: var(--hoja-ink); }
+  .resultado .btn--secondary { background: none; color: var(--hoja-ink); border-color: var(--hoja-ink); }
   html:not([data-motion='off']) .resultado .btn--primary:hover { background: #463213; }
   html:not([data-motion='off']) .resultado .btn--secondary:hover { background: rgb(60 38 8 / 0.12); }
   .resultado :focus-visible { outline-color: #241a0d; }
   .copiado { min-height: 28px; margin-top: 8px; }
   .segundo { margin-top: 24px; }
+  @media (max-width: 1199px) { .quiz { grid-column: 1 / -1; } .blasones { display: none; } }
   @media (max-width: 900px) { .resultado { grid-template-columns: 1fr; padding: 36px 28px; --esc: 150px; } }
 </style>
 

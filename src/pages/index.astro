@@ -31,9 +31,9 @@ const tituloNivel = 1 as const;
 
   <section class="section section--cuero" id="estado">
     <div class="wrap">
-      <div class="cabeza"><h2>Estado actual de la franquicia</h2></div>
+      <div class="cabeza"><h2>Estado del manga y del anime</h2></div>
       <div class="codice hoja">
-        <div class="folio">
+        <div class="folio card">
           <h3>Manga</h3>
           <p class="cifra">Finalizado</p>
           <dl class="datos">
@@ -44,7 +44,7 @@ const tituloNivel = 1 as const;
           </dl>
           <svg class="colofon" viewBox="0 0 240 60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round"><path d="M112 34C92 20 78 24 70 34C62 44 48 42 46 32C45 24 56 22 57 29M70 34C60 30 40 46 14 34M128 34C148 20 162 24 170 34C178 44 192 42 194 32C195 24 184 22 183 29M170 34C180 30 200 46 226 34" /><g transform="translate(120 34) scale(.27)" fill="currentColor" stroke="none">{angulos(4).map((g) => <path transform={`rotate(${g})`} d={HOJA} />)}</g></svg>
         </div>
-        <div class="folio">
+        <div class="folio card">
           <h3>Anime</h3>
           <p class="cifra">T2 en emisión</p>
           <dl class="datos">
@@ -78,7 +78,7 @@ const tituloNivel = 1 as const;
       <fieldset class="sellos">
         <legend class="sr">Elegí hasta dónde llegaste</legend>
         {NIVELES.map((n) => (
-          <label class="rollo marco">
+          <label class="rollo card marco">
             <input class="sr" type="radio" name="nivel-portada" value={n.valor} data-nivel-opcion data-nombre={n.nombre} checked={n.valor === 0} />
             <span class="rollo__dibujo" aria-hidden="true">
               <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round">
@@ -99,6 +99,7 @@ const tituloNivel = 1 as const;
   <section class="section" id="indice">
     <div class="wrap">
       <div class="cabeza"><h2>Índice del grimorio</h2></div>
+      <div class="indice-caja">
       <ol class="indice">
         {SECCIONES.map((s) => (
           <li><a class="entrada" href={ruta(s.href)}>
@@ -108,6 +109,8 @@ const tituloNivel = 1 as const;
           </a></li>
         ))}
       </ol>
+      <div class="indice-dibujo"><Grimorio hojas={4} semilla={4} titulo="Grimorio con un trébol de cuatro hojas en la tapa" /></div>
+      </div>
     </div>
   </section>
 </Base>
@@ -121,17 +124,17 @@ const tituloNivel = 1 as const;
   .hero-copy { grid-column: span 6; display: grid; gap: 24px; justify-items: start; }
   .hero-copy .lead { max-width: 34ch; }
   .hero-copy h1 { max-width: 11ch; }
-  .hero-visual { grid-column: 7 / -1; display: grid; justify-items: center; }
-  .hero-visual :global(.grimorio) { height: min(640px, calc(100svh - var(--nav) - 150px)); width: auto; transform: rotate(5deg); filter: drop-shadow(0 26px 34px rgb(0 0 0 / 0.6)); }
+  .hero-visual { grid-column: 7 / -1; display: grid; justify-items: end; }
+  .hero-visual :global(.grimorio) { height: min(640px, calc(100svh - var(--nav) - 150px)); width: auto; filter: drop-shadow(0 26px 34px rgb(0 0 0 / 0.6)); }
 
   /* códice abierto */
   .codice { position: relative; display: grid; grid-template-columns: 1fr 1fr; border-radius: 3px; box-shadow: 0 1px 0 #b79a5e, 0 3px 0 #77602f, 0 4px 0 #b79a5e, 0 6px 0 #77602f, 0 7px 0 #b79a5e, 0 9px 0 #4a3a1a, 0 26px 40px rgb(0 0 0 / 0.5); }
   .codice::before { content: ''; position: absolute; inset: 0 calc(50% - 60px); background: linear-gradient(90deg, transparent, rgb(60 38 8 / 0.34) 49.6%, rgb(40 24 4 / 0.7) 50%, rgb(60 38 8 / 0.3) 50.4%, transparent); pointer-events: none; }
-  .folio { padding: 40px 56px 44px; position: relative; display: flex; flex-direction: column; min-height: 520px; }
+  .folio { background: none; padding: 40px 48px 44px; position: relative; display: flex; flex-direction: column; min-height: 520px; }
   .colofon { width: 250px; margin: auto auto 0; padding-top: 20px; color: var(--hoja-borde); display: block; }
   .folio::after { content: ''; position: absolute; inset: 14px; border: 1px solid var(--hoja-borde); border-image: none; pointer-events: none; opacity: 0.65; }
   .folio h3 { font-size: 28px; color: var(--hoja-muted); }
-  .cifra { font-family: var(--f-titulo); font-weight: 600; font-size: clamp(44px, 2rem + 2.2vw, 66px); line-height: 1; margin-top: 2px; }
+  .cifra { font-family: var(--f-titulo); font-weight: 600; font-size: clamp(34px, 1.500rem + 1.700vw, 50px); line-height: 1; margin-top: 4px; }
   .cifra::first-letter { color: var(--rubrica); }
   .datos { margin-top: 22px; }
   .datos > div { display: grid; grid-template-columns: 11.500em 1fr; gap: 2px 18px; padding: 9px 0; border-top: 1px solid rgb(110 82 30 / 0.35); }
@@ -148,11 +151,11 @@ const tituloNivel = 1 as const;
   .capitular::first-letter { font-family: var(--f-titulo); font-size: 4.700em; line-height: 0.74; float: left; padding: 8px 12px 0 0; color: var(--trebol); font-weight: 600; }
 
   .sellos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .rollo { position: relative; display: grid; justify-items: start; align-content: start; gap: 6px; padding: 18px 18px 20px; cursor: pointer; transition: transform 180ms var(--ease); }
+  .rollo { background-clip: padding-box; position: relative; display: grid; justify-items: start; align-content: start; gap: 6px; padding: 18px 18px 20px; cursor: pointer; transition: transform 180ms var(--ease); }
   .rollo__dibujo { position: relative; justify-self: stretch; display: grid; place-items: center; padding: 18px 0 26px; color: var(--oro); }
   .rollo__dibujo svg { width: min(250px, 100%); height: auto; }
   .rollo__papel { fill: color-mix(in oklab, var(--oro) 10%, transparent); }
-  .sello--grande { position: absolute; left: 50%; bottom: 12px; width: 62px; height: 62px; translate: -50% 0; opacity: 0.3; scale: 0.86; transition: opacity 180ms var(--ease), scale 180ms var(--ease); }
+  .sello--grande { position: absolute; left: 50%; bottom: 34px; width: 62px; height: 62px; translate: -50% 0; opacity: 0.3; scale: 0.86; transition: opacity 180ms var(--ease), scale 180ms var(--ease); }
   .sello--grande :global(.glifo) { width: 32px; height: 32px; stroke-width: 1.600; }
   .rollo strong { font-family: var(--f-titulo); font-weight: 500; font-size: 29px; line-height: 1.1; }
   .rollo__detalle { color: var(--muted); }
@@ -161,7 +164,10 @@ const tituloNivel = 1 as const;
   .rollo:has(input:focus-visible) { outline: 2px solid var(--action); outline-offset: 2px; }
   @media (hover: hover) { .rollo:hover { transform: translateY(-2px); } .rollo:hover .sello--grande { opacity: 1; } }
 
-  .indice { display: grid; grid-template-columns: 1fr; }
+  .indice-caja { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .indice { grid-column: span 6; display: grid; grid-template-columns: 1fr; }
+  .indice-dibujo { grid-column: 8 / -1; display: grid; justify-items: end; padding-top: 18px; }
+  .indice-dibujo :global(.grimorio) { width: auto; height: 500px; filter: drop-shadow(0 22px 26px rgb(0 0 0 / 0.5)); }
   .entrada { display: grid; grid-template-columns: 34px auto 1fr auto; align-items: center; gap: 16px; min-height: 64px; text-decoration: none; border-bottom: 1px solid var(--linea); transition: color 150ms var(--ease); }
   .entrada__glifo { color: var(--trebol); width: 28px; height: 28px; }
   .entrada__nombre { font-family: var(--f-titulo); font-size: 32px; line-height: 1; }
@@ -170,10 +176,12 @@ const tituloNivel = 1 as const;
   .entrada:hover, .entrada:focus-visible { color: var(--oro); }
 
   @media (max-width: 1023px) {
+    .indice { grid-column: 1 / -1; }
+    .indice-dibujo { display: none; }
     .hero .wrap { padding-bottom: 24px; }
     .hero-text { grid-template-columns: 1fr; grid-template-rows: auto 1fr; row-gap: 28px; }
     .hero-copy, .hero-visual { grid-column: 1; }
-    .hero-visual { min-height: 0; align-content: end; }
+    .hero-visual { min-height: 0; align-content: end; justify-items: center; }
     .hero-visual :global(.grimorio) { height: min(56svh, 560px); }
     .hero-copy h1 { max-width: 14ch; }
     .folio { padding: 34px 34px 36px; }
@@ -181,7 +189,7 @@ const tituloNivel = 1 as const;
     .sellos { grid-template-columns: 1fr; gap: 16px; }
     .rollo { grid-template-columns: 150px 1fr; column-gap: 22px; align-content: center; }
     .rollo__dibujo { grid-row: span 2; padding: 0; }
-    .sello--grande { bottom: -4px; width: 48px; height: 48px; }
+    .sello--grande { bottom: 18px; width: 44px; height: 44px; }
     .rollo strong { align-self: end; }
   }
   @media (max-width: 767px) {
@@ -201,11 +209,11 @@ const tituloNivel = 1 as const;
     .hero-copy { gap: 18px; }
     .hero-visual :global(.grimorio) { height: max(220px, calc(100svh - 560px)); max-height: 420px; }
     .folio { padding: 30px 28px 32px; }
-    .rollo { grid-template-columns: 1fr; padding: 12px; }
-    .rollo__dibujo { display: none; }
-    .rollo { padding-left: 64px; }
-    .rollo::before { content: ''; position: absolute; left: 14px; top: 18px; width: 30px; height: 30px; border-radius: 47% 53% 50% 50% / 52% 46% 54% 48%; border: 2px solid var(--lacre-luz); }
-    .rollo:has(input:checked)::before { background: radial-gradient(circle at 38% 34%, #c4503c, var(--lacre) 62%, #611a13); }
+    .rollo { grid-template-columns: 92px 1fr; column-gap: 14px; padding: 10px; }
+    .sello--grande { bottom: 8px; width: 34px; height: 34px; }
+    .sello--grande :global(.glifo) { width: 18px; height: 18px; }
+    .rollo strong { font-size: 25px; }
+    .rollo__detalle { line-height: 1.35; }
   }
 </style>
 

@@ -5,9 +5,10 @@ import '@/styles/global.css';
 import gotica from '@fontsource-variable/grenze-gotisch/files/grenze-gotisch-latin-wght-normal.woff2?url';
 import alegreya from '@fontsource-variable/alegreya/files/alegreya-latin-wght-normal.woff2?url';
 import Glifo from '@/components/Glifo.astro';
+import Paisaje from '@/components/Paisaje.astro';
 import Tramas from '@/components/Tramas.astro';
 import { NIVELES } from '@/lib/spoilers';
-import { anime, fechaLarga } from '@/lib/estado';
+import { anime, fechaLarga, capituloAnimado, tomoDe } from '@/lib/estado';
 import { ruta, SECCIONES, REPO } from '@/lib/rutas';
 
 interface Props { titulo: string; descripcion: string; portada?: boolean; ocultarDeBuscadores?: boolean }
@@ -112,8 +113,16 @@ const esActual = (href: string) => aqui.startsWith(ruta(href));
       <slot />
     </main>
 
-    <footer class="pie">
+    <footer class:list={['pie', 'closing', portada && 'pie--portada']}>
       <div class="wrap">
+        {portada && (
+          <div class="pie__cierre">
+            <h2>El manga sigue en el capítulo {capituloAnimado + 1}</h2>
+            <p class="lead">Es el primero que la T2 todavía no adaptó y está en el tomo {tomoDe(capituloAnimado + 1)}.</p>
+            <a class="btn btn--primary" href={ruta('guia/')}>Ver la guía de capítulos</a>
+          </div>
+        )}
+        <div class="pie__directorio">
         <div class="pie__cols">
           <div class="pie__aviso">
             <h3>Un sitio de fans</h3>
@@ -142,7 +151,9 @@ const esActual = (href: string) => aqui.startsWith(ruta(href));
           <span>Datos del anime revisados el {fechaLarga(anime.actualizado)}</span>
           <button class="tema-pie" type="button" data-tema-boton aria-pressed="false">Usar tema pergamino</button>
         </div>
+        </div>
       </div>
+      {portada && <div class="pie__campo" aria-hidden="true"><Paisaje soloCampo /></div>}
     </footer>
     <script>
       import '@/scripts/spoilers';

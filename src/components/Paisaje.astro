@@ -2,6 +2,8 @@
 /** Grabado de fondo de la portada: cielo a buril, sierras, una ciudadela y un campo de tréboles. */
 import { azar, cresta, poligono, laderas, altura, trazo, HOJA, angulos } from '@/lib/grabado';
 
+interface Props { soloCampo?: boolean }
+const { soloCampo = false } = Astro.props;
 const r = azar(2015);
 const CX = 1180;
 const CY = 400;
@@ -53,9 +55,10 @@ for (let i = 0; i < 260; i++) {
   const y = altura(cerca, x) + r() * 110;
   pasto += `M${x.toFixed(0)} ${y.toFixed(0)}q${((r() - 0.5) * 8).toFixed(1)} ${(-8 - r() * 8).toFixed(1)} ${((r() - 0.5) * 12).toFixed(1)} ${(-14 - r() * 14).toFixed(1)}`;
 }
-const chispas = Array.from({ length: 22 }, () => ({ x: Math.round(640 + r() * 920), y: Math.round(90 + r() * 360), e: (0.5 + r() * 0.9).toFixed(2) }));
+const chispas = Array.from({ length: 22 }, () => ({ x: Math.round(780 + r() * 790), y: Math.round(90 + r() * 360), e: (0.5 + r() * 0.9).toFixed(2) }));
 ---
-<svg class="paisaje" viewBox="0 0 1600 900" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+<svg class="paisaje" viewBox={soloCampo ? '0 700 1600 200' : '0 0 1600 900'} preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+  {!soloCampo && <Fragment>
   <defs>
     <radialGradient id="halo" gradientUnits="userSpaceOnUse" cx={CX} cy={CY} r="520">
       <stop offset="0" stop-color="var(--p-halo)" stop-opacity=".5" /><stop offset=".45" stop-color="var(--p-halo)" stop-opacity=".16" /><stop offset="1" stop-color="var(--p-halo)" stop-opacity="0" />
@@ -67,7 +70,7 @@ const chispas = Array.from({ length: 22 }, () => ({ x: Math.round(640 + r() * 92
   <g mask="url(#cielo)" fill="none" stroke="var(--p-trazo)">
     {aros.map((a) => <circle cx={CX} cy={CY} r={a.radio} stroke-width={a.w} stroke-dasharray={a.dash} opacity={a.op} transform={`rotate(${a.giro} ${CX} ${CY})`} />)}
   </g>
-  <g fill="var(--p-trazo)" opacity=".75">{chispas.map((c) => <path transform={`translate(${c.x} ${c.y}) scale(${c.e})`} d="M0-7L1.4-1.4 7 0 1.4 1.4 0 7-1.4 1.4-7 0-1.4-1.4Z" />)}</g>
+  <g class="chispas" fill="var(--p-trazo)" opacity=".75">{chispas.map((c) => <path transform={`translate(${c.x} ${c.y}) scale(${c.e})`} d="M0-7L1.4-1.4 7 0 1.4 1.4 0 7-1.4 1.4-7 0-1.4-1.4Z" />)}</g>
   <path d={poligono(lejos, 900)} fill="var(--p-lejos)" /><path d={laderas(lejos, 7, 60, r)} stroke="var(--p-trazo)" stroke-width="1" fill="none" opacity=".34" />
   <g>
     <path d={torres.map((t) => torre(...t)).join('')} fill="var(--p-medio)" stroke="var(--p-trazo)" stroke-width="1.3" />
@@ -78,6 +81,7 @@ const chispas = Array.from({ length: 22 }, () => ({ x: Math.round(640 + r() * 92
     <path fill="var(--p-ventana)" d={torres.map(([x, w, h]) => `M${x + w * 0.22} ${by - h + 22}v-9a3 3 0 0 1 6 0v9Z`).join('')} />
   </g>
   <path d={poligono(medio, 900)} fill="var(--p-medio)" /><path d={laderas(medio, 6, 48, r)} stroke="var(--p-trazo)" stroke-width="1" fill="none" opacity=".3" />
+  </Fragment>}
   <path d={poligono(cerca, 900)} fill="var(--p-cerca)" />
   <path d={pasto} stroke="var(--p-verde)" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".8" />
   {treboles.map((t) => (
@@ -87,3 +91,6 @@ const chispas = Array.from({ length: 22 }, () => ({ x: Math.round(640 + r() * 92
     </g>
   ))}
 </svg>
+<style>
+  @media (max-width: 1023px) { .chispas { display: none; } }
+</style>
