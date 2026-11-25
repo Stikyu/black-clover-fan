@@ -27,6 +27,6 @@ Las que no venían cerradas en el pedido, con su motivo.
 
 ## Técnica
 
-- **Astro sin React.** Filtros, quiz, guía y spoilers son scripts chicos sin dependencias: la portada baja unos 200 KB en total.
+- **Astro sin React.** Filtros, quiz, guía y spoilers son scripts chicos sin dependencias: la portada baja unos 180 KB en total.
 - **Colecciones con esquema.** Si un JSON queda mal, `npm run build` falla con un mensaje claro y el deploy no sale.
 - **El deploy corre las pruebas antes de publicar.**
