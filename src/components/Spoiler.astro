@@ -1,0 +1,24 @@
+---
+/**
+ * Tapa un bloque cuando el nivel de quien lee no alcanza.
+ * Pasale `capitulo` (el nivel se calcula) o `nivel` directo.
+ */
+import { nivelDeCapitulo, ETIQUETA, type Nivel } from '@/lib/spoilers';
+interface Props { capitulo?: number; nivel?: Nivel; linea?: boolean; sobre?: string; clase?: string }
+const { capitulo, nivel, linea = false, sobre, clase = '' } = Astro.props;
+const req: Nivel = nivel ?? nivelDeCapitulo(capitulo ?? 1);
+const Caja = linea ? 'span' : 'div';
+const etiqueta = ETIQUETA[req];
+---
+{req === 0 ? <slot /> : (
+  <Caja class:list={['spoiler', linea && 'spoiler--linea', clase]} data-req={req} data-nosnippet>
+    <Caja class="spoiler__tapa">
+      {!linea && <span class="spoiler__etiqueta">{etiqueta}</span>}
+      <button type="button" class:list={[linea ? 'spoiler__boton' : 'btn btn--lacre']} data-abrir>
+        {linea ? <>{etiqueta}<span class="sr">. Mostrar{sobre ? `: ${sobre}` : ''}</span></> : <>Mostrar spoiler{sobre && <span class="sr"> sobre {sobre}</span>}</>}
+      </button>
+    </Caja>
+    <Caja class="spoiler__contenido" inert aria-hidden="true"><slot /></Caja>
+    {!linea && <button type="button" class="spoiler__cerrar" data-cerrar>Volver a tapar</button>}
+  </Caja>
+)}
