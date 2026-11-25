@@ -1,0 +1,91 @@
+---
+import { getEntry } from 'astro:content';
+import { todosLosEscuadrones, todosLosReyes } from '@/lib/orden';
+import Base from '@/layouts/Base.astro';
+import Escudo from '@/components/Escudo.astro';
+import Spoiler from '@/components/Spoiler.astro';
+import { ruta } from '@/lib/rutas';
+
+const escuadrones = await todosLosEscuadrones();
+const reyes = await todosLosReyes();
+const filas = await Promise.all(
+  escuadrones.map(async (e) => ({
+    e,
+    capitan: (await getEntry(e.data.capitan))!,
+    vice: e.data.vice ? await getEntry(e.data.vice) : null,
+    integrantes: await Promise.all(e.data.integrantes.map(async (i) => (await getEntry(i))!)),
+  })),
+);
+---
+<Base titulo="Los nueve escuadrones de Caballeros Mágicos de Black Clover" descripcion="Capitán, lema e integrantes de los nueve escuadrones de Black Clover, más la lista de Reyes Magos conocidos.">
+  <div class="pagina">
+    <div class="wrap">
+      <header class="pagina__cabeza">
+        <h1>Escuadrones</h1>
+        <p class="lead">Los nueve cuerpos de Caballeros Mágicos del reino Clover, tal como están al final de la T1. Los blasones y los lemas son de este sitio: el manga no le da uno oficial a cada escuadrón.</p>
+      </header>
+
+      <div class="pagina__cuerpo">
+        <section class="bloque" aria-label="Escuadrones">
+          <ul class="escuadras">
+            {filas.map(({ e, capitan, vice, integrantes }) => (
+              <li class="escuadra" id={e.id} style={`--c:${e.data.color}`}>
+                <div class="escuadra__armas"><Escudo color={e.data.color} trama={e.data.trama} emblema={e.data.emblema} /></div>
+                <div class="escuadra__cuerpo">
+                  <h2>{e.data.nombre}</h2>
+                  <p class="lema">«{e.data.lema}»</p>
+                  <p>{e.data.texto}</p>
+                  <dl>
+                    <div><dt>Capitanía</dt><dd><a class="link" href={ruta(`personajes/${capitan.id}/`)}>{capitan.data.nombre}</a></dd></div>
+                    {vice && <div><dt>Segundo al mando</dt><dd><a class="link" href={ruta(`personajes/${vice.id}/`)}>{vice.data.nombre}</a></dd></div>}
+                    {integrantes.length > 0 && <div><dt>Integrantes</dt><dd class="lista">{integrantes.map((i) => <a class="link" href={ruta(`personajes/${i.id}/`)}>{i.data.nombre}</a>)}</dd></div>}
+                  </dl>
+                  {e.data.cambios.map((c) => <div class="cambio"><Spoiler capitulo={c.capitulo} sobre={`cambios en ${e.data.nombre}`}><p>{c.texto}</p></Spoiler></div>)}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="bloque">
+          <h2>Reyes Magos conocidos</h2>
+          <p>El Rey Mago manda sobre los nueve escuadrones y se elige por méritos. La serie nombra a estos; varios aparecen en la película La espada del Rey Mago.</p>
+          <ol class="reyes">
+            {reyes.map((r) => (
+              <li>
+                <Spoiler capitulo={r.data.capitulo} sobre="otro Rey Mago">
+                  <div class="rey"><span class="rey__orden">{r.data.orden}</span><div><h3>{r.data.nombre}</h3><p>{r.data.texto} <span class="muted">Magia: {r.data.magia.toLowerCase()}.</span></p></div></div>
+                </Spoiler>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .escuadras { display: grid; }
+  .escuadra { display: grid; grid-template-columns: 302px minmax(0, 1fr); column-gap: 72px; padding: 48px 0; border-top: 1px solid var(--linea); scroll-margin-top: calc(var(--nav) + 8px); }
+  .escuadra:first-child { border-top: 2px solid var(--line-strong); }
+  .escuadra__armas { display: grid; place-items: center; align-self: start; --esc: 184px; height: 264px; background: repeating-radial-gradient(circle at 50% 50%, transparent 0 9px, color-mix(in oklab, var(--oro) 30%, transparent) 9px 10px); -webkit-mask: none; position: relative; }
+  .escuadra__armas::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, transparent 30%, var(--bg) 70%); }
+  .escuadra__armas :global(.escudo) { z-index: 1; }
+  .escuadra h2 { font-size: clamp(32px, 1.500rem + 1.500vw, 46px); }
+  .lema { font-style: normal; font-size: 22px; line-height: 1.35; color: var(--oro); margin: 8px 0 14px; max-width: 46ch; }
+  .escuadra__cuerpo > p { max-width: 64ch; }
+  .escuadra dl { margin-top: 18px; }
+  .escuadra dl > div { display: grid; grid-template-columns: 170px 1fr; gap: 2px 16px; padding: 9px 0; border-top: 1px solid var(--linea); }
+  .escuadra dt { color: var(--muted); }
+  .lista { display: flex; flex-wrap: wrap; gap: 2px 18px; }
+  .cambio { margin-top: 14px; max-width: 66ch; }
+  .reyes { display: grid; }
+  .reyes li { border-top: 1px solid var(--linea); }
+  .rey { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 18px 0; align-items: baseline; }
+  .rey__orden { font-family: var(--f-titulo); font-size: 42px; line-height: 1; color: var(--oro); }
+  .rey h3 { font-size: 28px; margin-bottom: 4px; }
+  .rey p { max-width: 66ch; }
+  @media (max-width: 1023px) { .escuadra { grid-template-columns: 150px minmax(0, 1fr); column-gap: 32px; } .escuadra__armas { --esc: 120px; height: 180px; } }
+  @media (max-width: 639px) { .escuadra { grid-template-columns: 1fr; row-gap: 12px; padding: 36px 0; } .escuadra__armas { justify-content: start; background: none; height: auto; --esc: 96px; } .escuadra__armas::after { display: none; } .escuadra dl > div { grid-template-columns: 1fr; } .lista a { --u: 6px; padding: 6px 0; } .rey { grid-template-columns: 1fr; gap: 4px; } }
+</style>
