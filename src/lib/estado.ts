@@ -43,8 +43,8 @@ const esquemaManga = z.object({
   revistaFinal: z.string(),
   tomos: z.number().int(),
   fechaTomoFinal: fecha,
-  edicionArgentina: z.object({ editorial: z.string(), ultimoTomo: z.number(), proximoTomo: z.number().nullable(), fechaProximo: fecha.nullable(), verificado: fecha, url: z.string().url() }),
-  edicionEspana: z.object({ editorial: z.string(), ultimoTomo: z.number(), proximoTomo: z.number().nullable(), fechaProximo: fecha.nullable(), verificado: fecha, url: z.string().url() }),
+  edicionArgentina: z.object({ editorial: z.string(), ultimoTomo: z.number(), proximoTomo: z.number().nullable(), fechaProximo: fecha.nullable(), verificado: fecha, url: z.url() }),
+  edicionEspana: z.object({ editorial: z.string(), ultimoTomo: z.number(), proximoTomo: z.number().nullable(), fechaProximo: fecha.nullable(), verificado: fecha, url: z.url() }),
   rangosTomos: z.array(rango),
 });
 

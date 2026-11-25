@@ -9,8 +9,8 @@ export type Nivel = 0 | 1 | 2;
 
 export const NIVELES: { valor: Nivel; nombre: string; corto: string; detalle: string }[] = [
   { valor: 0, nombre: 'Vi el anime T1', corto: 'Vi la T1', detalle: 'Muestra lo que pasa hasta el episodio 170. Es el nivel inicial.' },
-  { valor: 1, nombre: 'Voy al día con la T2', corto: 'Al día con la T2', detalle: `Suma lo que ya se emitió, hasta el episodio ${anime.ultimoEmitido}.` },
-  { valor: 2, nombre: 'Leí el manga completo', corto: 'Leí el manga', detalle: 'Muestra todo, incluido el final en el capítulo 392.' },
+  { valor: 1, nombre: 'Voy al día con la T2', corto: 'Al día con T2', detalle: `Suma lo que ya se emitió, hasta el episodio ${anime.ultimoEmitido}.` },
+  { valor: 2, nombre: 'Leí el manga completo', corto: 'Leí todo', detalle: 'Muestra todo, incluido el final en el capítulo 392.' },
 ];
 
 export function nivelDeCapitulo(capitulo: number): Nivel {
