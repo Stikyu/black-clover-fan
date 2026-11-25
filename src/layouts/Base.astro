@@ -1,0 +1,151 @@
+---
+import '@fontsource-variable/grenze-gotisch/wght.css';
+import '@fontsource-variable/alegreya/wght.css';
+import '@/styles/global.css';
+import gotica from '@fontsource-variable/grenze-gotisch/files/grenze-gotisch-latin-wght-normal.woff2?url';
+import alegreya from '@fontsource-variable/alegreya/files/alegreya-latin-wght-normal.woff2?url';
+import Glifo from '@/components/Glifo.astro';
+import Tramas from '@/components/Tramas.astro';
+import { NIVELES } from '@/lib/spoilers';
+import { anime, fechaLarga } from '@/lib/estado';
+import { ruta, SECCIONES, REPO } from '@/lib/rutas';
+
+interface Props { titulo: string; descripcion: string; portada?: boolean; ocultarDeBuscadores?: boolean }
+const { titulo, descripcion, portada = false, ocultarDeBuscadores = false } = Astro.props;
+const canonica = new URL(Astro.url.pathname, Astro.site).href;
+const og = new URL(ruta('og.png'), Astro.site).href;
+const aqui = Astro.url.pathname;
+const esActual = (href: string) => aqui.startsWith(ruta(href));
+---
+<!doctype html>
+<html lang="es-AR" data-nivel="0" data-type="software" data-radius="sharp" data-buttons="solid" data-motion>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    {ocultarDeBuscadores ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonica} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="El Grimorio de Clover" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={canonica} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Grabado de un grimorio con un trébol de cinco hojas sobre una ciudadela medieval" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0e0c09" />
+    <meta name="site-kind" content="gaming" />
+    <meta name="page-type" content="software" />
+    <link rel="icon" href={ruta('favicon.svg')} type="image/svg+xml" />
+    <link rel="sitemap" href={ruta('sitemap-index.xml')} />
+    <link rel="preload" href={gotica} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={alegreya} as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href={ruta('assets/motion/motion.css')} />
+    {/* antes de pintar: nivel de spoilers y tema guardados */}
+    <script is:inline>
+      (function () {
+        var h = document.documentElement;
+        try {
+          var n = localStorage.getItem('bc-nivel');
+          if (n === '1' || n === '2') h.dataset.nivel = n;
+          if (localStorage.getItem('bc-tema') === 'claro') h.dataset.tema = 'claro';
+        } catch (e) {}
+      })();
+    </script>
+    {portada && (
+      <Fragment>
+        <script is:inline>
+          document.documentElement.classList.add('m-enter', 'mo-js');
+          setTimeout(() => document.documentElement.classList.add('m-enter-done'), 700);
+          setTimeout(() => document.documentElement.classList.add('mo-safe'), 2500);
+        </script>
+        <script is:inline type="module" src={ruta('assets/moments/moments.js')}></script>
+      </Fragment>
+    )}
+    <script is:inline type="module" src={ruta('assets/motion/motion.js')}></script>
+    <slot name="cabeza" />
+  </head>
+  <body>
+    <Tramas />
+    <header class="nav">
+      <div class="wrap nav__bar">
+        <a class="skip-link" href="#contenido">Saltar al contenido</a>
+        <a class="nav__logo" href={ruta('')} aria-label="El Grimorio de Clover, inicio"><Glifo tipo="trebol" /><span>El Grimorio</span></a>
+        <nav class="nav__links" id="menu" aria-label="Secciones">
+          {SECCIONES.map((s) => <a class="nav__link" href={ruta(s.href)} aria-current={esActual(s.href) ? 'page' : undefined}>{s.nombre}</a>)}
+        </nav>
+        <div class="nav__actions">
+          <div class="nivel">
+            <button class="nivel__btn" type="button" data-nivel-boton aria-expanded="false" aria-controls="nivel-panel">
+              <span class="sello" aria-hidden="true"><Glifo tipo="sellado" /></span>
+              <span class="sr">Nivel de spoilers: </span>
+              {NIVELES.map((n) => <span data-muestra={n.valor}>{n.corto}</span>)}
+            </button>
+            <div class="nivel__panel marco" id="nivel-panel" hidden>
+              <fieldset>
+                <legend>¿Hasta dónde llegaste?</legend>
+                {NIVELES.map((n) => (
+                  <label class="opcion">
+                    <input type="radio" name="nivel" value={n.valor} data-nivel-opcion data-nombre={n.nombre} checked={n.valor === 0} />
+                    <strong>{n.nombre}</strong><span>{n.detalle}</span>
+                  </label>
+                ))}
+              </fieldset>
+            </div>
+            <p class="sr" id="nivel-aviso" role="status"></p>
+          </div>
+          <button class="icono" type="button" data-tema-boton aria-label="Tema pergamino (claro)" aria-pressed="false">
+            <Glifo tipo="luz" clase="i-sol" /><Glifo tipo="sueno" clase="i-luna" />
+          </button>
+          <button class="icono nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menú">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 5.500c5-1 11 .5 16 0M2 10c5 .8 11-.6 16 0M2 14.500c5-.6 11 .8 16 0" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" fill="none" /></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <noscript><style>.nivel, [data-tema-boton] { display: none; }</style></noscript>
+
+    <main id="contenido" tabindex="-1">
+      <slot />
+    </main>
+
+    <footer class="pie">
+      <div class="wrap">
+        <div class="pie__cols">
+          <div class="pie__aviso">
+            <h3>Un sitio de fans</h3>
+            <p>Página hecha por fans, sin fines de lucro y sin afiliación con Shueisha, Studio Pierrot ni Crunchyroll. Black Clover es obra de Yūki Tabata. Los textos y los dibujos de este sitio son propios; si te gusta la historia, apoyala por las vías oficiales.</p>
+          </div>
+          <div>
+            <h3>Ver y leer legal</h3>
+            <ul>
+              <li><a class="link" href="https://www.crunchyroll.com/es/series/GRE50KV36/black-clover" rel="noopener">Crunchyroll</a></li>
+              <li><a class="link" href="https://mangaplus.shueisha.co.jp/" rel="noopener">MANGA Plus</a></li>
+              <li><a class="link" href="https://www.ivrea.com.ar/titulo/black-clover/" rel="noopener">Ivrea Argentina</a></li>
+              <li><a class="link" href={ruta('donde-ver/')}>Todas las opciones</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>El proyecto</h3>
+            <ul>
+              <li><a class="link" href={REPO} rel="noopener">Código en GitHub</a></li>
+              <li><a class="link" href={`${REPO}/blob/main/docs/fuentes.md`} rel="noopener">Fuentes de los datos</a></li>
+              <li><a class="link" href={`${REPO}/issues`} rel="noopener">Avisar un error</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pie__legal">
+          <span>El Grimorio de Clover, 2026</span>
+          <span>Datos del anime revisados el {fechaLarga(anime.actualizado)}</span>
+          <button class="tema-pie" type="button" data-tema-boton aria-pressed="false">Usar tema pergamino</button>
+        </div>
+      </div>
+    </footer>
+    <script>
+      import '@/scripts/spoilers';
+    </script>
+  </body>
+</html>
