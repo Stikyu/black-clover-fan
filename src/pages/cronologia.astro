@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Glifo from '@/components/Glifo.astro';
+import { fechaLarga } from '@/lib/estado';
+
+const hitos = (await getCollection('linea')).sort((a, b) => a.data.fecha.localeCompare(b.data.fecha));
+const anios = [...new Set(hitos.map((h) => h.data.fecha.slice(0, 4)))];
+const TIPOS: Record<string, { nombre: string; glifo: string }> = {
+  manga: { nombre: 'Manga', glifo: 'libro' },
+  anime: { nombre: 'Anime', glifo: 'ojo' },
+  pelicula: { nombre: 'Película', glifo: 'luz' },
+  juego: { nombre: 'Juego', glifo: 'dado' },
+  novela: { nombre: 'Novela', glifo: 'pergamino' },
+  teatro: { nombre: 'Teatro', glifo: 'espejo' },
+  anuncio: { nombre: 'Anuncio', glifo: 'comunicacion' },
+};
+const usados = Object.keys(TIPOS).filter((t) => hitos.some((h) => h.data.tipo === t));
+---
+<Base titulo="Cronología de Black Clover: manga, anime, película y juegos" descripcion="Todas las fechas de la franquicia Black Clover, desde el debut del manga en 2015 hasta la temporada 2 y el tomo 38.">
+  <div class="pagina">
+    <div class="wrap">
+      <header class="pagina__cabeza">
+        <h1>Cronología</h1>
+        <p class="lead">Once años de franquicia, sin spoilers de la historia. Filtrá por tipo si buscás algo puntual.</p>
+      </header>
+      <div class="pagina__cuerpo">
+        <fieldset class="tipos">
+          <legend class="sr">Filtrar por tipo</legend>
+          <label><input class="sr" type="radio" name="tipo" value="" checked /><span>Todo</span></label>
+          {usados.map((t) => <label><input class="sr" type="radio" name="tipo" value={t} /><span><Glifo tipo={TIPOS[t].glifo} />{TIPOS[t].nombre}</span></label>)}
+        </fieldset>
+
+        <div class="linea">
+          {anios.map((anio) => (
+            <section class="anio" data-anio aria-labelledby={`a-${anio}`}>
+              <h2 id={`a-${anio}`}>{anio}</h2>
+              <ol>
+                {hitos.filter((h) => h.data.fecha.startsWith(anio)).map((h) => (
+                  <li class="hito" data-tipo={h.data.tipo}>
+                    <span class="hito__icono" aria-hidden="true"><Glifo tipo={TIPOS[h.data.tipo].glifo} /></span>
+                    <div>
+                      <h3>{h.data.titulo}</h3>
+                      <p class="hito__fecha muted"><time datetime={h.data.precision === 'anio' ? anio : h.data.precision === 'mes' ? h.data.fecha.slice(0, 7) : h.data.fecha}>{fechaLarga(h.data.fecha, h.data.precision)}</time>, {TIPOS[h.data.tipo].nombre.toLowerCase()}</p>
+                      <p>{h.data.texto}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .tipos { display: flex; flex-wrap: wrap; gap: 10px; padding-bottom: 40px; }
+  .tipos span { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--linea); border-radius: 2px; cursor: pointer; transition: border-color 150ms var(--ease), background-color 150ms var(--ease); }
+  .tipos span :global(.glifo) { width: 20px; height: 20px; }
+  .tipos span:hover { border-color: var(--oro); }
+  .tipos input:checked + span { background: var(--action); color: var(--action-ink); border-color: var(--action); font-weight: 600; }
+  .tipos input:focus-visible + span { outline: 2px solid var(--action); outline-offset: 2px; }
+  .anio { display: grid; grid-template-columns: 302px minmax(0, 1fr); column-gap: 72px; border-top: 1px solid var(--linea); padding-top: 26px; }
+  .anio h2 { font-size: clamp(48px, 2rem + 2.500vw, 76px); line-height: 0.9; font-feature-settings: 'lnum'; }
+  .anio ol { position: relative; }
+  /* el tallo que une los hitos */
+  .anio ol::before { content: ''; position: absolute; left: 21px; top: 0; bottom: 0; width: 2px; background: var(--trebol-hondo); }
+  .hito { position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 28px; padding-bottom: 40px; }
+  .hito__icono { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--bg); border: 1.500px solid var(--trebol); color: var(--trebol); z-index: 1; }
+  .hito__icono :global(.glifo) { width: 22px; height: 22px; }
+  .hito h3 { padding-top: 6px; }
+  .hito__fecha { margin: 2px 0 6px; }
+  .hito p { max-width: 62ch; }
+  .hito p + p { margin-top: 0; }
+  @media (max-width: 900px) { .anio { grid-template-columns: 1fr; row-gap: 22px; } .hito { gap: 18px; } }
+</style>
+
+<script>
+  const aplicar = (tipo: string) => {
+    document.querySelectorAll<HTMLElement>('.hito').forEach((h) => (h.hidden = Boolean(tipo) && h.dataset.tipo !== tipo));
+    document.querySelectorAll<HTMLElement>('[data-anio]').forEach((a) => (a.hidden = !a.querySelector('.hito:not([hidden])')));
+  };
+  document.querySelectorAll<HTMLInputElement>('input[name="tipo"]').forEach((i) => i.addEventListener('change', () => aplicar(i.value)));
+</script>

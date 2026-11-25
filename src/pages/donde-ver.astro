@@ -1,0 +1,41 @@
+---
+import Base from '@/layouts/Base.astro';
+import datos from '@/data/donde-ver.json';
+import { fechaLarga } from '@/lib/estado';
+const grupos = [{ titulo: 'Para ver', lista: datos.ver }, { titulo: 'Para leer', lista: datos.leer }];
+---
+<Base titulo="Dónde ver y leer Black Clover legalmente en Argentina" descripcion="Plataformas y editoriales oficiales para ver y leer Black Clover en Argentina y Latinoamérica: Crunchyroll, Netflix, MANGA Plus, Ivrea y más.">
+  <div class="pagina">
+    <div class="wrap">
+      <header class="pagina__cabeza">
+        <h1>Ver y leer legal</h1>
+        <p class="lead">Opciones oficiales para Argentina y el resto de Latinoamérica, revisadas el {fechaLarga(datos.verificado)}. Los catálogos cambian: si algo no coincide, manda la plataforma.</p>
+      </header>
+      <div class="pagina__cuerpo">
+        {grupos.map((g) => (
+          <section class="bloque grupo">
+            <h2>{g.titulo}</h2>
+            <ul>
+              {g.lista.map((i) => (
+                <li>
+                  <div><h3>{i.nombre}</h3><p class="que">{i.que}</p><p>{i.detalle}</p></div>
+                  <a class="btn btn--secondary" href={i.url} rel="noopener">{i.accion}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .grupo { display: grid; grid-template-columns: 302px minmax(0, 1fr); column-gap: 72px; row-gap: 12px; }
+  .grupo li { display: grid; grid-template-columns: 1fr 250px; gap: 18px 40px; align-items: center; padding: 28px 0; border-top: 1px solid var(--linea); }
+  .grupo li:first-child { border-top: 2px solid var(--line-strong); }
+  .que { font-weight: 700; margin-top: 2px; }
+  .que + p { margin-top: 4px; max-width: 56ch; color: var(--muted); }
+  @media (max-width: 1023px) { .grupo { grid-template-columns: 1fr; } }
+  @media (max-width: 767px) { .grupo li { grid-template-columns: 1fr; } .grupo .btn { width: 100%; } }
+</style>

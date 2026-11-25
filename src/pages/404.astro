@@ -1,0 +1,15 @@
+---
+import Base from '@/layouts/Base.astro';
+import { ruta } from '@/lib/rutas';
+---
+<Base titulo="Página arrancada, El Grimorio de Clover" descripcion="Esta página no existe en el grimorio." ocultarDeBuscadores>
+  <div class="pagina">
+    <div class="wrap">
+      <header class="pagina__cabeza">
+        <h1>A este grimorio le falta esa página</h1>
+        <p class="lead">La dirección no existe o cambió de lugar. El índice está completo.</p>
+      </header>
+      <p class="pagina__cuerpo"><a class="btn btn--primary" href={ruta('')}>Ver el índice</a></p>
+    </div>
+  </div>
+</Base>
