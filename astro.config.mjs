@@ -17,5 +17,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [sitemap({ filter: (url) => !url.includes('/404') && !sellados.some((s) => url.endsWith(s)) })],
   build: { inlineStylesheets: 'auto' },
+  // los SVG quedan como archivos: uno incrustado en el CSS no puede referirse a sus propios filtros
+  vite: { build: { assetsInlineLimit: 0 } },
   devToolbar: { enabled: false },
 });

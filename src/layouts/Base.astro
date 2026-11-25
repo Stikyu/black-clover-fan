@@ -5,7 +5,6 @@ import '@/styles/global.css';
 import gotica from '@fontsource-variable/grenze-gotisch/files/grenze-gotisch-latin-wght-normal.woff2?url';
 import alegreya from '@fontsource-variable/alegreya/files/alegreya-latin-wght-normal.woff2?url';
 import Glifo from '@/components/Glifo.astro';
-import Paisaje from '@/components/Paisaje.astro';
 import Tramas from '@/components/Tramas.astro';
 import { NIVELES } from '@/lib/spoilers';
 import { anime, fechaLarga, capituloAnimado, tomoDe } from '@/lib/estado';
@@ -113,7 +112,7 @@ const esActual = (href: string) => aqui.startsWith(ruta(href));
       <slot />
     </main>
 
-    <footer class:list={['pie', 'closing', portada && 'pie--portada']}>
+    <footer class:list={['pie', 'closing', portada && 'pie--portada']} style={portada ? `--campo-oscuro: url(${ruta('grabados/campo-oscuro.svg')}); --campo-claro: url(${ruta('grabados/campo-claro.svg')})` : undefined}>
       <div class="wrap">
         {portada && (
           <div class="pie__cierre">
@@ -153,7 +152,6 @@ const esActual = (href: string) => aqui.startsWith(ruta(href));
         </div>
         </div>
       </div>
-      {portada && <div class="pie__campo" aria-hidden="true"><Paisaje soloCampo /></div>}
     </footer>
     <script>
       import '@/scripts/spoilers';
