@@ -1,0 +1,167 @@
+---
+import { todosLosPersonajes, todosLosEscuadrones } from '@/lib/orden';
+import Base from '@/layouts/Base.astro';
+import Escudo from '@/components/Escudo.astro';
+import Glifo from '@/components/Glifo.astro';
+import { armas } from '@/lib/armas';
+import { nivelDeCapitulo, ETIQUETA } from '@/lib/spoilers';
+import { ruta, iniciales, REINO_NOMBRE } from '@/lib/rutas';
+
+const personajes = await todosLosPersonajes();
+const escuadrones = await todosLosEscuadrones();
+const norma = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+const nivelMin = (lista: typeof personajes) => Math.min(...lista.map((p) => nivelDeCapitulo(p.data.debut)));
+const magias = [...new Set(personajes.map((p) => p.data.magia))].sort((a, b) => a.localeCompare(b, 'es')).map((m) => ({ m, req: nivelMin(personajes.filter((p) => p.data.magia === m)) }));
+const reinos = Object.keys(REINO_NOMBRE).map((r) => ({ r, req: nivelMin(personajes.filter((p) => p.data.reino === r)) }));
+---
+<Base titulo="Personajes de Black Clover: buscador y fichas" descripcion={`${personajes.length} personajes de Black Clover con filtros por escuadrón, tipo de magia y reino. Cada ficha respeta tu nivel de spoilers.`}>
+  <div class="pagina">
+    <div class="wrap">
+      <header class="pagina__cabeza">
+        <h1>Personajes</h1>
+        <p class="lead">Cada escudo lleva el color y la trama de su escuadrón, al modo de los grabadores antiguos. Quienes debutan más adelante de donde estás aparecen lacrados.</p>
+      </header>
+
+      <div class="pagina__cuerpo">
+        <form class="filtros" role="search" aria-label="Buscar personajes" onsubmit="return false">
+          <div class="campo campo--ancho"><label for="q">Nombre</label><input id="q" type="search" autocomplete="off" spellcheck="false" /></div>
+          <div class="campo"><label for="f-esc">Escuadrón</label>
+            <select id="f-esc"><option value="">Todos</option>{escuadrones.map((e) => <option value={e.id}>{e.data.nombre}</option>)}<option value="ninguno">Sin escuadrón</option></select></div>
+          <div class="campo"><label for="f-mag">Tipo de magia</label>
+            <select id="f-mag"><option value="">Todas</option>{magias.map(({ m, req }) => <option value={m} data-opcion-req={req}>{m}</option>)}</select></div>
+          <div class="campo"><label for="f-rei">Reino</label>
+            <select id="f-rei"><option value="">Todos</option>{reinos.map(({ r, req }) => <option value={r} data-opcion-req={req}>{REINO_NOMBRE[r]}</option>)}</select></div>
+          <button class="btn btn--secondary" type="button" id="limpiar">Ver todos</button>
+        </form>
+        <p class="conteo muted" role="status" aria-live="polite" id="conteo">{personajes.length} personajes</p>
+
+        <ul class="cartas">
+          {personajes.map((p) => {
+            const a = armas(p);
+            const req = nivelDeCapitulo(p.data.debut);
+            return (
+              <li class="carta" data-req={req} data-nombre={norma(`${p.data.nombre} ${a.afiliacion} ${p.data.magia} ${p.data.rol}`)} data-esc={p.data.escuadron?.id ?? 'ninguno'} data-mag={p.data.magia} data-rei={p.data.reino}>
+                <a class="carta__cara card marco" href={ruta(`personajes/${p.id}/`)} style={`--c:${a.color}`} data-nosnippet={req > 0 ? '' : undefined}>
+                  <span class="carta__campo">
+                    <Escudo color={a.color} trama={a.trama} iniciales={iniciales(p.data.nombre)} />
+                    <span class="carta__magia" aria-hidden="true"><Glifo tipo={p.data.glifo} /></span>
+                  </span>
+                  <span class="carta__nombre">{p.data.nombre}</span>
+                  <span class="carta__dato">{a.afiliacion}</span>
+                  <span class="carta__dato muted">Magia: {p.data.magia.toLowerCase()}</span>
+                </a>
+                {req > 0 && (
+                  <div class="carta__lacrada card marco">
+                    <span class="sello sello--carta" aria-hidden="true"><Glifo tipo="sellado" /></span>
+                    <p class="carta__nombre">Lacrado</p>
+                    <p class="carta__dato muted">{ETIQUETA[req]}</p>
+                    <button class="btn btn--lacre" type="button" data-abrir>Mostrar spoiler</button>
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+        <p class="vacio" id="vacio" hidden>Nadie coincide con esos filtros en tu nivel. Probá con otro nombre o volvé a ver todos.</p>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .filtros { display: grid; grid-template-columns: 1.300fr 1fr 1fr 1fr auto; gap: 16px 24px; align-items: end; padding-bottom: 18px; border-bottom: 2px solid var(--line-strong); }
+  .campo { display: grid; gap: 4px; min-width: 0; }
+  .campo label { font-weight: 600; font-size: 16px; }
+  .campo input, .campo select { width: 100%; min-height: 48px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 2px; background: var(--card); color: var(--ink); font-size: 18px; transition: border-color 140ms var(--ease), box-shadow 140ms var(--ease); }
+  .campo input:focus, .campo select:focus { border-color: var(--action); box-shadow: 0 0 0 3px color-mix(in oklab, var(--action) 25%, transparent); }
+  .conteo { padding: 14px 0 26px; }
+  .cartas { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; }
+  .carta { position: relative; display: grid; min-width: 0; }
+  .carta__cara, .carta__lacrada { grid-area: 1 / 1; display: grid; grid-template-rows: auto auto auto 1fr; justify-items: start; padding: 4px 8px 10px; text-decoration: none; min-height: 296px; }
+  .carta__cara { transition: transform 180ms var(--ease), box-shadow 180ms var(--ease); }
+  .carta__campo { position: relative; justify-self: stretch; display: grid; place-items: center; height: 168px; margin-bottom: 14px; --esc: 112px; background: radial-gradient(ellipse at 50% 55%, color-mix(in oklab, var(--c) 62%, transparent), transparent 72%); }
+  .carta__campo::before { content: ''; position: absolute; inset: 8px 0; background: repeating-radial-gradient(circle at 50% 50%, transparent 0 7px, color-mix(in oklab, var(--oro) 34%, transparent) 7px 8px); mask: radial-gradient(circle, #000 20%, transparent 70%); -webkit-mask: radial-gradient(circle, #000 20%, transparent 70%); }
+  .carta__magia { position: absolute; right: 6px; bottom: 8px; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; border: 1.500px solid var(--oro); background: var(--bg); color: var(--oro); }
+  .carta__nombre { font-family: var(--f-titulo); font-size: 27px; line-height: 1.06; margin-bottom: 5px; font-weight: 500; }
+  .carta__dato { line-height: 1.35; font-size: 17px; }
+  .carta__lacrada { display: none; place-content: center; justify-items: center; text-align: center; gap: 4px; grid-template-rows: none; background-image: repeating-linear-gradient(-45deg, color-mix(in oklab, var(--lacre) 22%, transparent) 0 1px, transparent 1px 8px); }
+  .carta__lacrada .btn { margin-top: 12px; }
+  .sello--carta { width: 66px; height: 66px; margin-bottom: 8px; }
+  .sello--carta :global(.glifo) { width: 32px; height: 32px; stroke-width: 1.600; }
+  .vacio { padding: 24px 0; }
+  @media (hover: hover) { .carta__cara:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgb(0 0 0 / 0.35); } .carta__cara:hover .carta__nombre { color: var(--oro); } }
+
+  html:is([data-nivel='0'], :not([data-nivel])) .carta[data-req='1']:not([data-abierto]) .carta__cara,
+  html:not([data-nivel='2']) .carta[data-req='2']:not([data-abierto]) .carta__cara { visibility: hidden; }
+  html:is([data-nivel='0'], :not([data-nivel])) .carta[data-req='1']:not([data-abierto]) .carta__lacrada,
+  html:not([data-nivel='2']) .carta[data-req='2']:not([data-abierto]) .carta__lacrada { display: grid; }
+
+  @media (max-width: 1100px) { .filtros { grid-template-columns: 1fr 1fr; } .campo--ancho { grid-column: 1 / -1; } }
+  @media (max-width: 639px) {
+    .filtros { grid-template-columns: 1fr; gap: 12px; }
+    .filtros .btn { width: 100%; }
+    .cartas { gap: 12px; grid-template-columns: 1fr; }
+    .carta__cara { grid-template-columns: 104px 1fr; grid-template-rows: auto auto 1fr; column-gap: 14px; min-height: 128px; }
+    .carta__campo { grid-row: 1 / -1; height: 118px; margin: 0; --esc: 76px; align-self: center; }
+    .carta__magia { width: 36px; height: 36px; right: -2px; bottom: 0; }
+    .carta__nombre { align-self: end; font-size: 25px; }
+    .carta__lacrada { min-height: 128px; }
+    .sello--carta { display: none; }
+  }
+</style>
+
+<script>
+  const norma = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const q = $<HTMLInputElement>('q');
+  const fEsc = $<HTMLSelectElement>('f-esc');
+  const fMag = $<HTMLSelectElement>('f-mag');
+  const fRei = $<HTMLSelectElement>('f-rei');
+  const cartas = [...document.querySelectorAll<HTMLElement>('.carta')];
+  const nivel = () => Number(document.documentElement.dataset.nivel ?? 0);
+
+  function filtrar() {
+    const texto = norma(q.value);
+    const hayFiltro = Boolean(texto || fMag.value || fRei.value || fEsc.value);
+    let visibles = 0;
+    let lacrados = 0;
+    for (const c of cartas) {
+      const tapada = Number(c.dataset.req) > nivel() && !c.hasAttribute('data-abierto');
+      // una carta lacrada no responde a los filtros: encontrarla por nombre o reino ya sería un spoiler
+      const pasa = tapada
+        ? !hayFiltro
+        : (!texto || c.dataset.nombre!.includes(texto)) && (!fEsc.value || c.dataset.esc === fEsc.value) && (!fMag.value || c.dataset.mag === fMag.value) && (!fRei.value || c.dataset.rei === fRei.value);
+      c.hidden = !pasa;
+      if (pasa && tapada) lacrados++;
+      else if (pasa) visibles++;
+    }
+    $('conteo').textContent = `${visibles} ${visibles === 1 ? 'personaje' : 'personajes'}${lacrados ? ` y ${lacrados} ${lacrados === 1 ? 'lacrado' : 'lacrados'}` : ''}`;
+    $('vacio').hidden = visibles + lacrados > 0;
+  }
+
+  function opcionesPorNivel() {
+    document.querySelectorAll<HTMLOptionElement>('option[data-opcion-req]').forEach((o) => {
+      const no = Number(o.dataset.opcionReq) > nivel();
+      o.hidden = no;
+      o.disabled = no;
+      if (no && o.selected) (o.parentElement as HTMLSelectElement).value = '';
+    });
+  }
+
+  [q, fEsc, fMag, fRei].forEach((e) => e.addEventListener('input', filtrar));
+  $('limpiar').addEventListener('click', () => {
+    q.value = '';
+    fEsc.value = fMag.value = fRei.value = '';
+    filtrar();
+    q.focus();
+  });
+  document.addEventListener('bc:nivel', () => {
+    opcionesPorNivel();
+    filtrar();
+  });
+  const inicial = new URLSearchParams(location.search).get('escuadron');
+  if (inicial) fEsc.value = inicial;
+  opcionesPorNivel();
+  filtrar();
+</script>
