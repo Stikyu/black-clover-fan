@@ -1,0 +1,163 @@
+---
+import { getEntry } from 'astro:content';
+import { todosLosEscuadrones } from '@/lib/orden';
+import Base from '@/layouts/Base.astro';
+import Escudo from '@/components/Escudo.astro';
+import quiz from '@/data/quiz.json';
+import { ruta } from '@/lib/rutas';
+
+const escuadrones = await Promise.all((await todosLosEscuadrones()).map(async (e) => ({ e, capitan: (await getEntry(e.data.capitan))! })));
+const total = quiz.preguntas.length;
+---
+<Base titulo="Quiz de Black Clover: ¿a qué escuadrón pertenecés?" descripcion="Ocho preguntas originales para saber cuál de los nueve escuadrones de Caballeros Mágicos te elegiría.">
+  <div class="pagina">
+    <div class="wrap">
+      <header class="pagina__cabeza">
+        <h1>¿A qué escuadrón pertenecés?</h1>
+        <p class="lead">Nueve capitanes, {total} preguntas y ninguna respuesta correcta. Sin spoilers.</p>
+      </header>
+      <div class="pagina__cuerpo">
+        <noscript><p>El quiz necesita JavaScript para sumar los puntos.</p></noscript>
+        <form id="quiz" class="quiz" data-preguntas={total}>
+          <p class="avance"><span id="avance" role="status">Pregunta 1 de {total}</span><span class="barra" aria-hidden="true"><span id="barra"></span></span></p>
+          {quiz.preguntas.map((p, i) => (
+            <fieldset class="pregunta" data-indice={i} hidden={i > 0}>
+              <legend tabindex="-1">{p.texto}</legend>
+              {p.opciones.map((o, j) => (
+                <label class="respuesta"><input type="radio" name={`p${i}`} value={j} data-puntos={JSON.stringify(o.puntos)} /><span>{o.texto}</span></label>
+              ))}
+            </fieldset>
+          ))}
+          <p class="error" id="error" role="alert"></p>
+          <div class="btn-row">
+            <button class="btn btn--secondary" type="button" id="atras" hidden>Volver una pregunta</button>
+            <button class="btn btn--primary" type="submit" id="seguir">Ver la pregunta 2</button>
+          </div>
+        </form>
+
+        <div id="resultado" hidden tabindex="-1">
+          {escuadrones.map(({ e, capitan }) => (
+            <article class="resultado hoja" data-escuadron={e.id} hidden>
+              <Escudo color={e.data.color} trama={e.data.trama} emblema={e.data.emblema} />
+              <div>
+                <h2>{e.data.nombre}</h2>
+                <p class="frase">{(quiz.resultados as Record<string, string>)[e.id]}</p>
+                <p>Capitanía: {capitan.data.nombre}. Lema del blasón: «{e.data.lema}»</p>
+                <div class="btn-row">
+                  <a class="btn btn--primary" href={`${ruta('escuadrones/')}#${e.id}`}>Ver el escuadrón</a>
+                  <button class="btn btn--secondary" type="button" data-copiar={`Mi escuadrón en Black Clover: ${e.data.nombre}.`}>Copiar mi resultado</button>
+                  <button class="btn btn--secondary" type="button" data-repetir>Empezar otra vez</button>
+                </div>
+                <p class="copiado" role="status"></p>
+              </div>
+            </article>
+          ))}
+          <p class="segundo muted" id="segundo"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .quiz { max-width: 845px; }
+  .avance { display: grid; gap: 10px; margin-bottom: 36px; color: var(--muted); }
+  .barra { display: block; height: 4px; background: var(--linea); }
+  .barra span { display: block; height: 100%; background: var(--trebol); transform-origin: 0 50%; transform: scaleX(0.125); transition: transform 240ms var(--ease); }
+  .pregunta { border: 0; min-width: 0; }
+  .pregunta legend { font-family: var(--f-titulo); font-weight: 500; font-size: clamp(30px, 1.400rem + 1.600vw, 44px); line-height: 1.08; padding: 0 0 22px; outline: none; }
+  .respuesta { display: grid; grid-template-columns: 26px 1fr; gap: 16px; align-items: center; min-height: 60px; padding: 10px 14px; border-top: 1px solid var(--linea); cursor: pointer; font-size: 20px; line-height: 1.35; transition: background-color 150ms var(--ease); }
+  .respuesta:last-child { border-bottom: 1px solid var(--linea); }
+  .respuesta:hover { background: color-mix(in oklab, var(--oro) 10%, transparent); }
+  .respuesta input { appearance: none; width: 26px; height: 26px; margin: 0; border: 1.500px solid var(--line-strong); border-radius: 47% 53% 50% 50% / 52% 46% 54% 48%; cursor: pointer; }
+  .respuesta input:checked { border-color: var(--lacre-luz); background: radial-gradient(circle at 38% 34%, #c4503c, var(--lacre) 62%, #611a13); }
+  .respuesta:has(input:checked) { background: color-mix(in oklab, var(--oro) 14%, transparent); }
+  .error { min-height: 30px; margin: 12px 0; font-weight: 600; color: #f0937f; }
+  html[data-tema='claro'] .error { color: var(--lacre); }
+  #resultado { outline: none; }
+  .resultado { display: grid; grid-template-columns: 260px 1fr; gap: 32px 56px; align-items: center; padding: 56px; --esc: 230px; box-shadow: 0 1px 0 #b79a5e, 0 3px 0 #77602f, 0 4px 0 #b79a5e, 0 6px 0 #4a3a1a, 0 22px 34px rgb(0 0 0 / 0.45); }
+  .resultado h2 { font-size: clamp(40px, 1.800rem + 2.400vw, 64px); margin-bottom: 14px; }
+  .frase { font-size: 22px; line-height: 1.4; max-width: 46ch; }
+  .resultado .btn-row { margin-top: 26px; }
+  .resultado .btn--primary { background: #2a1d0c; color: #f4e9cd; box-shadow: none; }
+  .resultado .btn--secondary { color: var(--hoja-ink); border-color: var(--hoja-ink); }
+  html:not([data-motion='off']) .resultado .btn--primary:hover { background: #463213; }
+  html:not([data-motion='off']) .resultado .btn--secondary:hover { background: rgb(60 38 8 / 0.12); }
+  .resultado :focus-visible { outline-color: #241a0d; }
+  .copiado { min-height: 28px; margin-top: 8px; }
+  .segundo { margin-top: 24px; }
+  @media (max-width: 900px) { .resultado { grid-template-columns: 1fr; padding: 36px 28px; --esc: 150px; } }
+</style>
+
+<script>
+  const form = document.getElementById('quiz') as HTMLFormElement;
+  const preguntas = [...form.querySelectorAll<HTMLFieldSetElement>('.pregunta')];
+  const seguir = document.getElementById('seguir') as HTMLButtonElement;
+  const atras = document.getElementById('atras') as HTMLButtonElement;
+  const error = document.getElementById('error')!;
+  const res = document.getElementById('resultado')!;
+  const articulos = [...res.querySelectorAll<HTMLElement>('article')];
+  let i = 0;
+
+  function mostrar(foco = true) {
+    preguntas.forEach((p, k) => (p.hidden = k !== i));
+    document.getElementById('avance')!.textContent = `Pregunta ${i + 1} de ${preguntas.length}`;
+    document.getElementById('barra')!.style.transform = `scaleX(${(i + 1) / preguntas.length})`;
+    seguir.textContent = i === preguntas.length - 1 ? 'Ver mi escuadrón' : `Ver la pregunta ${i + 2}`;
+    atras.hidden = i === 0;
+    error.textContent = '';
+    if (foco) preguntas[i].querySelector<HTMLElement>('legend')!.focus();
+  }
+
+  function terminar() {
+    const suma = new Map<string, number>(articulos.map((a) => [a.dataset.escuadron!, 0]));
+    form.querySelectorAll<HTMLInputElement>('input:checked').forEach((r) => {
+      for (const [id, n] of Object.entries(JSON.parse(r.dataset.puntos!) as Record<string, number>)) suma.set(id, (suma.get(id) ?? 0) + n);
+    });
+    const orden = [...suma].sort((a, b) => b[1] - a[1]);
+    articulos.forEach((a) => (a.hidden = a.dataset.escuadron !== orden[0][0]));
+    const nombre = (id: string) => articulos.find((a) => a.dataset.escuadron === id)!.querySelector('h2')!.textContent;
+    document.getElementById('segundo')!.textContent = `Muy cerca quedó ${nombre(orden[1][0])}.`;
+    form.hidden = true;
+    res.hidden = false;
+    res.focus();
+    window.scrollTo({ top: 0 });
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!preguntas[i].querySelector('input:checked')) {
+      error.textContent = 'Elegí una respuesta para seguir.';
+      preguntas[i].querySelector<HTMLInputElement>('input')!.focus();
+      return;
+    }
+    if (i === preguntas.length - 1) return terminar();
+    i++;
+    mostrar();
+  });
+  form.addEventListener('change', () => (error.textContent = ''));
+  atras.addEventListener('click', () => {
+    i--;
+    mostrar();
+  });
+  res.addEventListener('click', async (e) => {
+    const t = e.target as HTMLElement;
+    if (t.closest('[data-repetir]')) {
+      form.reset();
+      i = 0;
+      res.hidden = true;
+      form.hidden = false;
+      mostrar();
+    }
+    const copiar = t.closest<HTMLElement>('[data-copiar]');
+    if (copiar) {
+      const aviso = copiar.closest('article')!.querySelector('.copiado')!;
+      try {
+        await navigator.clipboard.writeText(`${copiar.dataset.copiar} ${location.href}`);
+        aviso.textContent = 'Resultado copiado.';
+      } catch {
+        aviso.textContent = 'El navegador no permitió copiar. Podés compartir la dirección de esta página.';
+      }
+    }
+  });
+</script>
