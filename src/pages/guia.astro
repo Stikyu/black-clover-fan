@@ -1,0 +1,122 @@
+---
+import Base from '@/layouts/Base.astro';
+import Spoiler from '@/components/Spoiler.astro';
+import { anime, manga, emitidos, ultimo, seguirDespuesDe, tomoDe, fechaLarga, fechaCorta, capituloAnimado } from '@/lib/estado';
+import { ruta } from '@/lib/rutas';
+
+const opciones = [{ numero: 170, ...seguirDespuesDe(170) }, ...emitidos.map((e) => ({ numero: e.numero, ...seguirDespuesDe(e.numero) }))];
+const inicial = opciones[0];
+const faltan = manga.ultimoCapitulo - capituloAnimado;
+const ar = manga.edicionArgentina;
+---
+<Base titulo="¿Dónde sigo leyendo? Guía de capítulos de Black Clover" descripcion="Qué capítulo del manga leer después del episodio 170 y qué capítulos adapta cada episodio de la temporada 2 de Black Clover.">
+  <div class="pagina">
+    <div class="wrap">
+      <header class="pagina__cabeza">
+        <h1>¿Dónde sigo leyendo?</h1>
+        <p class="lead">Elegí el último episodio que viste y la guía te marca el capítulo y el tomo. Después del 170, la respuesta corta es el capítulo {anime.capituloFinT1}.</p>
+      </header>
+
+      <div class="pagina__cuerpo">
+        <section class="bloque calculadora hoja" aria-labelledby="calc-h">
+          <div>
+            <h2 id="calc-h">Tu próximo capítulo</h2>
+            <label for="ep">Último episodio que viste</label>
+            <select id="ep" data-calculadora>
+              {opciones.map((o) => <option value={o.numero} data-cap={o.capitulo} data-tomo={o.tomo}>{o.numero === 170 ? '170, final de la T1' : `${o.numero}, T2 episodio ${o.numero - 170}`}</option>)}
+            </select>
+          </div>
+          <p class="resultado" role="status" aria-live="polite">
+            <span>Seguí por el</span>
+            <strong class="numeros">Capítulo <b data-cap>{inicial.capitulo}</b></strong>
+            <span>en el tomo <b class="numeros" data-tomo>{inicial.tomo}</b> de la edición japonesa y de la argentina</span>
+          </p>
+        </section>
+
+        <section class="bloque columnas">
+          <div>
+            <h2>Después del episodio 170</h2>
+            <p>El último episodio de la T1 adapta los capítulos 268 a {anime.capituloFinT1} y usa alguna escena posterior, así que el corte no es exacto. Empezá en el <strong>capítulo {anime.capituloFinT1}</strong>, en el tomo {tomoDe(anime.capituloFinT1)}: vas a repasar unas páginas y no te salteás nada.</p>
+            <p>La T2 arranca en ese mismo punto. Quien prefiera verla puede pasar directo del episodio 170 al 171.</p>
+          </div>
+          <div>
+            <h2>Después del episodio {ultimo.numero}</h2>
+            <p>El anime llegó al capítulo {capituloAnimado}. Para adelantarte, seguí por el <strong>capítulo {capituloAnimado + 1}</strong>, en el tomo {tomoDe(capituloAnimado + 1)}. Quedan {faltan} capítulos hasta el final.</p>
+            <p>En la Argentina, Ivrea tiene editados los tomos 1 a {ar.ultimoTomo}{ar.proximoTomo && ar.fechaProximo ? `. El ${ar.proximoTomo}, último de la serie, figura para el ${fechaLarga(ar.fechaProximo)}` : ''}.</p>
+          </div>
+        </section>
+
+        <section class="bloque">
+          <h2>Episodios de la T2 y capítulos que adaptan</h2>
+          <p>Los títulos de los episodios emitidos se muestran si vas al día. {anime.estreno.aclaracion}</p>
+          <div class="marco tabla-caja" tabindex="0" role="region" aria-label="Tabla de episodios de la temporada 2">
+            <table class="tabla numeros">
+              <thead><tr><th scope="col">Episodio</th><th scope="col">Título</th><th scope="col">Fecha</th><th scope="col">Capítulos</th><th scope="col">Tomo</th></tr></thead>
+              <tbody>
+                {anime.episodios.map((e) => {
+                  const salio = e.numero <= anime.ultimoEmitido;
+                  return (
+                    <tr data-estado={salio ? 'emitido' : 'pendiente'}>
+                      <th scope="row"><b>{e.numero}</b><span class="muted"> T2 {e.enTemporada}</span></th>
+                      <td>{e.titulo ? <Spoiler linea nivel={1} sobre={`título del episodio ${e.numero}`}>{e.titulo}</Spoiler> : 'Sin título anunciado'}</td>
+                      <td>{fechaCorta(e.fecha)}</td>
+                      <td>{e.capitulos ? `${e.capitulos[0]} a ${e.capitulos[1]}` : 'Por confirmar'}</td>
+                      <td>{e.capitulos ? (tomoDe(e.capitulos[0]) === tomoDe(e.capitulos[1]) ? tomoDe(e.capitulos[0]) : `${tomoDe(e.capitulos[0])} y ${tomoDe(e.capitulos[1])}`) : ''}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p class="nota muted">La equivalencia sale de guías de fans contrastadas entre sí, porque no hay una tabla oficial. Cuando un capítulo queda partido entre dos episodios aparece en los dos. {ultimo.nota && `Sobre el ${ultimo.numero}: ${ultimo.nota.charAt(0).toLowerCase()}${ultimo.nota.slice(1)}`}</p>
+        </section>
+
+        <section class="bloque">
+          <h2>Episodios de relleno de la T1</h2>
+          <p>Si vas a repasar la primera temporada, estos 18 episodios no salen del manga y se pueden saltear: 13, 29, 66, 82, 123 a 125, 131, 134, 135 y 142 a 149. El tramo 130 a 157 es en su mayoría material creado para la serie.</p>
+          <a class="btn btn--secondary" href={ruta('historia/')}>Ver los arcos completos</a>
+        </section>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .calculadora { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; padding: 48px 56px; box-shadow: 0 1px 0 #b79a5e, 0 3px 0 #77602f, 0 4px 0 #b79a5e, 0 6px 0 #4a3a1a, 0 22px 34px rgb(0 0 0 / 0.45); position: relative; }
+  .calculadora::after { content: ''; position: absolute; inset: 14px; border: 1px solid var(--hoja-borde); pointer-events: none; opacity: 0.65; }
+  .calculadora h2 { font-size: 36px; margin-bottom: 22px; }
+  .calculadora label { display: block; font-weight: 600; margin-bottom: 6px; }
+  .calculadora select { width: 100%; max-width: 380px; min-height: 48px; padding: 0 14px; border: 1.500px solid var(--hoja-ink); border-radius: 2px; background: transparent; color: var(--hoja-ink); font-size: 18px; position: relative; z-index: 1; }
+  .calculadora select option { background: #f1e6c8; color: #241a0d; }
+  .calculadora :focus-visible { outline-color: var(--hoja-ink); }
+  .resultado { display: grid; align-content: center; gap: 2px; }
+  .resultado strong { font-family: var(--f-titulo); font-weight: 600; font-size: clamp(48px, 2.200rem + 2.600vw, 78px); line-height: 1; color: var(--rubrica); }
+  .resultado strong b { font-weight: inherit; }
+  .columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 72px; }
+  .columnas h2 { font-size: var(--t-h3); margin-bottom: 14px; }
+  .columnas p { max-width: 58ch; }
+  .tabla-caja { padding: 6px 20px 10px; overflow-x: auto; }
+  .tabla { min-width: 640px; }
+  .tabla tbody th { color: var(--ink); font-size: 18px; border-bottom: 1px solid var(--linea); padding: 14px 16px 14px 0; font-weight: 400; white-space: nowrap; }
+  .tabla tbody th b { font-family: var(--f-titulo); font-weight: 600; font-size: 23px; line-height: 1; }
+  .tabla tbody tr:last-child > * { border-bottom: 0; }
+  .nota { margin-top: 18px; max-width: 72ch; }
+  .bloque .btn { margin-top: 4px; }
+  @media (max-width: 900px) { .columnas, .calculadora { grid-template-columns: 1fr; } }
+  @media (max-width: 639px) { .calculadora { padding: 36px 30px; } }
+</style>
+
+<script>
+  const sel = document.querySelector<HTMLSelectElement>('[data-calculadora]');
+  const cap = document.querySelector('.resultado [data-cap]');
+  const tomo = document.querySelector('.resultado [data-tomo]');
+  const pinta = () => {
+    const o = sel!.selectedOptions[0];
+    cap!.textContent = o.dataset.cap!;
+    tomo!.textContent = o.dataset.tomo!;
+  };
+  if (sel) {
+    sel.addEventListener('change', pinta);
+    pinta();
+  }
+</script>

@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Spoiler from '@/components/Spoiler.astro';
+import { anime } from '@/lib/estado';
+import { nivelDeCapitulo } from '@/lib/spoilers';
+import { ruta } from '@/lib/rutas';
+
+const arcos = (await getCollection('arcos')).sort((a, b) => a.data.orden - b.data.orden);
+const rangoEp = (e: [number, number | null] | null) => (!e ? 'todavía sin animar' : e[1] ? `episodios ${e[0]} a ${e[1]}` : `episodios ${e[0]} a ${anime.ultimoEmitido}, en emisión`);
+const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+---
+<Base titulo="Historia de Black Clover: los arcos en orden" descripcion="Los doce arcos de Black Clover en orden, con su rango de capítulos y episodios. Las partes que todavía no viste quedan tapadas.">
+  <div class="pagina">
+    <div class="wrap">
+      <header class="pagina__cabeza">
+        <h1>Historia por arcos</h1>
+        <p class="lead">De la iglesia de Hage al capítulo 392. Cada arco indica qué capítulos y episodios abarca, y los párrafos se destapan según tu nivel.</p>
+      </header>
+
+      <div class="pagina__cuerpo historia">
+        <section class="resumen">
+          <h2>Sinopsis general</h2>
+          <p>Asta y Yuno fueron abandonados el mismo día en la iglesia de Hage, la aldea más pobre del reino de Clover. Cuando les toca recibir su grimorio, a Yuno lo elige uno de cuatro hojas. A Asta, que no tiene magia, lo encuentra más tarde uno de cinco que todos creían imposible y que le entrega espadas capaces de anular hechizos.</p>
+          <p>Cada uno entra a un escuadrón distinto de Caballeros Mágicos y empieza a sumar méritos para llegar a Rey Mago. En el camino aparecen un grupo que odia al reino, una masacre que nadie recuerda bien, países vecinos en guerra y, del otro lado, los demonios de donde sale el poder de Asta.</p>
+        </section>
+
+        <nav class="arcos-indice" aria-label="Índice de arcos">
+          <ol>
+            {arcos.map((a, i) => <li><a href={`#${a.id}`}><span>{ROMANOS[i]}</span>{a.data.nombre}</a></li>)}
+          </ol>
+        </nav>
+
+        <ol class="arcos">
+          {arcos.map((a, i) => {
+            const niveles = [...new Set(a.data.partes.map((p) => nivelDeCapitulo(p.capitulo)))];
+            return (
+              <li class="arco" id={a.id}>
+                <div class="arco__margen">
+                  <span class="arco__numero" aria-hidden="true">{ROMANOS[i]}</span>
+                </div>
+                <article>
+                  <h2>{a.data.nombre}</h2>
+                  <p class="arco__datos">
+                    {a.data.capitulos ? `Capítulos ${a.data.capitulos[0]} a ${a.data.capitulos[1]}` : 'Sin capítulos del manga'}, {rangoEp(a.data.episodios)}.
+                    {niveles.some((n) => n > 0) && <span> Nivel de spoiler: {niveles.map((n) => ['T1', 'T2', 'manga'][n]).join(', ')}.</span>}
+                    {niveles.every((n) => n === 0) && <span> Nivel de spoiler: T1.</span>}
+                  </p>
+                  {a.data.partes.map((p) => (
+                    <div class="arco__parte">
+                      <Spoiler capitulo={p.capitulo} sobre={`${a.data.nombre}, hasta el capítulo ${p.capitulo}`}><p>{p.texto}</p></Spoiler>
+                    </div>
+                  ))}
+                </article>
+              </li>
+            );
+          })}
+        </ol>
+        <p class="cierre"><a class="btn btn--secondary" href={ruta('guia/')}>Ver qué capítulo sigue</a></p>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .historia { display: grid; grid-template-columns: 300px minmax(0, 1fr); column-gap: 72px; row-gap: 72px; }
+  .resumen { grid-column: 1 / -1; display: grid; grid-template-columns: 300px minmax(0, 1fr); column-gap: 72px; }
+  .resumen h2 { grid-row: span 2; font-size: var(--t-h3); }
+  .resumen p { grid-column: 2; max-width: 64ch; font-size: 20px; }
+  .resumen p:first-of-type::first-letter { font-family: var(--f-titulo); font-size: 4.400em; line-height: 0.74; float: left; padding: 8px 12px 0 0; color: var(--trebol); font-weight: 600; }
+  .arcos-indice { align-self: start; border-top: 2px solid var(--line-strong); }
+  .arcos-indice a { display: grid; grid-template-columns: 38px 1fr; gap: 6px; align-items: baseline; padding: 10px 0; min-height: 44px; border-bottom: 1px solid var(--linea); text-decoration: none; line-height: 1.3; transition: color 150ms var(--ease); }
+  .arcos-indice a:hover { color: var(--oro); }
+  .arcos-indice span { font-family: var(--f-titulo); color: var(--oro); }
+  .arco { display: grid; grid-template-columns: 92px minmax(0, 1fr); scroll-margin-top: calc(var(--nav) + 24px); padding-bottom: 72px; position: relative; }
+  .arco__numero { font-family: var(--f-titulo); font-weight: 500; font-size: 44px; line-height: 1; color: var(--oro); }
+  .arco::before { content: ''; position: absolute; left: 14px; top: 62px; bottom: 14px; width: 9px; background: radial-gradient(circle at 50% 4px, var(--oro-hondo) 2px, transparent 2.500px) 0 0 / 9px 16px repeat-y; opacity: 0.75; }
+  .arco h2 { font-size: clamp(30px, 1.4rem + 1.2vw, 42px); }
+  .arco__datos { margin-top: 8px; color: var(--muted); }
+  .arco__parte { margin-top: 18px; max-width: 66ch; }
+  .arco__parte + .arco__parte { margin-top: 16px; }
+  .cierre { grid-column: 2; padding-left: 92px; }
+  @media (min-width: 1024px) { .arcos-indice { position: sticky; top: calc(var(--nav) + 24px); } }
+  @media (max-width: 1023px) {
+    .historia, .resumen { grid-template-columns: 1fr; row-gap: 48px; }
+    .resumen { row-gap: 16px; }
+    .resumen p { grid-column: 1; }
+    .arcos-indice ol { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+    .cierre { grid-column: 1; padding-left: 0; }
+  }
+  @media (max-width: 639px) {
+    .arcos-indice ol { grid-template-columns: 1fr; }
+    .arco { grid-template-columns: 1fr; padding-bottom: 56px; }
+    .arco::before { display: none; }
+    .arco__numero { font-size: 34px; }
+  }
+</style>
