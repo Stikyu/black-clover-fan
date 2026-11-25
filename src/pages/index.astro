@@ -1,0 +1,231 @@
+---
+import Base from '@/layouts/Base.astro';
+import Paisaje from '@/components/Paisaje.astro';
+import Grimorio from '@/components/Grimorio.astro';
+import Glifo from '@/components/Glifo.astro';
+import Spoiler from '@/components/Spoiler.astro';
+import { ruta, SECCIONES } from '@/lib/rutas';
+import { HOJA, angulos } from '@/lib/grabado';
+import { NIVELES } from '@/lib/spoilers';
+import { anime, manga, ultimo, proximo, capituloAnimado, fechaLarga, salidaISO, tomoDe } from '@/lib/estado';
+
+const tituloNivel = 1 as const;
+---
+<Base portada titulo="Black Clover en español: guía de fans sin spoilers" descripcion={`Historia, personajes, escuadrones y qué capítulo del manga leer después de cada episodio. Actualizado al episodio ${anime.ultimoEmitido}, con sistema anti-spoilers.`}>
+  <section class="section hero hero--split" id="inicio" data-enter aria-labelledby="hero-h">
+    <div class="hero__bg" aria-hidden="true"><Paisaje /></div>
+    <div class="wrap">
+      <div class="hero-text">
+        <div class="hero-copy">
+          <h1 id="hero-h">Black Clover, guía de fans en español</h1>
+          <p class="hero__lead lead">Historia, personajes y el capítulo exacto para seguir leyendo. Al día con el episodio {anime.ultimoEmitido} y con los spoilers bajo lacre.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href={ruta('guia/')}>Ver la guía de capítulos</a>
+            <a class="btn btn--secondary" href="#estado">Ver el estado actual</a>
+          </div>
+        </div>
+        <div class="hero-visual"><Grimorio hojas={5} titulo="Grimorio de cuero con un trébol de cinco hojas grabado en la tapa" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cuero" id="estado">
+    <div class="wrap">
+      <div class="cabeza"><h2>Estado actual de la franquicia</h2></div>
+      <div class="codice hoja">
+        <div class="folio">
+          <h3>Manga</h3>
+          <p class="cifra">Finalizado</p>
+          <dl class="datos">
+            <div><dt>Último capítulo</dt><dd>{manga.ultimoCapitulo}, {fechaLarga(manga.fechaFinal)}</dd></div>
+            <div><dt>Revista</dt><dd>{manga.revistaFinal}</dd></div>
+            <div><dt>Tomo final en Japón</dt><dd>{manga.tomos}, {fechaLarga(manga.fechaTomoFinal)}</dd></div>
+            <div><dt>Tomo {manga.edicionArgentina.proximoTomo ?? manga.edicionArgentina.ultimoTomo} en Argentina</dt><dd>{manga.edicionArgentina.fechaProximo ? `${manga.edicionArgentina.editorial}, ${fechaLarga(manga.edicionArgentina.fechaProximo)}` : `${manga.edicionArgentina.editorial}, sin fecha`}</dd></div>
+          </dl>
+          <svg class="colofon" viewBox="0 0 240 60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round"><path d="M112 34C92 20 78 24 70 34C62 44 48 42 46 32C45 24 56 22 57 29M70 34C60 30 40 46 14 34M128 34C148 20 162 24 170 34C178 44 192 42 194 32C195 24 184 22 183 29M170 34C180 30 200 46 226 34" /><g transform="translate(120 34) scale(.27)" fill="currentColor" stroke="none">{angulos(4).map((g) => <path transform={`rotate(${g})`} d={HOJA} />)}</g></svg>
+        </div>
+        <div class="folio">
+          <h3>Anime</h3>
+          <p class="cifra">T2 en emisión</p>
+          <dl class="datos">
+            <div><dt>Último episodio</dt><dd>{ultimo.numero}, {fechaLarga(ultimo.fecha)}<br /><Spoiler linea nivel={tituloNivel} sobre={`título del episodio ${ultimo.numero}`}><em>{ultimo.titulo}</em></Spoiler></dd></div>
+            <div><dt>Adapta</dt><dd>Capítulos {ultimo.capitulos![0]} a {ultimo.capitulos![1]}</dd></div>
+            {proximo && <div><dt>Próximo episodio</dt><dd>{proximo.numero}, {fechaLarga(proximo.fecha)}, {anime.horaArgentina} de Argentina<br /><span class="cuenta" data-cuenta={salidaISO(proximo)}>en Crunchyroll</span></dd></div>}
+            <div><dt>Para seguir leyendo</dt><dd>Capítulo {capituloAnimado + 1}, tomo {tomoDe(capituloAnimado + 1)}</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section premisa" id="premisa" data-moment="letters-assemble" data-moment-opts='{"spread": 0.7}'>
+    <div class="wrap">
+      <h2 class="mo-la__type">La magia decide todo</h2>
+      <div class="premisa__texto">
+        <p class="capitular">En el reino de Clover la magia marca quién manda, quién come bien y quién sueña. A los quince años cada persona recibe un grimorio, el libro que guarda sus hechizos. Asta y Yuno crecieron juntos en una iglesia de pueblo y se prometieron competir por el puesto más alto: Rey Mago.</p>
+        <p>Hay un problema. Yuno es un talento de los que aparecen una vez por generación. Asta es el único habitante del reino que nació sin una gota de magia. Yūki Tabata cuenta cómo un chico que grita demasiado se abre camino en un mundo que no lo tenía en los planes.</p>
+        <a class="btn btn--secondary" href={ruta('historia/')}>Leer la historia por arcos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cuero" id="nivel">
+    <div class="wrap">
+      <div class="cabeza">
+        <h2>Tu nivel de spoilers</h2>
+        <p class="lead">Lo que todavía no viste queda difuminado y se abre solo si lo pedís. La elección se guarda en este navegador.</p>
+      </div>
+      <fieldset class="sellos">
+        <legend class="sr">Elegí hasta dónde llegaste</legend>
+        {NIVELES.map((n) => (
+          <label class="rollo marco">
+            <input class="sr" type="radio" name="nivel-portada" value={n.valor} data-nivel-opcion data-nombre={n.nombre} checked={n.valor === 0} />
+            <span class="rollo__dibujo" aria-hidden="true">
+              <svg viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round">
+                <path class="rollo__papel" d="M38 22C80 18 140 26 184 20C188 50 183 88 186 120C140 124 84 117 36 122C39 88 34 52 38 22Z" />
+                <path d="M30 20c-8 0-8 14 0 14h8V22c-2-1-5-2-8-2ZM190 18c8 0 8 14 0 14h-6V20c2-1 4-2 6-2ZM28 120c-8 0-8 14 0 14 60-4 108 4 164 0 8 0 8-14 0-14" />
+                {Array.from({ length: 5 }, (_, i) => <path opacity={i <= n.valor * 2 ? 1 : 0.22} d={`M58 ${42 + i * 14}c30-${i % 2 ? 2 : 1} 70 2 ${i === 4 ? 50 : 104} 0`} />)}
+              </svg>
+              <span class="sello sello--grande"><Glifo tipo={['sellado', 'ojo', 'libro'][n.valor]} /></span>
+            </span>
+            <strong>{n.nombre}</strong>
+            <span class="rollo__detalle">{n.detalle}</span>
+          </label>
+        ))}
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="section" id="indice">
+    <div class="wrap">
+      <div class="cabeza"><h2>Índice del grimorio</h2></div>
+      <ol class="indice">
+        {SECCIONES.map((s) => (
+          <li><a class="entrada" href={ruta(s.href)}>
+            <Glifo tipo={s.glifo} clase="entrada__glifo" />
+            <span class="entrada__nombre">{s.nombre}</span><span class="entrada__puntos" aria-hidden="true"></span>
+            <span class="entrada__resumen">{s.resumen}</span>
+          </a></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: 0 !important; overflow: hidden; isolation: isolate; min-height: 100svh !important; }
+  .hero__bg { position: absolute; inset: 0; z-index: -1; }
+  .hero__bg :global(svg) { width: 100%; height: 100%; display: block; }
+  .hero .wrap { min-height: 100svh; display: grid; padding: calc(var(--nav) + 48px) 0 64px; }
+  .hero-text { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .hero-copy { grid-column: span 6; display: grid; gap: 24px; justify-items: start; }
+  .hero-copy .lead { max-width: 34ch; }
+  .hero-copy h1 { max-width: 11ch; }
+  .hero-visual { grid-column: 7 / -1; display: grid; justify-items: center; }
+  .hero-visual :global(.grimorio) { height: min(640px, calc(100svh - var(--nav) - 150px)); width: auto; transform: rotate(5deg); filter: drop-shadow(0 26px 34px rgb(0 0 0 / 0.6)); }
+
+  /* códice abierto */
+  .codice { position: relative; display: grid; grid-template-columns: 1fr 1fr; border-radius: 3px; box-shadow: 0 1px 0 #b79a5e, 0 3px 0 #77602f, 0 4px 0 #b79a5e, 0 6px 0 #77602f, 0 7px 0 #b79a5e, 0 9px 0 #4a3a1a, 0 26px 40px rgb(0 0 0 / 0.5); }
+  .codice::before { content: ''; position: absolute; inset: 0 calc(50% - 60px); background: linear-gradient(90deg, transparent, rgb(60 38 8 / 0.34) 49.6%, rgb(40 24 4 / 0.7) 50%, rgb(60 38 8 / 0.3) 50.4%, transparent); pointer-events: none; }
+  .folio { padding: 40px 56px 44px; position: relative; display: flex; flex-direction: column; min-height: 520px; }
+  .colofon { width: 250px; margin: auto auto 0; padding-top: 20px; color: var(--hoja-borde); display: block; }
+  .folio::after { content: ''; position: absolute; inset: 14px; border: 1px solid var(--hoja-borde); border-image: none; pointer-events: none; opacity: 0.65; }
+  .folio h3 { font-size: 28px; color: var(--hoja-muted); }
+  .cifra { font-family: var(--f-titulo); font-weight: 600; font-size: clamp(44px, 2rem + 2.2vw, 66px); line-height: 1; margin-top: 2px; }
+  .cifra::first-letter { color: var(--rubrica); }
+  .datos { margin-top: 22px; }
+  .datos > div { display: grid; grid-template-columns: 11.500em 1fr; gap: 2px 18px; padding: 9px 0; border-top: 1px solid rgb(110 82 30 / 0.35); }
+  .datos dt { color: var(--hoja-muted); }
+  .datos dd { font-weight: 600; }
+  .cuenta { font-weight: 500; color: var(--rubrica); }
+  .codice :global(.spoiler__boton) { background: var(--hoja); color: var(--hoja-ink); border-color: var(--rubrica); }
+  .codice :global(.spoiler__boton:hover) { background: var(--lacre); color: #fbeedd; }
+
+  .premisa :global(.mo-la__type) { font-size: clamp(54px, 11vw, 168px); line-height: 0.94; letter-spacing: -0.01em; max-width: 9ch; }
+  .premisa__texto { columns: 2; column-gap: 24px; margin-top: 40px; }
+  .premisa__texto p { break-inside: avoid; max-width: 58ch; }
+  .premisa__texto .btn { margin-top: 20px; }
+  .capitular::first-letter { font-family: var(--f-titulo); font-size: 4.700em; line-height: 0.74; float: left; padding: 8px 12px 0 0; color: var(--trebol); font-weight: 600; }
+
+  .sellos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .rollo { position: relative; display: grid; justify-items: start; align-content: start; gap: 6px; padding: 18px 18px 20px; cursor: pointer; transition: transform 180ms var(--ease); }
+  .rollo__dibujo { position: relative; justify-self: stretch; display: grid; place-items: center; padding: 18px 0 26px; color: var(--oro); }
+  .rollo__dibujo svg { width: min(250px, 100%); height: auto; }
+  .rollo__papel { fill: color-mix(in oklab, var(--oro) 10%, transparent); }
+  .sello--grande { position: absolute; left: 50%; bottom: 12px; width: 62px; height: 62px; translate: -50% 0; opacity: 0.3; scale: 0.86; transition: opacity 180ms var(--ease), scale 180ms var(--ease); }
+  .sello--grande :global(.glifo) { width: 32px; height: 32px; stroke-width: 1.600; }
+  .rollo strong { font-family: var(--f-titulo); font-weight: 500; font-size: 29px; line-height: 1.1; }
+  .rollo__detalle { color: var(--muted); }
+  .rollo:has(input:checked) { background-color: var(--cuero-3); }
+  .rollo:has(input:checked) .sello--grande { opacity: 1; scale: 1; }
+  .rollo:has(input:focus-visible) { outline: 2px solid var(--action); outline-offset: 2px; }
+  @media (hover: hover) { .rollo:hover { transform: translateY(-2px); } .rollo:hover .sello--grande { opacity: 1; } }
+
+  .indice { display: grid; grid-template-columns: 1fr; }
+  .entrada { display: grid; grid-template-columns: 34px auto 1fr auto; align-items: center; gap: 16px; min-height: 64px; text-decoration: none; border-bottom: 1px solid var(--linea); transition: color 150ms var(--ease); }
+  .entrada__glifo { color: var(--trebol); width: 28px; height: 28px; }
+  .entrada__nombre { font-family: var(--f-titulo); font-size: 32px; line-height: 1; }
+  .entrada__puntos { height: 1px; margin-top: 12px; border-bottom: 2px dotted var(--line-strong); }
+  .entrada__resumen { color: var(--muted); }
+  .entrada:hover, .entrada:focus-visible { color: var(--oro); }
+
+  @media (max-width: 1023px) {
+    .hero .wrap { padding-bottom: 24px; }
+    .hero-text { grid-template-columns: 1fr; grid-template-rows: auto 1fr; row-gap: 28px; }
+    .hero-copy, .hero-visual { grid-column: 1; }
+    .hero-visual { min-height: 0; align-content: end; }
+    .hero-visual :global(.grimorio) { height: min(56svh, 560px); }
+    .hero-copy h1 { max-width: 14ch; }
+    .folio { padding: 34px 34px 36px; }
+    .datos > div { grid-template-columns: 1fr; }
+    .sellos { grid-template-columns: 1fr; gap: 16px; }
+    .rollo { grid-template-columns: 150px 1fr; column-gap: 22px; align-content: center; }
+    .rollo__dibujo { grid-row: span 2; padding: 0; }
+    .sello--grande { bottom: -4px; width: 48px; height: 48px; }
+    .rollo strong { align-self: end; }
+  }
+  @media (max-width: 767px) {
+    .folio { min-height: 0; }
+    .codice { grid-template-columns: 1fr; }
+    .codice::before { display: none; }
+    .folio + .folio { border-top: 1px solid var(--hoja-borde); }
+    .premisa__texto { columns: 1; }
+    .entrada { grid-template-columns: 32px 1fr; grid-template-rows: auto auto; gap: 0 14px; padding: 12px 0; min-height: 76px; }
+    .entrada__glifo { grid-row: span 2; }
+    .entrada__puntos { display: none; }
+    .entrada__resumen { grid-column: 2; line-height: 1.35; }
+    .entrada__nombre { font-size: 27px; }
+  }
+  @media (max-width: 639px) {
+    .hero .wrap { padding-top: calc(var(--nav) + 32px); }
+    .hero-copy { gap: 18px; }
+    .hero-visual :global(.grimorio) { height: max(220px, calc(100svh - 560px)); max-height: 420px; }
+    .folio { padding: 30px 28px 32px; }
+    .rollo { grid-template-columns: 1fr; padding: 12px; }
+    .rollo__dibujo { display: none; }
+    .rollo { padding-left: 64px; }
+    .rollo::before { content: ''; position: absolute; left: 14px; top: 18px; width: 30px; height: 30px; border-radius: 47% 53% 50% 50% / 52% 46% 54% 48%; border: 2px solid var(--lacre-luz); }
+    .rollo:has(input:checked)::before { background: radial-gradient(circle at 38% 34%, #c4503c, var(--lacre) 62%, #611a13); }
+  }
+</style>
+
+<script>
+  // cuenta regresiva al próximo episodio
+  const el = document.querySelector<HTMLElement>('[data-cuenta]');
+  if (el?.dataset.cuenta) {
+    const salida = new Date(el.dataset.cuenta).getTime();
+    const pinta = () => {
+      const falta = salida - Date.now();
+      if (falta <= 0) {
+        el.textContent = 'Ya debería estar en Crunchyroll';
+        return;
+      }
+      const d = Math.floor(falta / 864e5);
+      const h = Math.floor((falta % 864e5) / 36e5);
+      const m = Math.floor((falta % 36e5) / 6e4);
+      el.textContent = d > 0 ? `Faltan ${d} ${d === 1 ? 'día' : 'días'} y ${h} h` : h > 0 ? `Faltan ${h} h y ${m} min` : `Faltan ${m} min`;
+    };
+    pinta();
+    setInterval(pinta, 60_000);
+  }
+</script>
