@@ -1,0 +1,14 @@
+{
+  "verificado": "2026-11-25",
+  "ver": [
+    { "nombre": "Crunchyroll", "que": "T1 completa y T2 en simultáneo", "detalle": "La T2 suma un episodio cada sábado, con subtítulos en español. La plataforma confirmó doblaje latino y lo va agregando de a poco.", "url": "https://www.crunchyroll.com/es/series/GRE50KV36/black-clover", "accion": "Ver en Crunchyroll" },
+    { "nombre": "Netflix", "que": "La película y parte de la serie", "detalle": "La espada del Rey Mago, con audio y subtítulos en español. La T1 figura en el catálogo argentino, aunque la cantidad de temporadas visibles cambia según la fuente.", "url": "https://www.netflix.com/ar/title/81448990", "accion": "Ver la película" },
+    { "nombre": "Otras plataformas", "que": "Disney+, HBO Max y el canal de Crunchyroll en Prime Video", "detalle": "JustWatch las lista para la Argentina con catálogos parciales. Conviene mirar ahí antes de pagar una suscripción.", "url": "https://www.justwatch.com/ar/serie/black-clover", "accion": "Comparar en JustWatch" }
+  ],
+  "leer": [
+    { "nombre": "Ivrea Argentina", "que": "Tomos en papel, del 1 al 37", "detalle": "El 38, último de la serie, figura para el 27 de noviembre de 2026.", "url": "https://www.ivrea.com.ar/titulo/black-clover/", "accion": "Ver la ficha de Ivrea" },
+    { "nombre": "MANGA Plus", "que": "Lectura digital oficial de Shueisha", "detalle": "Los primeros y los últimos capítulos se leen gratis; el resto depende de la app. Tiene edición en español.", "url": "https://mangaplus.shueisha.co.jp/", "accion": "Buscar en MANGA Plus" },
+    { "nombre": "VIZ", "que": "Edición en inglés", "detalle": "Tomos hasta el 37 y capítulos dentro de Shonen Jump, según el país.", "url": "https://www.viz.com/black-clover", "accion": "Ver la ficha de VIZ" },
+    { "nombre": "Norma Editorial", "que": "Edición de España", "detalle": "Va por el tomo 37, de junio de 2026. El 38 no tenía fecha anunciada en la última revisión.", "url": "https://www.normaeditorial.com/", "accion": "Buscar en Norma" }
+  ]
+}

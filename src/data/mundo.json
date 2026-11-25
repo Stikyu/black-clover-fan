@@ -1,0 +1,36 @@
+{
+  "reinos": [
+    { "id": "clover", "nombre": "Clover", "palo": "trebol", "capitulo": 1, "texto": "El escenario principal. Se divide en anillos: nobles en el centro, plebeyos alrededor y los olvidados en el borde, donde está Hage. Lo defienden nueve escuadrones bajo el mando del Rey Mago, un cargo distinto al de rey." },
+    { "id": "diamond", "nombre": "Diamond", "palo": "diamante", "capitulo": 11, "texto": "Vecino expansionista. Durante años convirtió chicos en armas con cirugías y combates a muerte; varios de sus Ocho Generales Brillantes son el resultado." },
+    { "id": "heart", "nombre": "Heart", "palo": "corazon", "capitulo": 228, "texto": "Un reino abundante en maná natural, gobernado por la reina Lolopechka. Su gente clasifica la magia por grados y compensa el tamaño del país con técnica y runas." },
+    { "id": "spade", "nombre": "Spade", "palo": "pica", "capitulo": 229, "texto": "Tierra fría y con mucho maná, en manos de la Tríada Oscura desde que los Zogratis derrocaron a la casa Grinberryall. Acá los demonios dejan de ser leyenda." },
+    { "id": "sol", "nombre": "País del Sol", "palo": "sol", "capitulo": 338, "texto": "La isla de donde viene Yami. La magia se llama yōjutsu, la gobierna un shogun sin poder propio y la defienden los Ryuzen." }
+  ],
+  "grimorios": [
+    { "hojas": 3, "nombre": "Tres hojas", "texto": "El más común. A los quince años casi todos reciben uno; el grosor y los hechizos crecen con su dueño. Las hojas hablan de fe, esperanza y amor." },
+    { "hojas": 4, "nombre": "Cuatro hojas", "texto": "Se lo entiende como un regalo de la suerte. En la generación de Asta el único que lo recibe es Yuno." },
+    { "hojas": 5, "nombre": "Cinco hojas", "texto": "La quinta hoja aloja un demonio. Nace de un grimorio de cuatro hojas cuyo dueño cayó en la desesperación, y adentro guarda espadas." }
+  ],
+  "magias": [
+    { "nombre": "Elementales", "glifo": "fuego", "texto": "Fuego, agua, viento, tierra, rayo, luz y oscuridad, más sus derivados. Cuatro tienen un espíritu: Salamandra, Undine, Sylph y Gnome." },
+    { "nombre": "De creación", "glifo": "acero", "texto": "La materia se vuelve arma o herramienta: acero, arena, cristal, algodón, hilo." },
+    { "nombre": "De cuerpo y apoyo", "glifo": "plantas", "texto": "Curar, reforzar, transformarse o sellar. Pocas peleas largas se ganan sin alguien de este grupo." },
+    { "nombre": "Espacial y temporal", "glifo": "espacial", "texto": "Mueven, borran o detienen. Son raras, caras de usar y decisivas cuando aparecen." },
+    { "nombre": "De maldición", "glifo": "veneno", "texto": "Daños con condiciones, que duran mientras dure quien las puso o hasta que alguien encuentra cómo romperlas." },
+    { "nombre": "Antimagia", "glifo": "antimagia", "texto": "Anula todo lo anterior. La sostiene quien no tiene magia propia; a cualquier otro le drena la fuerza." }
+  ],
+  "conceptos": [
+    { "nombre": "Maná y piel de maná", "capitulo": 1, "texto": "La energía que hay en todo. Cubrirse el cuerpo con ella es lo primero que aprende un caballero." },
+    { "nombre": "Ki", "capitulo": 40, "texto": "La presencia física que delata la intención de alguien. Yami se lo enseña a Asta, que no tiene otro modo de percibir." },
+    { "nombre": "Zona de Maná", "capitulo": 75, "texto": "Dominar el maná del entorno además del propio. Separa a los capitanes del resto." },
+    { "nombre": "Grados", "capitulo": 229, "texto": "La escala del Reino Heart. El grado cero está reservado a quienes pueden enfrentar a un portador de demonio." },
+    { "nombre": "Unión Demoníaca", "capitulo": 284, "texto": "Humano y demonio fundidos por un pacto. En Asta dura unos cinco minutos y después no puede moverse." },
+    { "nombre": "Zetten", "capitulo": 346, "texto": "Técnica del País del Sol que concentra cuerpo, arma y energía en un único corte." },
+    { "nombre": "Paladines", "capitulo": 350, "texto": "Personas a las que Lucius les incorpora un demonio purificado. Obedecen su idea de paz." }
+  ],
+  "inframundo": [
+    { "nombre": "Los niveles", "capitulo": 263, "texto": "El inframundo se ordena en pisos. En el más profundo están los tres demonios supremos; arriba, los que no valen nada para ellos." },
+    { "nombre": "El árbol de Qliphoth", "capitulo": 263, "texto": "El ritual de la Tríada hace crecer un árbol que conecta los dos mundos y abre un nivel por vez. Necesita la magia de Yami y la de William." },
+    { "nombre": "Portadores y pactos", "capitulo": 263, "texto": "Un humano puede alojar a un demonio y usar un porcentaje de su poder, o atarlo con un ritual y negociar. La segunda opción es la de Nacht." }
+  ]
+}

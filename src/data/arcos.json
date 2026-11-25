@@ -1,0 +1,104 @@
+[
+  {
+    "id": "examen", "orden": 1, "nombre": "El examen de los Caballeros Mágicos",
+    "capitulos": [1, 10], "episodios": [1, 13],
+    "partes": [
+      { "capitulo": 1, "texto": "Dos huérfanos criados en la misma iglesia de Hage hacen una promesa: uno de los dos va a ser Rey Mago. El día en que todos reciben su grimorio, Yuno se lleva uno legendario y Asta se vuelve con las manos vacías, hasta que un ladrón lo arrincona y aparece un libro viejo y mugriento que nadie había pedido." },
+      { "capitulo": 10, "texto": "El examen para entrar a un escuadrón termina de separar los caminos: todos los capitanes quieren a Yuno y uno solo, el peor hablado de todos, se anima con el pibe sin magia." }
+    ]
+  },
+  {
+    "id": "mazmorra", "orden": 2, "nombre": "La mazmorra",
+    "capitulos": [11, 21], "episodios": [14, 19],
+    "partes": [
+      { "capitulo": 11, "texto": "Una ruina llena de trampas y tesoros aparece cerca de la frontera y Clover manda dos grupos: los Toros Negros y el Amanecer Dorado. Es la primera vez que Asta y Yuno trabajan codo a codo como caballeros." },
+      { "capitulo": 19, "texto": "El Reino Diamond también quiere el botín. Mars, un soldado fabricado a fuerza de experimentos, obliga a los dos amigos a mostrar lo que tienen, y Asta consigue ahí su segunda espada." }
+    ]
+  },
+  {
+    "id": "capital", "orden": 3, "nombre": "El asalto a la capital real",
+    "capitulos": [22, 37], "episodios": [20, 27],
+    "partes": [
+      { "capitulo": 22, "texto": "La ceremonia de condecoraciones sirve para entender cómo funciona la nobleza de Clover: el apellido pesa más que el mérito. La reunión se corta cuando un ejército de muertos entra a la ciudad." },
+      { "capitulo": 35, "texto": "El ataque lleva la firma del Ojo del Sol de Medianoche y deja fuera de combate a Fuegoleon Vermillion. También deja una sospecha: alguien de adentro abrió la puerta." }
+    ]
+  },
+  {
+    "id": "ojo", "orden": 4, "nombre": "El encuentro con el Ojo del Sol de Medianoche",
+    "capitulos": [38, 56], "episodios": [28, 39],
+    "partes": [
+      { "capitulo": 38, "texto": "Una salida al mercado y unos chicos desaparecidos terminan en una cueva, con Asta frente al líder del grupo enemigo. Yami llega a tiempo y la serie muestra por primera vez a un capitán peleando en serio." },
+      { "capitulo": 53, "texto": "Los tres miembros más fuertes del Ojo obligan a varios capitanes a intervenir. De yapa, Julius descubre que Gueldre Poizot, capitán de las Orcas Moradas, trabajaba para el otro bando." }
+    ]
+  },
+  {
+    "id": "templo", "orden": 5, "nombre": "El Templo Submarino",
+    "capitulos": [57, 73], "episodios": [40, 50],
+    "partes": [
+      { "capitulo": 57, "texto": "Los Toros Negros se van a la playa con una misión: recuperar una piedra mágica guardada en un templo bajo el agua. Para llegar, Noelle tiene que controlar por fin su propio poder." },
+      { "capitulo": 70, "texto": "La prueba amistosa del sumo sacerdote se vuelve supervivencia cuando entra Vetto, uno de los tres grandes del Ojo. El escuadrón entero hace falta para tumbarlo, y Asta sale con los brazos destrozados por una maldición." }
+    ]
+  },
+  {
+    "id": "brujas", "orden": 6, "nombre": "El Bosque de las Brujas",
+    "capitulos": [74, 101], "episodios": [51, 65],
+    "partes": [
+      { "capitulo": 74, "texto": "Nadie en el reino puede curar a Asta, así que sus compañeros buscan ayuda donde nació Vanessa: el bosque de una reina que no hace favores gratis." },
+      { "capitulo": 95, "texto": "El lugar queda apretado entre el Reino Diamond y Fana, una maga consumida por el odio. Mars cambia de bando, Asta despierta una forma nueva y la reina le cuenta de quién fueron antes sus espadas." }
+    ]
+  },
+  {
+    "id": "reales", "orden": 7, "nombre": "Los Caballeros Reales",
+    "capitulos": [102, 146], "episodios": [66, 93],
+    "partes": [
+      { "capitulo": 102, "texto": "Para encontrar la base del Ojo hace falta un equipo especial, y se arma con un torneo por equipos. Es el arco de los cruces imposibles: Finral contra su hermano Langris, Asta con Zora y Mimosa, Yuno con Noelle." },
+      { "capitulo": 146, "texto": "Con Mereoleona al mando, los elegidos asaltan la base. Mientras tanto Patry llega solo a la capital y mata a Julius. Poco después completa su ritual: las almas de los elfos despiertan dentro de los propios caballeros." }
+    ]
+  },
+  {
+    "id": "elfos", "orden": 8, "nombre": "La reencarnación de los elfos",
+    "capitulos": [147, 228], "episodios": [94, 129],
+    "partes": [
+      { "capitulo": 148, "texto": "Medio reino pelea contra la otra mitad. Los elfos masacrados cinco siglos atrás volvieron dentro de cuerpos humanos y quieren venganza por algo que, creen, hizo el primer Rey Mago." },
+      { "capitulo": 214, "texto": "La verdad estaba enterrada: la matanza no la ordenó ningún humano, la provocó Zagred, un demonio que manipuló a todos. Asta, Yuno, Licht y el primer Rey Mago lo enfrentan dentro del Palacio de las Sombras." },
+      { "capitulo": 228, "texto": "Julius reaparece con cuerpo de trece años y casi sin magia. A Asta y a Secre los juzgan por su relación con los demonios, y la salida que les dejan es salir a buscar información afuera del reino." }
+    ]
+  },
+  {
+    "id": "entrenamiento", "orden": 9, "nombre": "El entrenamiento en Heart (material del anime)",
+    "capitulos": null, "episodios": [130, 157],
+    "partes": [
+      { "capitulo": 228, "texto": "Tramo casi todo creado para la televisión. El anime usa los seis meses que el manga salta para mostrar el entrenamiento con los espíritus del Reino Heart, a los seguidores de Zagred y episodios autoconclusivos. Se puede saltear sin perder el hilo del manga." }
+    ]
+  },
+  {
+    "id": "heart", "orden": 10, "nombre": "La batalla conjunta del Reino Heart",
+    "capitulos": [229, 260], "episodios": [158, 167],
+    "partes": [
+      { "capitulo": 229, "texto": "Spade cayó en manos de la Tríada Oscura, tres hermanos que pueden usar casi todo el poder de los demonios que llevan adentro. Clover y Heart se alían, pero el enemigo ataca primero." },
+      { "capitulo": 259, "texto": "Zenon arrasa el Amanecer Dorado y se lleva a William; Dante mide a Asta y a Yami, y el capitán de los Toros termina capturado; Vanica secuestra a Lolopechka. Con esas piezas quieren abrir el camino al inframundo." }
+    ]
+  },
+  {
+    "id": "spade", "orden": 11, "nombre": "El asalto al Reino Spade",
+    "capitulos": [261, 331], "episodios": [168, null],
+    "partes": [
+      { "capitulo": 270, "texto": "Aparece Nacht, el vicecapitán que nadie había visto, y le enseña a Asta a negociar con lo que vive en su grimorio. Asta conoce a Liebe, gana la pelea del ritual y, en lugar de someterlo, le propone un pacto de iguales. Ahí termina la T1." },
+      { "capitulo": 284, "texto": "Arranca el asalto: Yuno y Langris contra Zenon, Nacht y Jack contra Dante, Charlotte y Rill contra Vanica. Mereoleona frena sola a un demonio gigante hasta que Asta llega con la Unión Demoníaca y lo parte al medio." },
+      { "capitulo": 293, "texto": "Se conoce el pasado de Nacht con su gemelo Morgen. Asta termina con Lilith y Nahamah, y el golpe final contra Dante lo da quien menos magia tenía para darlo: Magna." },
+      { "capitulo": 303, "texto": "Noelle consigue la forma de Valquiria Sagrada, descubre por qué Nozel la trataba así y destruye el corazón de Megicula, la responsable de la maldición de su madre." },
+      { "capitulo": 308, "texto": "Zenon pide el corazón de Beelzebub y deja de ser humano. Langris y Finral, los hermanos que no se hablaban, combinan su magia para abrirle el pecho." },
+      { "capitulo": 331, "texto": "Yuno recibe un segundo grimorio y derrota a Zenon. Cuando el ritual deja pasar a Lucifero, Asta y Liebe terminan venciéndolo. La calma dura un capítulo: Julius resulta compartir el cuerpo con Lucius, el cuarto hermano Zogratis." }
+    ]
+  },
+  {
+    "id": "final", "orden": 12, "nombre": "El arco final",
+    "capitulos": [332, 392], "episodios": null,
+    "partes": [
+      { "capitulo": 336, "texto": "Lucius anuncia que va a rehacer a la humanidad y empieza por sacar a Asta del tablero, con la hermana Lily convertida en paladín a su servicio." },
+      { "capitulo": 353, "texto": "Asta despierta en el País del Sol, la tierra de Yami. Entrena con el shogun Ryuya Ryudo, con Ichika, hermana de Yami, y con los Ryuzen; aprende el zetten y logra devolverle a Lily su forma humana." },
+      { "capitulo": 380, "texto": "Llega el Día del Juicio. Lucius ataca con copias de sí mismo y con paladines, entre ellos Acier Silva y Morgen Faust. Los Silva pelean contra su propia madre y el reino queda al borde de caer." },
+      { "capitulo": 392, "texto": "Lucius cae y Julius gasta lo que le queda para deshacer el daño. Los capitanes no se deciden entre los dos candidatos, así que Asta y Yuno resuelven la promesa con un duelo. Gana Asta, que pasa a ser el 29.º Rey Mago. El epílogo salta dos años." }
+    ]
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "preguntas": [
+    { "texto": "Te dan una misión sin mapa. ¿Qué hacés primero?", "opciones": [
+      { "texto": "Salgo. El mapa se arma caminando.", "puntos": { "toros-negros": 2, "leones-carmesi": 1 } },
+      { "texto": "Junto toda la información antes de mover un pie.", "puntos": { "amanecer-dorado": 2, "orcas-moradas": 1 } },
+      { "texto": "Busco un lugar alto y miro el terreno.", "puntos": { "aguilas-plateadas": 2, "mantis-verdes": 1 } },
+      { "texto": "Dibujo mi propio mapa, con detalles de más.", "puntos": { "ciervos-aguamarina": 2, "pavos-coral": 1 } },
+      { "texto": "Pregunto quién necesita ayuda en el camino.", "puntos": { "rosa-azul": 2 } }
+    ] },
+    { "texto": "En un equipo, ¿qué lugar terminás ocupando?", "opciones": [
+      { "texto": "El que marca el ritmo del entrenamiento.", "puntos": { "leones-carmesi": 2 } },
+      { "texto": "El que aparece tarde y resuelve.", "puntos": { "pavos-coral": 2, "toros-negros": 1 } },
+      { "texto": "El que sostiene la defensa.", "puntos": { "orcas-moradas": 2, "rosa-azul": 1 } },
+      { "texto": "El que se adelanta para cerrar la pelea.", "puntos": { "mantis-verdes": 2 } },
+      { "texto": "El que no puede permitirse un error.", "puntos": { "amanecer-dorado": 1, "aguilas-plateadas": 2 } }
+    ] },
+    { "texto": "Alguien te subestima en voz alta. ¿Qué le contestás?", "opciones": [
+      { "texto": "Nada. Que lo vea por su cuenta.", "puntos": { "amanecer-dorado": 2 } },
+      { "texto": "Lo desafío ahí mismo.", "puntos": { "mantis-verdes": 1, "leones-carmesi": 2 } },
+      { "texto": "Algo tan bien dicho que se queda sin letra.", "puntos": { "rosa-azul": 2, "aguilas-plateadas": 1 } },
+      { "texto": "Me río. Otra vez lo mismo.", "puntos": { "toros-negros": 2 } },
+      { "texto": "Lo uso de inspiración.", "puntos": { "ciervos-aguamarina": 2 } }
+    ] },
+    { "texto": "Tenés un día libre. ¿Adónde vas?", "opciones": [
+      { "texto": "A una taberna llena, con gente que grita.", "puntos": { "toros-negros": 2 } },
+      { "texto": "A un bosque donde no pase nadie.", "puntos": { "mantis-verdes": 2, "ciervos-aguamarina": 1 } },
+      { "texto": "A la cama. El día entero.", "puntos": { "pavos-coral": 2 } },
+      { "texto": "A un jardín que cuido yo.", "puntos": { "rosa-azul": 2 } },
+      { "texto": "Al puerto, con olor a sal.", "puntos": { "orcas-moradas": 2 } }
+    ] },
+    { "texto": "¿Qué es lo que más te cuesta perdonar?", "opciones": [
+      { "texto": "La traición.", "puntos": { "orcas-moradas": 2, "toros-negros": 1 } },
+      { "texto": "La pereza.", "puntos": { "leones-carmesi": 2 } },
+      { "texto": "Que se hable mal de mi familia.", "puntos": { "aguilas-plateadas": 2 } },
+      { "texto": "El aburrimiento.", "puntos": { "pavos-coral": 1, "mantis-verdes": 2 } },
+      { "texto": "La mediocridad.", "puntos": { "amanecer-dorado": 2 } }
+    ] },
+    { "texto": "Tu grimorio se abre solo. ¿Qué hechizo querés encontrar?", "opciones": [
+      { "texto": "Uno que vuelva real lo que imagino.", "puntos": { "ciervos-aguamarina": 2, "pavos-coral": 1 } },
+      { "texto": "Uno que me deje golpear más fuerte.", "puntos": { "leones-carmesi": 1, "toros-negros": 2 } },
+      { "texto": "Uno que proteja a varios a la vez.", "puntos": { "orcas-moradas": 2, "rosa-azul": 1 } },
+      { "texto": "Uno preciso, de un solo movimiento.", "puntos": { "aguilas-plateadas": 1, "mantis-verdes": 2 } },
+      { "texto": "Uno que nadie haya visto nunca.", "puntos": { "amanecer-dorado": 2 } }
+    ] },
+    { "texto": "La misión salió mal. ¿Qué ponés en el informe?", "opciones": [
+      { "texto": "La verdad, con mi firma abajo.", "puntos": { "orcas-moradas": 1, "rosa-azul": 2 } },
+      { "texto": "¿Había que hacer un informe?", "puntos": { "toros-negros": 2, "pavos-coral": 1 } },
+      { "texto": "Qué voy a corregir y para cuándo.", "puntos": { "amanecer-dorado": 1, "leones-carmesi": 2 } },
+      { "texto": "Lo mínimo. El resto queda en casa.", "puntos": { "aguilas-plateadas": 2 } },
+      { "texto": "Lo cuento con ilustraciones.", "puntos": { "ciervos-aguamarina": 2 } }
+    ] },
+    { "texto": "¿Cómo querés que te recuerden?", "opciones": [
+      { "texto": "Como alguien que no aflojó.", "puntos": { "toros-negros": 2, "leones-carmesi": 1 } },
+      { "texto": "Como el mejor en lo suyo.", "puntos": { "amanecer-dorado": 2, "aguilas-plateadas": 1 } },
+      { "texto": "Como alguien en quien se podía confiar.", "puntos": { "orcas-moradas": 2, "rosa-azul": 1 } },
+      { "texto": "Como una leyenda un poco exagerada.", "puntos": { "pavos-coral": 2, "ciervos-aguamarina": 1 } },
+      { "texto": "Con respeto y cierta distancia.", "puntos": { "mantis-verdes": 2 } }
+    ] }
+  ],
+  "resultados": {
+    "toros-negros": "Entrás por la puerta que otros cierran. Te llevás bien con el desorden y con la gente que nadie elige primero.",
+    "amanecer-dorado": "Hablás poco y entregás mucho. Te exigís tanto que a veces te olvidás de festejar lo que ya lograste.",
+    "leones-carmesi": "Entrenás, caés, volvés a entrenar. Contagiás entusiasmo, aunque a veces dejes a los demás sin aire.",
+    "aguilas-plateadas": "Cuidás tu nombre y el de los tuyos. Debajo de la distancia hay una lealtad difícil de mover.",
+    "rosa-azul": "Ponés límites claros y los sostenés. La gente a tu lado sabe que tiene con quién contar.",
+    "mantis-verdes": "Vas directo al punto y te aburre todo lo que no sea un reto. Mejor tenerte del mismo lado.",
+    "orcas-moradas": "Reparás lo que otros rompieron. Mantenés la línea cuando el resto retrocede.",
+    "ciervos-aguamarina": "Ves posibilidades donde hay una pared. Trabajás por impulso, y el impulso te sale bien.",
+    "pavos-coral": "Tenés tu propio horario, tu propio estilo y cero ganas de explicarlos. Funciona."
+  }
+}

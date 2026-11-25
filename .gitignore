@@ -1,0 +1,9 @@
+node_modules/
+dist/
+dist-check/
+.astro/
+.taste-skill/
+.claude/
+.env
+*.log
+shots/

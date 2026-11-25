@@ -1,0 +1,257 @@
+[
+  { "id": "asta", "nombre": "Asta", "reino": "clover", "escuadron": "toros-negros", "rol": "Protagonista", "magia": "Antimagia", "glifo": "antimagia", "grimorio": "Trébol de cinco hojas", "debut": 1,
+    "texto": "Creció en la iglesia de Hage y es la única persona conocida sin una gota de magia. Lo compensó a los gritos y con entrenamiento físico, hasta que el grimorio que nadie quería lo eligió. Sus espadas anulan, rebotan o cortan los hechizos ajenos.",
+    "revelaciones": [
+      { "capitulo": 270, "texto": "El que vive en su grimorio es Liebe, y los dos fueron criados, en tiempos distintos, por la misma mujer. Después de ganarle en el ritual le ofrece un pacto entre iguales." },
+      { "capitulo": 291, "texto": "Llega a Spade con la Unión Demoníaca, un estado que aguanta cinco minutos, y acaba con los demonios gemelos del primer nivel." },
+      { "capitulo": 331, "texto": "Junto a Liebe vence a Lucifero." },
+      { "capitulo": 353, "texto": "En el País del Sol aprende el zetten, la técnica que le permite separar a los paladines de lo que Lucius les puso adentro." },
+      { "capitulo": 392, "texto": "Le gana a Yuno el duelo por el puesto y se convierte en el 29.º Rey Mago." }
+    ] },
+  { "id": "yuno", "nombre": "Yuno", "reino": "clover", "escuadron": "amanecer-dorado", "rol": "Vicecapitán", "magia": "Viento", "glifo": "viento", "grimorio": "Trébol de cuatro hojas", "debut": 1,
+    "texto": "Lo dejaron en la puerta de la iglesia el mismo día que a Asta. Callado, talentoso y elegido por el grimorio más codiciado del reino, además de por Sylph, el espíritu del viento. La promesa que hizo de chico es lo único que le saca la calma. Nació como príncipe de la casa Grinberryall, la familia real de Spade derrocada por los Zogratis.",
+    "revelaciones": [
+      { "capitulo": 279, "texto": "En Spade descubre que se parece a sus padres, el rey Loyce y la reina Ciel, y que el maná de ese país le responde." },
+      { "capitulo": 331, "texto": "Recibe un segundo grimorio con magia estelar y con él derrota a Zenon." },
+      { "capitulo": 355, "texto": "William lo nombra sucesor y pasa a ser capitán del Amanecer Dorado." },
+      { "capitulo": 392, "texto": "Pierde el duelo contra Asta. En el epílogo reparte su tiempo entre el escuadrón y Spade, donde es el príncipe heredero." }
+    ] },
+  { "id": "noelle-silva", "nombre": "Noelle Silva", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballera Mágica", "magia": "Agua", "glifo": "agua", "grimorio": "Trébol de tres hojas", "debut": 4,
+    "texto": "Princesa de la casa Silva, despreciada por sus hermanos porque no controlaba su enorme cantidad de magia. En los Toros Negros encontró gente que no le exige el apellido. Cargó años con la culpa por la muerte de su madre, Acier, hasta saber que la causa fue una maldición.",
+    "revelaciones": [
+      { "capitulo": 298, "texto": "Undine la acepta como portadora y consigue la forma de Valquiria Sagrada." },
+      { "capitulo": 303, "texto": "Pelea junto a Nozel y destruye el corazón de Megicula." },
+      { "capitulo": 373, "texto": "Enfrenta con sus hermanos a Acier, traída de vuelta como paladín de Lucius." }
+    ] },
+  { "id": "yami-sukehiro", "nombre": "Yami Sukehiro", "reino": "clover", "escuadron": "toros-negros", "rol": "Capitán", "magia": "Oscuridad", "glifo": "oscuridad", "grimorio": "Trébol de tres hojas", "debut": 3,
+    "texto": "Llegó de chico al reino en un naufragio y todavía lo tratan de extranjero. Pelea con katana, lee el ki de sus rivales y tiene un solo método de enseñanza: superá tu límite, ahora. Al final de la T1 está en manos de la Tríada Oscura.",
+    "revelaciones": [
+      { "capitulo": 353, "texto": "El País del Sol es su tierra natal, e Ichika, su hermana menor, lo odia por un crimen que no fue como se lo contaron." },
+      { "capitulo": 392, "texto": "Aceptó alojar a Adrammelech y sumó magia de luz. En el epílogo deja la capitanía y está en pareja con Charlotte." }
+    ] },
+  { "id": "nacht-faust", "nombre": "Nacht Faust", "reino": "clover", "escuadron": "toros-negros", "rol": "Vicecapitán", "magia": "Sombra", "glifo": "sombra", "grimorio": "Trébol de tres hojas", "debut": 263,
+    "texto": "El segundo al mando que nunca estaba en la base: llevaba años infiltrado en Spade. Amable en el trato y cruel en lo que dice, tiene pactos con cuatro demonios y enseña a Asta a usar el suyo.",
+    "revelaciones": [
+      { "capitulo": 289, "texto": "Su gemelo Morgen murió por un ritual que Nacht empezó de joven. La serenidad que muestra es culpa." },
+      { "capitulo": 380, "texto": "En el Día del Juicio se cruza con Morgen, convertido en paladín." },
+      { "capitulo": 392, "texto": "Termina la historia como capitán de los Toros Negros." }
+    ] },
+  { "id": "finral-roulacase", "nombre": "Finral Roulacase", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballero Mágico", "magia": "Espacial", "glifo": "espacial", "grimorio": "Trébol de tres hojas", "debut": 4,
+    "texto": "El transporte del escuadrón. Abre portales, coquetea sin suerte y prefirió irse de su casa antes que competir con su hermano Langris por el título familiar.",
+    "revelaciones": [
+      { "capitulo": 308, "texto": "Combina su magia con la de Langris y entre los dos atraviesan el pecho de Zenon." },
+      { "capitulo": 392, "texto": "En el epílogo está casado con Finesse y esperan un bebé." }
+    ] },
+  { "id": "magna-swing", "nombre": "Magna Swing", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballero Mágico", "magia": "Fuego", "glifo": "fuego", "grimorio": "Trébol de tres hojas", "debut": 4,
+    "texto": "Plebeyo, pandillero de aspecto y hermano mayor de oficio. Tiene poca magia y ninguna intención de quedarse atrás de Luck.",
+    "revelaciones": [
+      { "capitulo": 293, "texto": "Después de meses preparando un único hechizo que reparte la magia entre dos personas, obliga a Dante a pelear a las trompadas y le gana." }
+    ] },
+  { "id": "luck-voltia", "nombre": "Luck Voltia", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballero Mágico", "magia": "Rayo", "glifo": "rayo", "grimorio": "Trébol de tres hojas", "debut": 4,
+    "texto": "Sonríe siempre, sobre todo antes de pegar. Su madre solo lo quería cuando ganaba, y con los Toros aprendió a pelear por otra cosa.", "revelaciones": [] },
+  { "id": "gauche-adlai", "nombre": "Gauche Adlai", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballero Mágico", "magia": "Espejo", "glifo": "espejo", "grimorio": "Trébol de tres hojas", "debut": 4,
+    "texto": "Ex convicto y hermano devoto hasta lo incómodo: todo lo que hace es por Marie. Refleja y multiplica ataques, y de a poco deja entrar a más gente.", "revelaciones": [] },
+  { "id": "vanessa-enoteca", "nombre": "Vanessa Enoteca", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballera Mágica", "magia": "Hilo", "glifo": "hilo", "grimorio": "Trébol de tres hojas", "debut": 4,
+    "texto": "Se escapó del Bosque de las Brujas y encontró casa en el escuadrón. Su gato rojo, Rouge, cambia el destino de los suyos: si un golpe toca al gato, ese golpe no llegó a pasar.", "revelaciones": [] },
+  { "id": "charmy-pappitson", "nombre": "Charmy Pappitson", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballera Mágica", "magia": "Algodón y comida", "glifo": "algodon", "grimorio": "Trébol de tres hojas", "debut": 4,
+    "texto": "Cocina con ovejas de algodón y come por un regimiento. Es mitad enana, y cuando saca al lobo que come magia queda claro que el tamaño era una pista falsa.",
+    "revelaciones": [
+      { "capitulo": 392, "texto": "En el salto de dos años del epílogo está casada con Rill y tienen siete hijos." }
+    ] },
+  { "id": "grey", "nombre": "Grey", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballera Mágica", "magia": "Transmutación", "glifo": "transmutacion", "grimorio": "Trébol de tres hojas", "debut": 4,
+    "texto": "Pasó años detrás de una forma gigante y humeante por pura vergüenza. Su magia sirve para disfrazarse y también para transformar lo que toca, incluso una herida.", "revelaciones": [] },
+  { "id": "gordon-agrippa", "nombre": "Gordon Agrippa", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballero Mágico", "magia": "Veneno", "glifo": "veneno", "grimorio": "Trébol de tres hojas", "debut": 4,
+    "texto": "Susurra tanto que nadie lo escucha y lo único que quiere es tener amigos. Viene de una familia de maldiciones que resultó dedicarse a curarlas.", "revelaciones": [] },
+  { "id": "zora-ideale", "nombre": "Zora Ideale", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballero Mágico", "magia": "Ceniza", "glifo": "ceniza", "grimorio": "Trébol de tres hojas", "debut": 105,
+    "texto": "Hijo del primer caballero plebeyo, al que mataron sus propios compañeros nobles. Arma trampas, devuelve hechizos al doble y desprecia a quien usa el manto sin merecerlo.", "revelaciones": [] },
+  { "id": "henry-legolant", "nombre": "Henry Legolant", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballero Mágico", "magia": "Recombinación", "glifo": "recombinacion", "grimorio": "Trébol de tres hojas", "debut": 156,
+    "texto": "Habla muuuy despacio y vive en la base porque su enfermedad absorbe la magia ajena. Las reformas del edificio son obra suya, y en batalla el edificio también pelea.", "revelaciones": [] },
+  { "id": "secre-swallowtail", "nombre": "Secre Swallowtail", "reino": "clover", "escuadron": "toros-negros", "rol": "Caballera Mágica", "magia": "Sellado", "glifo": "sellado", "grimorio": "Trébol de tres hojas", "debut": 3,
+    "texto": "Durante media serie fue Nero, el pájaro que seguía a Asta a todos lados. Fue la asistente del primer Rey Mago y pagó con su forma humana el hechizo que lo conservó.", "revelaciones": [] },
+  { "id": "william-vangeance", "nombre": "William Vangeance", "reino": "clover", "escuadron": "amanecer-dorado", "rol": "Capitán", "magia": "Árbol del Mundo", "glifo": "arbol", "grimorio": "Trébol de tres hojas", "debut": 3,
+    "texto": "Usa máscara por las marcas de una maldición. Compartió cuerpo con Patry y, cuando tuvo que elegir entre su amigo y Julius, dejó que los dos se encontraran. Zenon se lo llevó porque el ritual de Spade necesita su magia.",
+    "revelaciones": [
+      { "capitulo": 355, "texto": "Cede el mando del escuadrón a Yuno." }
+    ] },
+  { "id": "langris-vaude", "nombre": "Langris Vaude", "reino": "clover", "escuadron": "amanecer-dorado", "rol": "Ex vicecapitán", "magia": "Espacial", "glifo": "espacial", "grimorio": "Trébol de tres hojas", "debut": 60,
+    "texto": "El hermano menor de Finral. Su magia borra lo que toca, y durante años confundió ser mejor con tener a alguien a quien pisar.",
+    "revelaciones": [
+      { "capitulo": 308, "texto": "Pelea al lado de Yuno contra Zenon y firma el golpe decisivo junto con Finral." }
+    ] },
+  { "id": "mimosa-vermillion", "nombre": "Mimosa Vermillion", "reino": "clover", "escuadron": "amanecer-dorado", "rol": "Caballera Mágica", "magia": "Plantas", "glifo": "plantas", "grimorio": "Trébol de tres hojas", "debut": 11,
+    "texto": "Prima de Noelle y sanadora. Dulce, con comentarios que lastiman sin querer, y mejor en el frente de lo que ella misma cree.", "revelaciones": [] },
+  { "id": "klaus-lunettes", "nombre": "Klaus Lunettes", "reino": "clover", "escuadron": "amanecer-dorado", "rol": "Caballero Mágico", "magia": "Acero", "glifo": "acero", "grimorio": "Trébol de tres hojas", "debut": 11,
+    "texto": "Arrancó como el noble que no quería plebeyos cerca. La mazmorra le cambió la cabeza y desde entonces es el primero en preocuparse por Yuno y Asta.", "revelaciones": [] },
+  { "id": "alecdora-sandler", "nombre": "Alecdora Sandler", "reino": "clover", "escuadron": "amanecer-dorado", "rol": "Caballero Mágico", "magia": "Arena", "glifo": "arena", "grimorio": "Trébol de tres hojas", "debut": 24,
+    "texto": "Noble, rígido y devoto de William. Le costó aceptar que el capitán confiara más en Yuno que en él.", "revelaciones": [] },
+  { "id": "fuegoleon-vermillion", "nombre": "Fuegoleon Vermillion", "reino": "clover", "escuadron": "leones-carmesi", "rol": "Capitán", "magia": "Fuego", "glifo": "fuego", "grimorio": "Trébol de tres hojas", "debut": 3,
+    "texto": "Justo, exigente y el primer noble que trató a Asta como rival posible. Perdió el brazo derecho, quedó mucho tiempo inconsciente y volvió con Salamandra, el espíritu del fuego.", "revelaciones": [] },
+  { "id": "mereoleona-vermillion", "nombre": "Mereoleona Vermillion", "reino": "clover", "escuadron": "leones-carmesi", "rol": "Comandante de los Caballeros Reales", "magia": "Fuego", "glifo": "fuego", "grimorio": "Trébol de tres hojas", "debut": 103,
+    "texto": "La hermana mayor de Fuegoleon pasa más tiempo en zonas salvajes que en palacios. Pelea a puño limpio y considera que las aguas termales de un volcán son un buen plan de equipo.",
+    "revelaciones": [
+      { "capitulo": 275, "texto": "Frena sola a un demonio gigante en pleno asalto a Spade." }
+    ] },
+  { "id": "leopold-vermillion", "nombre": "Leopold Vermillion", "reino": "clover", "escuadron": "leones-carmesi", "rol": "Caballero Mágico", "magia": "Fuego", "glifo": "fuego", "grimorio": "Trébol de tres hojas", "debut": 23,
+    "texto": "El menor de los tres hermanos. Se declaró rival de Asta a los cinco minutos de conocerlo y desde entonces intenta alcanzar a Fuegoleon.", "revelaciones": [] },
+  { "id": "randall-luftair", "nombre": "Randall Luftair", "reino": "clover", "escuadron": "leones-carmesi", "rol": "Vicecapitán", "magia": "Aire", "glifo": "viento", "grimorio": "Trébol de tres hojas", "debut": 146,
+    "texto": "El vicecapitán sereno de un escuadrón donde casi nadie lo es.", "revelaciones": [] },
+  { "id": "nozel-silva", "nombre": "Nozel Silva", "reino": "clover", "escuadron": "aguilas-plateadas", "rol": "Capitán", "magia": "Mercurio", "glifo": "mercurio", "grimorio": "Trébol de tres hojas", "debut": 3,
+    "texto": "El mayor de los Silva y heredero del orgullo familiar. Trató a Noelle con una dureza que la serie tarda en explicar.",
+    "revelaciones": [
+      { "capitulo": 303, "texto": "La maldición de Megicula le impedía hablar de cómo murió Acier. Alejar a Noelle era su manera de protegerla." },
+      { "capitulo": 373, "texto": "Los cuatro hermanos pelean juntos contra su madre." }
+    ] },
+  { "id": "nebra-silva", "nombre": "Nebra Silva", "reino": "clover", "escuadron": "aguilas-plateadas", "rol": "Caballera Mágica", "magia": "Niebla", "glifo": "niebla", "grimorio": "Trébol de tres hojas", "debut": 23,
+    "texto": "Hermana mayor de Noelle. Se burla desde atrás de una cortina de espejismos, hasta que le toca verla pelear.", "revelaciones": [] },
+  { "id": "solid-silva", "nombre": "Solid Silva", "reino": "clover", "escuadron": "aguilas-plateadas", "rol": "Caballero Mágico", "magia": "Agua", "glifo": "agua", "grimorio": "Trébol de tres hojas", "debut": 23,
+    "texto": "El segundo varón de los Silva, el más cruel con Noelle y el primero al que ella le devolvió el golpe en público.", "revelaciones": [] },
+  { "id": "charlotte-roselei", "nombre": "Charlotte Roselei", "reino": "clover", "escuadron": "rosa-azul", "rol": "Capitana", "magia": "Zarza", "glifo": "zarza", "grimorio": "Trébol de tres hojas", "debut": 3,
+    "texto": "De chica cargaba con una maldición que se rompió de un modo que todavía le da vergüenza contar. Por eso no logra decirle dos frases seguidas a Yami.",
+    "revelaciones": [
+      { "capitulo": 279, "texto": "Atrapa a Vanica en sus zarzas durante el asalto a Spade." },
+      { "capitulo": 392, "texto": "El epílogo la confirma en pareja con Yami." }
+    ] },
+  { "id": "sol-marron", "nombre": "Sol Marron", "reino": "clover", "escuadron": "rosa-azul", "rol": "Caballera Mágica", "magia": "Tierra", "glifo": "tierra", "grimorio": "Trébol de tres hojas", "debut": 32,
+    "texto": "Pelea con un gigante de tierra y adora a su capitana sin ningún disimulo.", "revelaciones": [] },
+  { "id": "jack-el-destripador", "nombre": "Jack el Destripador", "reino": "clover", "escuadron": "mantis-verdes", "rol": "Capitán", "magia": "Corte", "glifo": "corte", "grimorio": "Trébol de tres hojas", "debut": 3,
+    "texto": "Flaco, altísimo y siempre buscando algo nuevo para cortar. Su rivalidad con Yami es de las más sinceras de la serie.",
+    "revelaciones": [
+      { "capitulo": 279, "texto": "Adapta sus cuchillas para cortar la gravedad de Dante." }
+    ] },
+  { "id": "sekke-bronzazza", "nombre": "Sekke Bronzazza", "reino": "clover", "escuadron": "mantis-verdes", "rol": "Caballero Mágico", "magia": "Bronce", "glifo": "acero", "grimorio": "Trébol de tres hojas", "debut": 3,
+    "texto": "El primero que Asta derrotó, en el examen de ingreso. Sobrevive a todo fingiendo que fue idea suya.", "revelaciones": [] },
+  { "id": "en-ringard", "nombre": "En Ringard", "reino": "clover", "escuadron": "mantis-verdes", "rol": "Caballero Mágico", "magia": "Hongos", "glifo": "hongos", "grimorio": "Trébol de tres hojas", "debut": 107,
+    "texto": "Tímido, con una voz que casi no le sale si no es a través de un hongo. Compartió equipo con Yuno y Noelle.", "revelaciones": [] },
+  { "id": "kaiser-granvorka", "nombre": "Kaiser Granvorka", "reino": "clover", "escuadron": "orcas-moradas", "rol": "Capitán", "magia": "Vórtice", "glifo": "vortice", "grimorio": "Trébol de tres hojas", "debut": 125,
+    "texto": "Heredó un escuadrón manchado por la traición. Un defensor nato: sus remolinos tragan ataques enteros.", "revelaciones": [] },
+  { "id": "xerx-lugner", "nombre": "Xerx Lugner", "reino": "clover", "escuadron": "orcas-moradas", "rol": "Vicecapitán", "magia": "Hielo", "glifo": "hielo", "grimorio": "Trébol de tres hojas", "debut": 105,
+    "texto": "Durante el torneo de los Caballeros Reales alguien ocupó su lugar sin permiso. El verdadero tenía bastante menos para admirar.", "revelaciones": [] },
+  { "id": "gueldre-poizot", "nombre": "Gueldre Poizot", "reino": "clover", "escuadron": "orcas-moradas", "rol": "Ex capitán", "magia": "Transparencia", "glifo": "niebla", "grimorio": "Trébol de tres hojas", "debut": 3,
+    "texto": "Contrabandista con capa de capitán. Vendía información al Ojo del Sol de Medianoche hasta que Yami y Julius lo dejaron en evidencia.",
+    "revelaciones": [
+      { "capitulo": 360, "texto": "Lucius lo usa para demostrar su poder y no sobrevive a la demostración." }
+    ] },
+  { "id": "revchi-salik", "nombre": "Revchi Salik", "reino": "clover", "escuadron": "orcas-moradas", "rol": "Ex caballero", "magia": "Cadenas", "glifo": "cadenas", "grimorio": "Trébol de tres hojas", "debut": 1,
+    "texto": "El ladrón que quiso robarle el grimorio a Yuno y terminó despertando el de Asta. Antes había sido caballero.", "revelaciones": [] },
+  { "id": "rill-boismortier", "nombre": "Rill Boismortier", "reino": "clover", "escuadron": "ciervos-aguamarina", "rol": "Capitán", "magia": "Pintura", "glifo": "pintura", "grimorio": "Trébol de tres hojas", "debut": 53,
+    "texto": "Capitán a los diecinueve. Puede darle vida a lo que pinta, y encontró a su musa la primera vez que alguien le dio de comer.",
+    "revelaciones": [
+      { "capitulo": 303, "texto": "Su Valhalla del crepúsculo le compra al grupo unos minutos de inmortalidad contra Megicula." },
+      { "capitulo": 392, "texto": "Se casa con Charmy." }
+    ] },
+  { "id": "fragil-tormenta", "nombre": "Fragil Tormenta", "reino": "clover", "escuadron": "ciervos-aguamarina", "rol": "Caballera Mágica", "magia": "Nieve", "glifo": "hielo", "grimorio": "Trébol de tres hojas", "debut": 110,
+    "texto": "De salud delicada y magia de nieve que también alivia heridas.", "revelaciones": [] },
+  { "id": "dorothy-unsworth", "nombre": "Dorothy Unsworth", "reino": "clover", "escuadron": "pavos-coral", "rol": "Capitana", "magia": "Sueño", "glifo": "sueno", "grimorio": "Trébol de tres hojas", "debut": 53,
+    "texto": "Duerme casi todo el tiempo; despierta habla sin pausa. En su mundo de sueños las reglas las pone ella.", "revelaciones": [] },
+  { "id": "kirsch-vermillion", "nombre": "Kirsch Vermillion", "reino": "clover", "escuadron": "pavos-coral", "rol": "Vicecapitán", "magia": "Flor de cerezo", "glifo": "zarza", "grimorio": "Trébol de tres hojas", "debut": 110,
+    "texto": "Hermano mayor de Mimosa y admirador número uno de sí mismo. La derrota en el torneo le hizo mejor que todos los halagos.", "revelaciones": [] },
+  { "id": "julius-novachrono", "nombre": "Julius Novachrono", "reino": "clover", "escuadron": null, "afiliacion": "28.º Rey Mago", "rol": "Rey Mago", "magia": "Tiempo", "glifo": "tiempo", "grimorio": "Sin tapas, páginas sueltas", "debut": 8,
+    "texto": "El hombre más fuerte de Clover se escapa de su oficina para ver magia rara. Cree en un reino sin privilegios de cuna. Patry lo mató, y un artefacto preparado de antemano lo devolvió con cuerpo de trece años.",
+    "revelaciones": [
+      { "capitulo": 331, "texto": "Comparte cuerpo con Lucius Zogratis, que llevaba años esperando adentro suyo." },
+      { "capitulo": 392, "texto": "Después de la derrota de Lucius entrega su vida para deshacer el daño del reino." }
+    ] },
+  { "id": "marx-francois", "nombre": "Marx Francois", "reino": "clover", "escuadron": null, "afiliacion": "Asistente del Rey Mago", "rol": "Asistente", "magia": "Comunicación", "glifo": "comunicacion", "grimorio": "Trébol de tres hojas", "debut": 8,
+    "texto": "La agenda viviente de Julius. Persigue al Rey Mago por todo el reino y mantiene comunicados a los escuadrones.", "revelaciones": [] },
+  { "id": "damnatio-kira", "nombre": "Damnatio Kira", "reino": "clover", "escuadron": null, "afiliacion": "Parlamento Mágico", "rol": "Presidente del Parlamento", "magia": "Balanza", "glifo": "balanza", "grimorio": "Trébol de tres hojas", "debut": 225,
+    "texto": "Noble de la casa Kira para quien la ley vale más que la verdad. Llevó a juicio a Asta y a Secre.",
+    "revelaciones": [
+      { "capitulo": 380, "texto": "Vuelve como paladín de Lucius, con el poder del demonio Baal." }
+    ] },
+  { "id": "hermana-lily", "nombre": "Hermana Lily", "reino": "clover", "escuadron": null, "afiliacion": "Iglesia de Hage", "rol": "Monja", "magia": "Agua", "glifo": "agua", "grimorio": "Trébol de tres hojas", "debut": 1,
+    "texto": "Crió a los chicos de la iglesia y rechazó varias docenas de propuestas de matrimonio de Asta, algunas a puñetazos de agua.",
+    "revelaciones": [
+      { "capitulo": 350, "texto": "Lucius la convierte en paladín y la usa para expulsar a Asta del reino. Él logra recuperarla en el País del Sol." }
+    ] },
+  { "id": "reina-bruja", "nombre": "Reina Bruja", "reino": "clover", "escuadron": null, "afiliacion": "Bosque de las Brujas", "rol": "Reina", "magia": "Sangre", "glifo": "sangre", "grimorio": "No se muestra", "debut": 80,
+    "texto": "Gobierna el bosque y ve a sus hijas como obras que tienen que salir perfectas. Cura a Asta, y el precio casi cuesta más que la herida.", "revelaciones": [] },
+  { "id": "lumiere", "nombre": "Lumiere Silvamillion Clover", "reino": "clover", "escuadron": null, "afiliacion": "1.er Rey Mago", "rol": "Rey Mago", "magia": "Luz", "glifo": "luz", "grimorio": "Trébol de tres hojas", "debut": 1,
+    "texto": "El héroe de la estatua. Inventor, curioso y amigo de los elfos; quedó petrificado para poder volver si el mal de su época despertaba de nuevo.", "revelaciones": [] },
+  { "id": "fanzell-kruger", "nombre": "Fanzell Kruger", "reino": "diamond", "escuadron": null, "afiliacion": "Desertor de Diamond", "rol": "Maestro", "magia": "Viento", "glifo": "viento", "grimorio": "Diamante", "debut": 74,
+    "texto": "Ex comandante que abandonó el ejército cuando vio qué hacían con los reclutas. Le enseñó esgrima a Asta.", "revelaciones": [] },
+  { "id": "mars", "nombre": "Mars", "reino": "diamond", "escuadron": null, "afiliacion": "Ocho Generales Brillantes", "rol": "General", "magia": "Cristal y fuego", "glifo": "cristal", "grimorio": "Diamante", "debut": 16,
+    "texto": "Sobreviviente de un programa que enfrentaba a los reclutas entre sí. Lleva en el cuerpo un segundo grimorio, el de Fana, y busca una salida que no sea otra guerra.",
+    "revelaciones": [
+      { "capitulo": 392, "texto": "En el epílogo se casa con Fana." }
+    ] },
+  { "id": "lotus-whomalt", "nombre": "Lotus Whomalt", "reino": "diamond", "escuadron": null, "afiliacion": "Ocho Generales Brillantes", "rol": "General", "magia": "Humo", "glifo": "niebla", "grimorio": "Diamante", "debut": 13,
+    "texto": "Veterano, padre de familia y experto en retirarse a tiempo. Le teme a Yami desde hace años, con motivos.", "revelaciones": [] },
+  { "id": "ladros", "nombre": "Ladros", "reino": "diamond", "escuadron": null, "afiliacion": "Ocho Generales Brillantes", "rol": "General", "magia": "Sin atributo", "glifo": "vortice", "grimorio": "Diamante", "debut": 85,
+    "texto": "No tiene afinidad propia: absorbe la magia ajena y la escupe concentrada.", "revelaciones": [] },
+  { "id": "lolopechka", "nombre": "Lolopechka", "reino": "heart", "escuadron": null, "afiliacion": "Corona de Heart", "rol": "Reina", "magia": "Agua", "glifo": "agua", "grimorio": "Corazón", "debut": 228,
+    "texto": "Reina de un país donde cada quien ayuda con lo que tiene. Pacta con Undine y lleva encima una maldición de Megicula con fecha de vencimiento. Vanica la secuestró en el ataque a Heart.",
+    "revelaciones": [
+      { "capitulo": 304, "texto": "Megicula la transforma; vuelve a ser humana cuando cae el demonio." },
+      { "capitulo": 392, "texto": "El epílogo la muestra casada con Gadjah." }
+    ] },
+  { "id": "gadjah", "nombre": "Gadjah", "reino": "heart", "escuadron": null, "afiliacion": "Guardianes espirituales", "rol": "Guardián", "magia": "Rayo", "glifo": "rayo", "grimorio": "Corazón", "debut": 228,
+    "texto": "El guardián más fuerte de Heart y el que entrenó a Luck. Haría cualquier cosa por su reina.",
+    "revelaciones": [
+      { "capitulo": 303, "texto": "Se lanza contra Megicula con todo lo que le queda y cae en el intento." },
+      { "capitulo": 392, "texto": "Aparece con vida en el epílogo, casado con Lolopechka." }
+    ] },
+  { "id": "dante-zogratis", "nombre": "Dante Zogratis", "reino": "spade", "escuadron": null, "afiliacion": "Tríada Oscura", "rol": "Antagonista", "magia": "Gravedad y cuerpo", "glifo": "gravedad", "grimorio": "Pica", "debut": 236,
+    "texto": "El líder visible de la Tríada. Aloja a Lucifero, se regenera y solo disfruta de lo que despierta malicia.",
+    "revelaciones": [
+      { "capitulo": 293, "texto": "Pierde contra Magna, un plebeyo con casi nada de magia." }
+    ] },
+  { "id": "vanica-zogratis", "nombre": "Vanica Zogratis", "reino": "spade", "escuadron": null, "afiliacion": "Tríada Oscura", "rol": "Antagonista", "magia": "Sangre y maldición", "glifo": "sangre", "grimorio": "Pica", "debut": 236,
+    "texto": "Busca rivales fuertes como quien busca juguetes. Es la portadora de Megicula, el demonio que maldijo a Acier Silva.",
+    "revelaciones": [
+      { "capitulo": 303, "texto": "Megicula la usó para manifestarse. Las dos caen ante Noelle y sus aliados." }
+    ] },
+  { "id": "zenon-zogratis", "nombre": "Zenon Zogratis", "reino": "spade", "escuadron": null, "afiliacion": "Tríada Oscura", "rol": "Antagonista", "magia": "Hueso y espacial", "glifo": "hueso", "grimorio": "Pica", "debut": 234,
+    "texto": "El menor y el más frío. Aloja a Beelzebub y destruyó medio Amanecer Dorado en una sola visita.",
+    "revelaciones": [
+      { "capitulo": 308, "texto": "De joven mató a Allen, su amigo, y desde entonces eligió no necesitar a nadie. Acorralado, toma el corazón de Beelzebub." },
+      { "capitulo": 331, "texto": "Yuno lo derrota con su segundo grimorio." }
+    ] },
+  { "id": "lucius-zogratis", "nombre": "Lucius Zogratis", "reino": "spade", "escuadron": null, "afiliacion": "Hermano mayor de la Tríada", "rol": "Antagonista final", "magia": "Alma y tiempo", "glifo": "tiempo", "grimorio": "No se muestra", "debut": 331,
+    "texto": "El mayor de los Zogratis, escondido en el cuerpo de Julius. Quiere rehacer a la humanidad sin diferencias, sin dolor y sin preguntarle a nadie. Convierte personas en paladines y se multiplica en copias.", "revelaciones": [] },
+  { "id": "ryuya-ryudo", "nombre": "Ryuya Ryudo", "reino": "sol", "escuadron": null, "afiliacion": "Shogun del País del Sol", "rol": "Shogun", "magia": "Sin magia", "glifo": "sol", "grimorio": "No usa", "debut": 338,
+    "texto": "Gobierna sin energía mágica propia, algo que lo acerca a Asta desde el primer encuentro. Con el Tengentsu, su ojo, ve lo que pasa en toda su tierra.", "revelaciones": [] },
+  { "id": "ichika-yami", "nombre": "Ichika Yami", "reino": "sol", "escuadron": null, "afiliacion": "Ryuzen", "rol": "Guerrera", "magia": "Oscuridad", "glifo": "oscuridad", "grimorio": "No usa", "debut": 338,
+    "texto": "La hermana menor de Yami, criada en la creencia de que él destruyó a su clan. Entrena a Asta de mala gana y termina recuperando una parte de la historia.", "revelaciones": [] },
+  { "id": "licht", "nombre": "Licht", "reino": "elfos", "escuadron": null, "afiliacion": "Líder de los elfos", "rol": "Elfo", "magia": "Espada", "glifo": "corte", "grimorio": "Trébol de cuatro hojas, luego de cinco", "debut": 52,
+    "texto": "Cinco siglos atrás soñó con la convivencia entre elfos y humanos junto a Lumiere. El grimorio de Asta fue suyo.", "revelaciones": [] },
+  { "id": "patry", "nombre": "Patry", "reino": "elfos", "escuadron": null, "afiliacion": "Ojo del Sol de Medianoche", "rol": "Antagonista", "magia": "Luz", "glifo": "luz", "grimorio": "Trébol de cuatro hojas", "debut": 36,
+    "texto": "Se hizo pasar por Licht para reunir a los suyos. Cuando entiende quién los traicionó de verdad, pelea contra ese engaño.", "revelaciones": [] },
+  { "id": "rhya", "nombre": "Rhya", "reino": "elfos", "escuadron": null, "afiliacion": "Tercer Ojo", "rol": "Antagonista", "magia": "Imitación", "glifo": "espejo", "grimorio": "Trébol de tres hojas", "debut": 48,
+    "texto": "Copia la magia de quien toca y bosteza mientras lo hace. El más lúcido de los tres.", "revelaciones": [] },
+  { "id": "vetto", "nombre": "Vetto", "reino": "elfos", "escuadron": null, "afiliacion": "Tercer Ojo", "rol": "Antagonista", "magia": "Bestia", "glifo": "bestia", "grimorio": "Trébol de tres hojas", "debut": 48,
+    "texto": "Encarna la desesperación del grupo. Fue la prueba que convirtió a los Toros Negros en un equipo.", "revelaciones": [] },
+  { "id": "fana", "nombre": "Fana", "reino": "elfos", "escuadron": null, "afiliacion": "Tercer Ojo", "rol": "Antagonista", "magia": "Fuego", "glifo": "fuego", "grimorio": "Trébol de tres hojas", "debut": 48,
+    "texto": "Odio y Salamandra en un mismo cuerpo. Debajo hay una chica de Diamond que Mars creía muerta.",
+    "revelaciones": [
+      { "capitulo": 392, "texto": "En el epílogo se casa con Mars." }
+    ] },
+  { "id": "liebe", "nombre": "Liebe", "reino": "inframundo", "escuadron": null, "afiliacion": "Grimorio de Asta", "rol": "Demonio", "magia": "Antimagia", "glifo": "antimagia", "grimorio": "Trébol de cinco hojas", "debut": 267,
+    "texto": "Nació sin magia entre demonios que lo maltrataban. Licita, una humana, lo adoptó y lo escondió en un grimorio para salvarlo. Odia a los suyos con razón.",
+    "revelaciones": [
+      { "capitulo": 331, "texto": "Salda su cuenta con Lucifero peleando con Asta." }
+    ] },
+  { "id": "zagred", "nombre": "Zagred", "reino": "inframundo", "escuadron": null, "afiliacion": "Demonio sin dueño", "rol": "Antagonista", "magia": "Palabra", "glifo": "comunicacion", "grimorio": "Trébol de cinco hojas", "debut": 205,
+    "texto": "Lo que dice se cumple. Provocó la masacre de los elfos para conseguir un cuerpo y esperó quinientos años por la segunda oportunidad.", "revelaciones": [] },
+  { "id": "lucifero", "nombre": "Lucifero", "reino": "inframundo", "escuadron": null, "afiliacion": "Demonio supremo", "rol": "Antagonista", "magia": "Gravedad", "glifo": "gravedad", "grimorio": "No usa", "debut": 260,
+    "texto": "Uno de los tres demonios más altos. Dante usa parte de su poder; el ritual de Spade busca traerlo entero.",
+    "revelaciones": [
+      { "capitulo": 331, "texto": "Cruza a medias y aun así casi alcanza para terminar con todos. Lo vencen Asta y Liebe." }
+    ] },
+  { "id": "megicula", "nombre": "Megicula", "reino": "inframundo", "escuadron": null, "afiliacion": "Pacta con Vanica", "rol": "Antagonista", "magia": "Maldición", "glifo": "veneno", "grimorio": "No usa", "debut": 244,
+    "texto": "Estudia a los humanos como quien anota resultados. Mató a Acier Silva con una maldición de la que ni siquiera se podía hablar.",
+    "revelaciones": [
+      { "capitulo": 303, "texto": "Noelle destruye su corazón." }
+    ] },
+  { "id": "beelzebub", "nombre": "Beelzebub", "reino": "inframundo", "escuadron": null, "afiliacion": "Pacta con Zenon", "rol": "Demonio", "magia": "Espacial", "glifo": "espacial", "grimorio": "No usa", "debut": 260,
+    "texto": "Otro de los tres grandes. Presta su magia espacial a Zenon.",
+    "revelaciones": [
+      { "capitulo": 308, "texto": "Le entrega su corazón a Zenon." }
+    ] },
+  { "id": "lilith-nahamah", "nombre": "Lilith y Nahamah", "reino": "inframundo", "escuadron": null, "afiliacion": "Primer nivel del inframundo", "rol": "Antagonistas", "magia": "Hielo y fuego", "glifo": "hielo", "grimorio": "No usan", "debut": 280,
+    "texto": "Demonios gemelos, uno de hielo y otro de fuego. Son los primeros en cruzar cuando se abre la puerta.",
+    "revelaciones": [
+      { "capitulo": 291, "texto": "Lilith absorbe a Nahamah y Asta termina con los dos." }
+    ] },
+  { "id": "adrammelech", "nombre": "Adrammelech", "reino": "inframundo", "escuadron": null, "afiliacion": "Demonio supremo", "rol": "Demonio", "magia": "Luz", "glifo": "luz", "grimorio": "No usa", "debut": 331,
+    "texto": "Mira la guerra de los humanos con aburrimiento y hace lo que le conviene. Más adelante pacta con Yami.", "revelaciones": [] }
+]

@@ -1,0 +1,9 @@
+[
+  { "id": "lumiere", "orden": "1.º", "nombre": "Lumiere Silvamillion Clover", "magia": "Luz", "capitulo": 200, "texto": "Fundador del cargo, inventor de herramientas mágicas y amigo de los elfos. Detuvo al primer gran demonio que pisó el reino." },
+  { "id": "princia", "orden": "11.ª", "nombre": "Princia Funnybunny", "magia": "Legión", "capitulo": 228, "texto": "Comandaba soldados con forma de piezas de ajedrez. Aparece en la película de 2023." },
+  { "id": "jester", "orden": "16.º", "nombre": "Jester Garandros", "magia": "Barrera", "capitulo": 228, "texto": "Especialista en defensas. También es parte del grupo que regresa en la película." },
+  { "id": "edward", "orden": "20.º", "nombre": "Edward Avalaché", "magia": "Cuña de hielo", "capitulo": 228, "texto": "Apartado del trono y condenado por los suyos. Vuelve en la película." },
+  { "id": "conrad", "orden": "27.º", "nombre": "Conrad Leto", "magia": "Llave", "capitulo": 228, "texto": "El antecesor de Julius y el antagonista de la película." },
+  { "id": "julius", "orden": "28.º", "nombre": "Julius Novachrono", "magia": "Tiempo", "capitulo": 1, "texto": "Rey Mago durante casi toda la serie. Coleccionista de magias raras y convencido de que el origen no decide el valor de nadie." },
+  { "id": "asta-rey", "orden": "29.º", "nombre": "Asta", "magia": "Antimagia", "capitulo": 392, "texto": "Gana el duelo contra Yuno y recibe el cargo. Su coronación se dibujó en el capítulo extra de la guía oficial." }
+]

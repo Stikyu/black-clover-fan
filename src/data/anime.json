@@ -1,0 +1,25 @@
+{
+  "actualizado": "2026-11-25",
+  "ultimoEmitido": 178,
+  "capituloFinT1": 270,
+  "horaArgentina": "12:00",
+  "estreno": {
+    "horaUTC": "15:00",
+    "aclaracion": "Los horarios de las fechas sin emitir son los del calendario semanal y pueden cambiar."
+  },
+  "episodios": [
+    { "numero": 171, "enTemporada": 1, "titulo": "Comienza la guerra", "fecha": "2026-10-03", "capitulos": [270, 275] },
+    { "numero": 172, "enTemporada": 2, "titulo": "La puerta al infierno", "fecha": "2026-10-10", "capitulos": [275, 279] },
+    { "numero": 173, "enTemporada": 3, "titulo": "El defensor cubierto de negro", "fecha": "2026-10-17", "capitulos": [280, 284] },
+    { "numero": 174, "enTemporada": 4, "titulo": "El día de la expiación", "fecha": "2026-10-24", "capitulos": [285, 289] },
+    { "numero": 175, "enTemporada": 5, "titulo": "El mejor contra el peor", "fecha": "2026-10-31", "capitulos": [290, 293] },
+    { "numero": 176, "enTemporada": 6, "titulo": "La valquiria sagrada", "fecha": "2026-11-07", "capitulos": [294, 298] },
+    { "numero": 177, "enTemporada": 7, "titulo": "Al no rendirnos", "fecha": "2026-11-14", "capitulos": [299, 303] },
+    { "numero": 178, "enTemporada": 8, "titulo": "El corazón del demonio", "fecha": "2026-11-21", "capitulos": [304, 308], "nota": "Algunas reseñas acotan la adaptación a los capítulos 305 a 307." },
+    { "numero": 179, "enTemporada": 9, "titulo": "Yuno Grinberryall", "fecha": "2026-11-28", "capitulos": null },
+    { "numero": 180, "enTemporada": 10, "titulo": null, "fecha": "2026-12-05", "capitulos": null },
+    { "numero": 181, "enTemporada": 11, "titulo": null, "fecha": "2026-12-12", "capitulos": null },
+    { "numero": 182, "enTemporada": 12, "titulo": null, "fecha": "2026-12-19", "capitulos": null },
+    { "numero": 183, "enTemporada": 13, "titulo": null, "fecha": "2026-12-26", "capitulos": null }
+  ]
+}
