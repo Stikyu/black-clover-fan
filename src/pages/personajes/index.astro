@@ -1,11 +1,10 @@
 ---
 import { todosLosPersonajes, todosLosEscuadrones } from '@/lib/orden';
 import Base from '@/layouts/Base.astro';
-import Escudo from '@/components/Escudo.astro';
 import Glifo from '@/components/Glifo.astro';
 import { armas } from '@/lib/armas';
 import { nivelDeCapitulo, ETIQUETA } from '@/lib/spoilers';
-import { ruta, iniciales, REINO_NOMBRE } from '@/lib/rutas';
+import { ruta, REINO_NOMBRE } from '@/lib/rutas';
 
 const personajes = await todosLosPersonajes();
 const escuadrones = await todosLosEscuadrones();
@@ -20,7 +19,7 @@ const reinos = Object.keys(REINO_NOMBRE).map((r) => ({ r, req: nivelMin(personaj
     <div class="wrap">
       <header class="pagina__cabeza">
         <h1>Personajes</h1>
-        <p class="lead">Cada escudo lleva el color y la trama de su escuadrón, al modo de los grabadores antiguos. Quienes debutan más adelante de donde estás aparecen lacrados.</p>
+        <p class="lead">Cada escudo lleva el color y la trama de su escuadrón y un grabado propio con lo que distingue a cada personaje. Quienes debutan más adelante de donde estás aparecen lacrados.</p>
       </header>
 
       <div class="pagina__cuerpo">
@@ -37,14 +36,14 @@ const reinos = Object.keys(REINO_NOMBRE).map((r) => ({ r, req: nivelMin(personaj
         <p class="conteo muted" role="status" aria-live="polite" id="conteo">{personajes.length} personajes</p>
 
         <ul class="cartas">
-          {personajes.map((p) => {
+          {personajes.map((p, i) => {
             const a = armas(p);
             const req = nivelDeCapitulo(p.data.debut);
             return (
               <li class="carta" data-req={req} data-nombre={norma(`${p.data.nombre} ${a.afiliacion} ${p.data.magia} ${p.data.rol}`)} data-esc={p.data.escuadron?.id ?? 'ninguno'} data-mag={p.data.magia} data-rei={p.data.reino}>
                 <a class="carta__cara card marco" href={ruta(`personajes/${p.id}/`)} style={`--c:${a.color}`} data-nosnippet={req > 0 ? '' : undefined}>
                   <span class="carta__campo">
-                    <Escudo color={a.color} trama={a.trama} iniciales={iniciales(p.data.nombre)} />
+                    <img class="carta__vineta" src={ruta(`vinetas/${p.id}.svg`)} alt="" width="200" height="240" loading={i < 8 ? 'eager' : 'lazy'} decoding="async" />
                     <span class="carta__magia" aria-hidden="true"><Glifo tipo={p.data.glifo} /></span>
                   </span>
                   <span class="carta__nombre">{p.data.nombre}</span>
@@ -80,8 +79,9 @@ const reinos = Object.keys(REINO_NOMBRE).map((r) => ({ r, req: nivelMin(personaj
   .carta { position: relative; display: grid; min-width: 0; }
   .carta__cara, .carta__lacrada { grid-area: 1 / 1; display: grid; grid-template-rows: auto auto auto 1fr; justify-items: start; padding: 4px 8px 10px; text-decoration: none; min-height: 296px; }
   .carta__cara { transition: transform 180ms var(--ease), box-shadow 180ms var(--ease); }
-  .carta__campo { position: relative; justify-self: stretch; display: grid; place-items: center; height: 168px; margin-bottom: 14px; --esc: 112px; background: radial-gradient(ellipse at 50% 55%, color-mix(in oklab, var(--c) 62%, transparent), transparent 72%); }
+  .carta__campo { position: relative; justify-self: stretch; display: grid; place-items: center; height: 190px; margin-bottom: 12px; background: radial-gradient(ellipse at 50% 55%, color-mix(in oklab, var(--c) 62%, transparent), transparent 72%); }
   .carta__campo::before { content: ''; position: absolute; inset: 8px 0; background: repeating-radial-gradient(circle at 50% 50%, transparent 0 7px, color-mix(in oklab, var(--oro) 34%, transparent) 7px 8px); mask: radial-gradient(circle, #000 20%, transparent 70%); -webkit-mask: radial-gradient(circle, #000 20%, transparent 70%); }
+  .carta__vineta { position: relative; width: auto; height: 172px; }
   .carta__magia { position: absolute; right: 6px; bottom: 8px; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; border: 1.500px solid var(--oro); background: var(--bg); color: var(--oro); }
   .carta__nombre { font-family: var(--f-titulo); font-size: 27px; line-height: 1.06; margin-bottom: 5px; font-weight: 500; }
   .carta__dato { line-height: 1.35; font-size: 17px; }
@@ -103,7 +103,8 @@ const reinos = Object.keys(REINO_NOMBRE).map((r) => ({ r, req: nivelMin(personaj
     .filtros .btn { width: 100%; }
     .cartas { gap: 12px; grid-template-columns: 1fr; }
     .carta__cara { grid-template-columns: 104px 1fr; grid-template-rows: auto auto 1fr; column-gap: 14px; min-height: 128px; }
-    .carta__campo { grid-row: 1 / -1; height: 118px; margin: 0; --esc: 76px; align-self: center; }
+    .carta__campo { grid-row: 1 / -1; height: 124px; margin: 0; align-self: center; }
+    .carta__vineta { height: 112px; }
     .carta__magia { width: 36px; height: 36px; right: -2px; bottom: 0; }
     .carta__nombre { align-self: end; font-size: 25px; }
     .carta__lacrada { min-height: 128px; }

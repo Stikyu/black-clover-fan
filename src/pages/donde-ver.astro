@@ -2,6 +2,8 @@
 import Base from '@/layouts/Base.astro';
 import datos from '@/data/donde-ver.json';
 import { fechaLarga } from '@/lib/estado';
+import Video from '@/components/Video.astro';
+import videos from '@/data/videos.json';
 const grupos = [{ titulo: 'Para ver', lista: datos.ver }, { titulo: 'Para leer', lista: datos.leer }];
 ---
 <Base titulo="Dónde ver y leer Black Clover legalmente en Argentina" descripcion="Plataformas y editoriales oficiales para ver y leer Black Clover en Argentina y Latinoamérica: Crunchyroll, Netflix, MANGA Plus, Ivrea y más.">
@@ -25,6 +27,21 @@ const grupos = [{ titulo: 'Para ver', lista: datos.ver }, { titulo: 'Para leer',
             </ul>
           </section>
         ))}
+        <section class="bloque" id="videos">
+          <h2>Videos oficiales</h2>
+          <p>Salen de los canales de YouTube de TV Tokyo y avex pictures, los mismos que enlaza la web oficial del anime. El reproductor se carga recién cuando hacés clic.</p>
+          <div class="videos">{videos.filter((v) => v.duracion).map((v) => <Video video={v} />)}</div>
+        </section>
+        <section class="bloque">
+          <h2>Cuentas oficiales</h2>
+          <p>Para ver ilustraciones, capturas y anuncios en la fuente.</p>
+          <ul class="cuentas">
+            <li><a class="link" href="https://bclover.jp/" rel="noopener">Web oficial del anime (japonés)</a></li>
+            <li><a class="link" href="https://x.com/bclover_PR" rel="noopener">X: @bclover_PR</a></li>
+            <li><a class="link" href="https://www.tiktok.com/@bclover_anime" rel="noopener">TikTok: @bclover_anime</a></li>
+            <li><a class="link" href="https://bclover.jp/character/" rel="noopener">Galería de personajes</a></li>
+          </ul>
+        </section>
       </div>
     </div>
   </div>
@@ -34,6 +51,10 @@ const grupos = [{ titulo: 'Para ver', lista: datos.ver }, { titulo: 'Para leer',
   .grupo { display: grid; grid-template-columns: 302px minmax(0, 1fr); column-gap: 72px; row-gap: 12px; }
   .grupo li { display: grid; grid-template-columns: 1fr 250px; gap: 18px 40px; align-items: center; padding: 28px 0; border-top: 1px solid var(--linea); }
   .grupo li:first-child { border-top: 2px solid var(--line-strong); }
+  #videos { scroll-margin-top: calc(var(--nav) + 32px); }
+  .videos { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 24px; }
+  .cuentas { display: flex; flex-wrap: wrap; gap: 4px 32px; }
+  .cuentas a { --u: 8px; display: inline-block; padding: 8px 0; }
   .que { font-weight: 700; margin-top: 2px; }
   .que + p { margin-top: 4px; max-width: 56ch; color: var(--muted); }
   @media (max-width: 1023px) { .grupo { grid-template-columns: 1fr; } }

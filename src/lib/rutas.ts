@@ -29,7 +29,3 @@ export const REINO_ARMAS: Record<string, { color: string; trama: string; emblema
   inframundo: { color: '#401b1b', trama: 'sable', emblema: 'antimagia' },
 };
 
-export const iniciales = (nombre: string) => {
-  const p = nombre.split(/\s+/).filter((x) => !['el', 'la', 'de', 'y', 'hermana'].includes(x.toLowerCase()));
-  return (p[0]?.[0] ?? '') + (p[1]?.[0] ?? '');
-};

@@ -6,7 +6,7 @@ Sitio de fans de **Black Clover** en español, con guía de capítulos y un sist
 
 ![Portada: grabado de un grimorio sobre un campo de tréboles](docs/capturas/portada.jpg)
 
-Proyecto sin fines de lucro, no afiliado a Shueisha, Studio Pierrot ni Crunchyroll. Black Clover es obra de Yūki Tabata. Los textos y los dibujos son propios: no hay páginas del manga, capturas del anime, logos ni ilustraciones oficiales.
+Proyecto sin fines de lucro, no afiliado a Shueisha, Studio Pierrot ni Crunchyroll. Black Clover es obra de Yūki Tabata. Los textos y los dibujos son propios: en el repositorio no hay páginas del manga, capturas del anime, logos ni ilustraciones oficiales. Los videos se incrustan desde los canales oficiales de YouTube de TV Tokyo y avex pictures.
 
 ## Qué tiene
 
@@ -14,8 +14,9 @@ Proyecto sin fines de lucro, no afiliado a Shueisha, Studio Pierrot ni Crunchyro
 - **Estado actual:** manga, último episodio, próximo episodio con cuenta regresiva y capítulo para seguir.
 - **Historia** en doce arcos, con rango de capítulos y episodios.
 - **¿Dónde sigo leyendo?** Calculadora y tabla de episodios de la T2 con los capítulos que adaptan.
-- **71 personajes** con buscador y filtros por escuadrón, tipo de magia y reino, y una ficha para cada uno.
-- **Los nueve escuadrones** y los Reyes Magos.
+- **71 personajes** con buscador y filtros por escuadrón, tipo de magia y reino, una ficha para cada uno y un escudo grabado propio con lo que lo distingue.
+- **Los nueve escuadrones**, con blasones heráldicos originales, y los Reyes Magos.
+- **Videos oficiales** de la T1 y la T2: el reproductor se carga recién al hacer clic y respeta el nivel de spoilers.
 - **Magia y mundo, cronología, dónde ver y leer** legalmente en Argentina y Latinoamérica.
 - **Quiz:** ¿a qué escuadrón pertenecés?
 - Responsive, oscuro por defecto con tema pergamino opcional, accesible, con sitemap y Open Graph.
@@ -61,6 +62,9 @@ Otros datos que cambian cada tanto:
 | Tomos y ediciones en español | `src/data/manga.json` |
 | Dónde ver y leer | `src/data/donde-ver.json` |
 | Hitos de la franquicia | `src/data/linea-de-tiempo.json` |
+| Videos oficiales | `src/data/videos.json` |
+| Dibujo de cada personaje | `src/lib/vinetas.ts` (combina los motivos de `src/lib/motivos.ts`) |
+| Blasones | `src/lib/blasones.ts` |
 | Personajes y sus revelaciones | `src/data/personajes.json` |
 | Escuadrones, arcos, mundo, quiz | `src/data/*.json` |
 

@@ -7,8 +7,8 @@
   ],
   "leer": [
     { "nombre": "Ivrea Argentina", "que": "Tomos en papel, del 1 al 37", "detalle": "El 38, último de la serie, figura para el 27 de noviembre de 2026.", "url": "https://www.ivrea.com.ar/titulo/black-clover/", "accion": "Ver la ficha de Ivrea" },
-    { "nombre": "MANGA Plus", "que": "Lectura digital oficial de Shueisha", "detalle": "Los primeros y los últimos capítulos se leen gratis; el resto depende de la app. Tiene edición en español.", "url": "https://mangaplus.shueisha.co.jp/", "accion": "Buscar en MANGA Plus" },
-    { "nombre": "VIZ", "que": "Edición en inglés", "detalle": "Tomos hasta el 37 y capítulos dentro de Shonen Jump, según el país.", "url": "https://www.viz.com/black-clover", "accion": "Ver la ficha de VIZ" },
+    { "nombre": "Manga Plus", "que": "Lectura digital oficial de Shueisha", "detalle": "Los primeros y los últimos capítulos se leen gratis; el resto depende de la app. Tiene edición en español.", "url": "https://mangaplus.shueisha.co.jp/", "accion": "Buscar en MANGA Plus" },
+    { "nombre": "Viz Media", "que": "Edición en inglés", "detalle": "Tomos hasta el 37 y capítulos dentro de Shonen Jump, según el país.", "url": "https://www.viz.com/black-clover", "accion": "Ver la ficha de VIZ" },
     { "nombre": "Norma Editorial", "que": "Edición de España", "detalle": "Va por el tomo 37, de junio de 2026. El 38 no tenía fecha anunciada en la última revisión.", "url": "https://www.normaeditorial.com/", "accion": "Buscar en Norma" }
   ]
 }

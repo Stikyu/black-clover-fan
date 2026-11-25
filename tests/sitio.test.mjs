@@ -203,6 +203,38 @@ test('accesibilidad con spoilers tapados', async () => {
   assert.deepEqual(fallas, []);
 });
 
+test('cada personaje y escuadrón tiene su dibujo y las imágenes cargan', async () => {
+  for (const p of JSON.parse(fs.readFileSync('src/data/personajes.json', 'utf8'))) assert.ok(fs.existsSync(path.join(raiz, 'vinetas', `${p.id}.svg`)), p.id);
+  for (const ruta of ['/personajes/', '/personajes/asta/', '/escuadrones/', '/quiz/']) {
+    const p = await abrir(ruta, { nivel: 2 });
+    const rotas = await p.evaluate(async () => {
+      const imgs = [...document.images];
+      imgs.forEach((i) => (i.loading = 'eager'));
+      await Promise.all(imgs.map((i) => i.decode().catch(() => {})));
+      return imgs.filter((i) => !i.naturalWidth && i.checkVisibility()).map((i) => i.src);
+    });
+    assert.deepEqual(rotas, [], ruta);
+    await p.context().close();
+  }
+});
+
+test('los videos son oficiales, no piden nada antes del clic y se cierran si quedan tapados', async () => {
+  const videos = JSON.parse(fs.readFileSync('src/data/videos.json', 'utf8'));
+  assert.ok(videos.every((v) => ['TV Tokyo Anime', 'avex pictures'].includes(v.canal)));
+  const p = await abrir('/', { nivel: 1 });
+  const pedidos = [];
+  await p.route(/youtube|ytimg/, (r) => { pedidos.push(r.request().url()); r.fulfill({ status: 200, contentType: 'text/html', body: 'ok' }); });
+  await p.reload();
+  assert.equal(pedidos.length, 0);
+  await p.locator('#videos .video-tapa a[data-video]').first().click();
+  await p.waitForSelector('#videos iframe');
+  assert.match(await p.locator('#videos iframe').getAttribute('src'), /^https:\/\/www\.youtube-nocookie\.com\/embed\//);
+  await p.click('[data-nivel-boton]');
+  await p.check('#nivel-panel input[value="0"]');
+  assert.equal(await p.locator('#videos iframe').count(), 0);
+  await p.context().close();
+});
+
 test('enlaces internos y anclas existen', () => {
   const rotas = [];
   const paginas = fs.readdirSync(raiz, { recursive: true }).map(String).filter((f) => f.endsWith('.html'));

@@ -1,0 +1,18 @@
+[
+  { "id": "t2-principal", "youtube": "4MYo8FfiXMA", "titulo": "Tráiler principal de la T2", "canal": "TV Tokyo Anime", "nivel": 1, "duracion": "Tráiler" },
+  { "id": "t2-avance", "youtube": "b_hLnfMgltY", "titulo": "Primer avance de la T2", "canal": "avex pictures", "nivel": 1, "duracion": "Avance" },
+  { "id": "t2-anuncio", "youtube": "VRDalljTlmA", "titulo": "Anuncio de la T2", "canal": "avex pictures", "nivel": 1, "duracion": "Anuncio" },
+  { "id": "t2-opening", "youtube": "PtBmc0oFIx4", "titulo": "Opening de la T2", "canal": "TV Tokyo Anime", "nivel": 1, "duracion": "Opening" },
+  { "id": "t2-ending", "youtube": "umzOm3846cA", "titulo": "Ending de la T2", "canal": "TV Tokyo Anime", "nivel": 1, "duracion": "Ending" },
+  { "id": "t1-repaso", "youtube": "d923IfueKbw", "titulo": "Repaso de la T1", "canal": "TV Tokyo Anime", "nivel": 0, "duracion": "Repaso" },
+  { "id": "t1-parte-1", "youtube": "dDohKDwZpY8", "titulo": "Repaso oficial, parte 1", "canal": "TV Tokyo Anime", "nivel": 0, "arco": "examen" },
+  { "id": "t1-parte-2", "youtube": "jNSCxULjV7M", "titulo": "Repaso oficial, parte 2", "canal": "TV Tokyo Anime", "nivel": 0, "arco": "mazmorra" },
+  { "id": "t1-parte-3", "youtube": "h8wKBzHMI1o", "titulo": "Repaso oficial, parte 3", "canal": "TV Tokyo Anime", "nivel": 0, "arco": "ojo" },
+  { "id": "t1-parte-4", "youtube": "8eNZy0ZwQCc", "titulo": "Repaso oficial, parte 4", "canal": "TV Tokyo Anime", "nivel": 0, "arco": "templo" },
+  { "id": "t1-parte-5", "youtube": "FPEe3CpcJJ0", "titulo": "Repaso oficial, parte 5", "canal": "TV Tokyo Anime", "nivel": 0, "arco": "brujas" },
+  { "id": "t1-parte-7", "youtube": "X5cPU-7rzwE", "titulo": "Repaso oficial, parte 7", "canal": "TV Tokyo Anime", "nivel": 0, "arco": "reales" },
+  { "id": "t1-parte-8", "youtube": "UVwH8I0Vcxo", "titulo": "Repaso oficial, parte 8", "canal": "TV Tokyo Anime", "nivel": 0, "arco": "elfos" },
+  { "id": "t1-parte-10", "youtube": "MeacetW7ryU", "titulo": "Repaso oficial, parte 10", "canal": "TV Tokyo Anime", "nivel": 0, "arco": "entrenamiento" },
+  { "id": "t1-parte-11", "youtube": "1-bLLL5BSk8", "titulo": "Repaso oficial, parte 11", "canal": "TV Tokyo Anime", "nivel": 0, "arco": "heart" },
+  { "id": "t2-arco", "youtube": "4MYo8FfiXMA", "titulo": "Tráiler principal de la T2", "canal": "TV Tokyo Anime", "nivel": 1, "arco": "spade" }
+]

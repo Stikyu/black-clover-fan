@@ -2,7 +2,6 @@
 import { getEntry } from 'astro:content';
 import { todosLosEscuadrones } from '@/lib/orden';
 import Base from '@/layouts/Base.astro';
-import Escudo from '@/components/Escudo.astro';
 import quiz from '@/data/quiz.json';
 import { ruta } from '@/lib/rutas';
 
@@ -36,14 +35,14 @@ const total = quiz.preguntas.length;
           </div>
         </form>
         <ul class="blasones" aria-hidden="true">
-          {escuadrones.map(({ e }) => <li><Escudo color={e.data.color} trama={e.data.trama} emblema={e.data.emblema} /></li>)}
+          {escuadrones.map(({ e }) => <li><img src={ruta(`blasones/${e.id}.svg`)} alt="" width="200" height="240" /></li>)}
         </ul>
         </div>
 
         <div id="resultado" hidden tabindex="-1">
           {escuadrones.map(({ e, capitan }) => (
             <article class="resultado hoja" data-escuadron={e.id} hidden>
-              <Escudo color={e.data.color} trama={e.data.trama} emblema={e.data.emblema} />
+              <img class="resultado__armas" src={ruta(`blasones/${e.id}-armas.svg`)} alt="" width="280" height="350" loading="lazy" />
               <div>
                 <h2>{e.data.nombre}</h2>
                 <p class="frase">{(quiz.resultados as Record<string, string>)[e.id]}</p>
@@ -67,7 +66,9 @@ const total = quiz.preguntas.length;
 <style>
   .quiz-caja { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
   .quiz { grid-column: span 8; min-width: 0; }
-  .blasones { grid-column: 10 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 18px; justify-items: end; padding-top: 4px; --esc: 82px; }
+  .blasones { grid-column: 10 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 18px; justify-items: end; padding-top: 4px; }
+  .blasones img { width: 92px; height: auto; display: block; }
+  .resultado__armas { width: 100%; max-width: 260px; height: auto; }
   .quiz-caja:has(.quiz[hidden]) { display: none; }
   .avance { display: grid; gap: 10px; margin-bottom: 36px; color: var(--muted); }
   .barra { display: block; height: 4px; background: var(--linea); }
@@ -83,7 +84,7 @@ const total = quiz.preguntas.length;
   .error { min-height: 30px; margin: 12px 0; font-weight: 600; color: #f0937f; }
   html[data-tema='claro'] .error { color: var(--lacre); }
   #resultado { outline: none; }
-  .resultado { display: grid; grid-template-columns: 260px 1fr; gap: 32px 56px; align-items: center; padding: 56px; --esc: 230px; box-shadow: 0 1px 0 #b79a5e, 0 3px 0 #77602f, 0 4px 0 #b79a5e, 0 6px 0 #4a3a1a, 0 22px 34px rgb(0 0 0 / 0.45); }
+  .resultado { display: grid; grid-template-columns: 260px 1fr; gap: 32px 56px; align-items: center; padding: 56px; box-shadow: 0 1px 0 #b79a5e, 0 3px 0 #77602f, 0 4px 0 #b79a5e, 0 6px 0 #4a3a1a, 0 22px 34px rgb(0 0 0 / 0.45); }
   .resultado h2 { font-size: clamp(40px, 1.800rem + 2.400vw, 64px); margin-bottom: 14px; }
   .frase { font-size: 22px; line-height: 1.4; max-width: 46ch; }
   .resultado .btn-row { margin-top: 26px; }
@@ -95,7 +96,7 @@ const total = quiz.preguntas.length;
   .copiado { min-height: 28px; margin-top: 8px; }
   .segundo { margin-top: 24px; }
   @media (max-width: 1199px) { .quiz { grid-column: 1 / -1; } .blasones { display: none; } }
-  @media (max-width: 900px) { .resultado { grid-template-columns: 1fr; padding: 36px 28px; --esc: 150px; } }
+  @media (max-width: 900px) { .resultado { grid-template-columns: 1fr; padding: 36px 28px; } .resultado__armas { max-width: 190px; } }
 </style>
 
 <script>

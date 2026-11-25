@@ -1,0 +1,21 @@
+---
+/**
+ * Video oficial de YouTube con carga al hacer clic: antes de eso no se pide nada a YouTube.
+ * Sin JavaScript es un enlace común al video. Solo se aceptan canales oficiales (ver videos.json).
+ */
+import Glifo from './Glifo.astro';
+import Spoiler from './Spoiler.astro';
+import type { Nivel } from '@/lib/spoilers';
+
+interface Props { video: { youtube: string; titulo: string; canal: string; nivel: number }; chico?: boolean }
+const { video, chico = false } = Astro.props;
+---
+<Spoiler nivel={video.nivel as Nivel} sobre={`el video ${video.titulo}`} clase="video-tapa">
+  <div class:list={['video', chico && 'video--chico']}>
+    <a class="video__placa" href={`https://www.youtube.com/watch?v=${video.youtube}`} rel="noopener" data-video={video.youtube} data-titulo={video.titulo}>
+      <span class="video__sello" aria-hidden="true"><Glifo tipo="ojo" /></span>
+      <span class="video__titulo">{video.titulo}</span>
+      <span class="video__canal">Ver en YouTube, canal {video.canal}</span>
+    </a>
+  </div>
+</Spoiler>

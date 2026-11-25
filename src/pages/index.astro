@@ -4,6 +4,8 @@ import Grimorio from '@/components/Grimorio.astro';
 import Glifo from '@/components/Glifo.astro';
 import Spoiler from '@/components/Spoiler.astro';
 import { ruta, SECCIONES } from '@/lib/rutas';
+import Video from '@/components/Video.astro';
+import videos from '@/data/videos.json';
 import { HOJA, angulos } from '@/lib/grabado';
 import { NIVELES } from '@/lib/spoilers';
 import { anime, manga, ultimo, proximo, capituloAnimado, fechaLarga, salidaISO, tomoDe } from '@/lib/estado';
@@ -68,7 +70,17 @@ const fondos = ['portada', 'movil'].flatMap((e) => ['oscuro', 'claro'].map((t) =
     </div>
   </section>
 
-  <section class="section section--cuero" id="nivel">
+  <section class="section section--cuero" id="videos">
+    <div class="wrap">
+      <div class="cabeza"><h2>Videos oficiales del anime</h2></div>
+      <div class="videos">
+        {['t1-repaso', 't2-principal'].map((id) => <div><Video video={videos.find((v) => v.id === id)!} /></div>)}
+      </div>
+      <p class="videos__mas"><a class="btn btn--secondary" href={`${ruta('donde-ver/')}#videos`}>Ver todos los videos</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="nivel">
     <div class="wrap">
       <div class="cabeza">
         <h2>Tu nivel de spoilers</h2>
@@ -95,7 +107,7 @@ const fondos = ['portada', 'movil'].flatMap((e) => ['oscuro', 'claro'].map((t) =
     </div>
   </section>
 
-  <section class="section" id="indice">
+  <section class="section section--cuero" id="indice">
     <div class="wrap">
       <div class="cabeza"><h2>Índice del grimorio</h2></div>
       <div class="indice-caja">
@@ -149,6 +161,9 @@ const fondos = ['portada', 'movil'].flatMap((e) => ['oscuro', 'claro'].map((t) =
   .premisa__texto .btn { margin-top: 20px; }
   .capitular::first-letter { font-family: var(--f-titulo); font-size: 4.700em; line-height: 0.74; float: left; padding: 8px 12px 0 0; color: var(--trebol); font-weight: 600; }
 
+  .videos { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .videos > div { min-width: 0; }
+  .videos__mas { margin-top: 32px; }
   .sellos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .rollo { background-clip: padding-box; position: relative; display: grid; justify-items: start; align-content: start; gap: 6px; padding: 18px 18px 20px; cursor: pointer; transition: transform 180ms var(--ease); }
   .rollo__dibujo { position: relative; justify-self: stretch; display: grid; place-items: center; padding: 18px 0 26px; color: var(--oro); }
@@ -188,6 +203,8 @@ const fondos = ['portada', 'movil'].flatMap((e) => ['oscuro', 'claro'].map((t) =
     .folio { padding: 34px 34px 36px; }
     .datos > div { grid-template-columns: 1fr; }
     .sellos { grid-template-columns: 1fr; gap: 16px; }
+    .videos { grid-template-columns: 1fr; gap: 16px; }
+    .videos__mas { margin-top: 24px; }
     .rollo { grid-template-columns: 150px 1fr; column-gap: 22px; align-content: center; }
     .rollo__dibujo { grid-row: span 2; padding: 0; }
     .sello--grande { bottom: 18px; width: 44px; height: 44px; }

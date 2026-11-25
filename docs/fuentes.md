@@ -76,6 +76,17 @@ Relleno de la T1: [Furansu Japon](https://furansujapon.com/en/black-clover-episo
 | MANGA Plus en español | [Anime News Network, enciclopedia](https://www.animenewsnetwork.com/encyclopedia/manga.php?id=17059), vía buscador. La web de MANGA Plus necesita JavaScript y no se pudo leer: **confirmar a mano** |
 | VIZ | [Ficha oficial](https://www.viz.com/black-clover), tomos hasta el 37 |
 
+## Videos oficiales
+
+Los identificadores salen de [bclover.jp/movie](https://bclover.jp/movie/) y el canal de cada uno se comprobó con el servicio oEmbed de YouTube (25/11/2026), que además confirma que permiten incrustarse:
+
+| Contenido | Canal |
+|---|---|
+| Tráiler principal, opening y ending de la T2, repasos de la T1 | TV Tokyo Anime (`@anitele_tx`) |
+| Primer avance y anuncio de la T2 | avex pictures (`@avexpictures`) |
+
+Los repasos de la T1 están hechos por opening y no por arco: la correspondencia con los arcos es aproximada. Se descartaron las copias de IGN y de canales de fans. YouTube puede bloquear algún video por país; en ese caso la placa sigue siendo un enlace.
+
 ## Cronología
 
 Fechas de manga, novelas, juegos, película y teatro: [Wikipedia (en)](https://en.wikipedia.org/wiki/Black_Clover). Libro de arte digital: [FandomWire](https://fandomwire.com/black-clover-digiga-tabata-return-explained/). Inicio de la edición argentina en 2020: [Coleccionables Blog](https://coleccionablesblog.com.ar/black-clover-editorial-ivrea-argentina/) (fuente secundaria).

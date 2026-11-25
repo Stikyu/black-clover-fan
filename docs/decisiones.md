@@ -20,7 +20,11 @@ Las que no venían cerradas en el pedido, con su motivo.
 ## Diseño
 
 - **Concepto:** un códice. Grabado a buril para la portada, pergamino para los datos, lacre para los spoilers, primera letra rubricada en cada título.
-- **Escudos en lugar de retratos.** Color del escuadrón más su trama según el sistema Petra Sancta, con el que los grabadores del siglo XVII indicaban los colores en blanco y negro.
+- **Escudos en lugar de retratos.** Color del escuadrón más su trama según el sistema Petra Sancta, con el que los grabadores del siglo XVII indicaban los colores en blanco y negro. Cada personaje lleva una viñeta propia: un objeto, un animal o un elemento que lo identifica, compuesto a partir de una biblioteca de motivos. No se copia ningún diseño oficial.
+- **Blasones de escuadrón originales.** Cada uno toma el animal o símbolo del nombre y lo resuelve como heráldica: figura, lambrequines, corona mural y cinta. No son los emblemas del manga.
+- **Nada de arte oficial alojado acá.** Se pidió sumar imágenes oficiales y se resolvió con videos incrustados desde los canales de sus dueños. Subir retratos, emblemas o capturas sería redistribuirlos sin permiso y expone el repositorio a un reclamo.
+- **Videos con carga al clic.** Antes de eso no se pide nada a YouTube; se usa el dominio sin cookies y, si el nivel de spoilers baja con un video abierto, el reproductor se cierra.
+- **Publicaciones de X:** se enlaza la cuenta oficial en lugar de incrustarlas. No se pudo verificar cada publicación y su widget carga rastreadores.
 - **Tipografías argentinas:** Grenze Gotisch (Omnibus-Type) y Alegreya (Huerta Tipográfica).
 - **Oscuro por defecto, con tema pergamino opcional.**
 - **Skill design-taste-frontend:** se aplicaron su grilla, sus márgenes iguales, la entrada única del hero, un momento de scroll (letras que se arman), la capa de hover, las reglas de texto y sus controles. Donde chocaba con el pedido ganó el pedido: no hay fotografías (la skill las pide y el pedido exige dibujo propio) y la tipografía y la paleta no se sortearon. La regla de "una sección por pantalla" vale para la portada; las páginas de consulta tienen el largo de su contenido. `public/assets` son los archivos de movimiento de la skill, sin modificar.

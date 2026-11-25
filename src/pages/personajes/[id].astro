@@ -1,12 +1,12 @@
 ---
 import { todosLosPersonajes } from '@/lib/orden';
 import Base from '@/layouts/Base.astro';
-import Escudo from '@/components/Escudo.astro';
 import Glifo from '@/components/Glifo.astro';
 import Spoiler from '@/components/Spoiler.astro';
 import { armas, escuadronDe } from '@/lib/armas';
 import { nivelDeCapitulo } from '@/lib/spoilers';
-import { ruta, iniciales, REINO_NOMBRE } from '@/lib/rutas';
+import { ruta, REINO_NOMBRE } from '@/lib/rutas';
+import { VINETAS } from '@/lib/vinetas';
 
 export async function getStaticPaths() {
   const todos = await todosLosPersonajes();
@@ -29,7 +29,7 @@ const revelaciones = [...p.data.revelaciones].sort((x, y) => x.capitulo - y.capi
       <Spoiler nivel={req} sobre="este personaje" clase="ficha-sellada">
         <article class="ficha">
           <div class="ficha__escudo marco" style={`--c:${a.color}`}>
-            <Escudo color={a.color} trama={a.trama} iniciales={iniciales(p.data.nombre)} />
+            <img class="ficha__vineta" src={ruta(`vinetas/${p.id}.svg`)} alt={`Escudo de ${p.data.nombre}: ${VINETAS[p.id].texto}`} width="200" height="240" />
             <span class="ficha__magia" aria-hidden="true"><Glifo tipo={p.data.glifo} /></span>
           </div>
           <div class="ficha__texto">
@@ -72,14 +72,16 @@ const revelaciones = [...p.data.revelaciones].sort((x, y) => x.capitulo - y.capi
   .volver { padding-bottom: 28px; }
   .volver a { --u: 8px; display: inline-block; padding: 8px 0; }
   .ficha { display: grid; grid-template-columns: 410px minmax(0, 1fr); gap: 48px 72px; align-items: start; padding-bottom: 64px; }
-  .ficha__escudo { position: relative; display: grid; place-items: center; aspect-ratio: 1 / 1.120; --esc: 230px; background-image: radial-gradient(ellipse at 50% 50%, color-mix(in oklab, var(--c) 70%, transparent), transparent 74%); }
+  .ficha__escudo { position: relative; display: grid; place-items: center; aspect-ratio: 1 / 1.120; background-image: radial-gradient(ellipse at 50% 50%, color-mix(in oklab, var(--c) 70%, transparent), transparent 74%); }
   .ficha__escudo::before { content: ''; position: absolute; inset: 4px; background: repeating-radial-gradient(circle at 50% 50%, transparent 0 9px, color-mix(in oklab, var(--oro) 36%, transparent) 9px 10px); mask: radial-gradient(circle, #000 25%, transparent 72%); -webkit-mask: radial-gradient(circle, #000 25%, transparent 72%); }
+  .ficha__vineta { position: relative; width: 74%; height: auto; filter: drop-shadow(0 14px 18px rgb(0 0 0 / 0.5)); }
   .ficha__magia { position: absolute; right: 20px; bottom: 20px; display: grid; place-items: center; width: 84px; height: 84px; border-radius: 50%; border: 2px solid var(--oro); background: var(--bg); color: var(--oro); }
   .ficha__magia :global(.glifo) { width: 46px; height: 46px; stroke-width: 1.400; }
   .ficha h1 { font-size: clamp(44px, 1.600rem + 3vw, 72px); margin-bottom: 18px; }
   .ficha .lead { max-width: 58ch; }
   .ficha__datos { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; margin-top: 32px; border-top: 2px solid var(--line-strong); }
   .ficha__datos > div { padding: 10px 0; border-bottom: 1px solid var(--linea); }
+  .ficha__datos > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .ficha__datos dt { color: var(--muted); font-size: 16px; }
   .ficha__datos dd { font-weight: 600; }
   .ficha__mas { margin-top: 48px; }
@@ -90,6 +92,6 @@ const revelaciones = [...p.data.revelaciones].sort((x, y) => x.capitulo - y.capi
   .companeros ul { display: flex; flex-wrap: wrap; gap: 4px 28px; }
   .companeros a { --u: 8px; display: inline-block; padding: 8px 0; }
   :global(.ficha-sellada) { margin-bottom: 96px; }
-  @media (max-width: 1023px) { .ficha { grid-template-columns: 1fr; } .ficha__escudo { aspect-ratio: auto; padding: 32px; --esc: 170px; } }
+  @media (max-width: 1023px) { .ficha { grid-template-columns: 1fr; } .ficha__escudo { aspect-ratio: auto; padding: 32px; } .ficha__vineta { width: 210px; } }
   @media (max-width: 479px) { .ficha__datos { grid-template-columns: 1fr; } }
 </style>

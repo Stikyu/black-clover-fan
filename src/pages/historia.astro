@@ -5,6 +5,8 @@ import Spoiler from '@/components/Spoiler.astro';
 import { anime } from '@/lib/estado';
 import { nivelDeCapitulo } from '@/lib/spoilers';
 import { ruta } from '@/lib/rutas';
+import Video from '@/components/Video.astro';
+import videos from '@/data/videos.json';
 
 const arcos = (await getCollection('arcos')).sort((a, b) => a.data.orden - b.data.orden);
 const rangoEp = (e: [number, number | null] | null) => (!e ? 'todavía sin animar' : e[1] ? `episodios ${e[0]} a ${e[1]}` : `episodios ${e[0]} a ${anime.ultimoEmitido}, en emisión`);
@@ -51,6 +53,7 @@ const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'X
                       <Spoiler capitulo={p.capitulo} sobre={`${a.data.nombre}, hasta el capítulo ${p.capitulo}`}><p>{p.texto}</p></Spoiler>
                     </div>
                   ))}
+                  {videos.filter((v) => v.arco === a.id).map((v) => <div class="arco__video"><Video video={v} /></div>)}
                 </article>
               </li>
             );
@@ -79,6 +82,7 @@ const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'X
   .arco__datos { margin-top: 8px; color: var(--muted); }
   .arco__parte { margin-top: 18px; max-width: 66ch; }
   .arco__parte + .arco__parte { margin-top: 16px; }
+  .arco__video { margin-top: 24px; max-width: 460px; }
   .cierre { grid-column: 2; padding-left: 92px; }
   @media (min-width: 1024px) { .arcos-indice { position: sticky; top: calc(var(--nav) + 24px); } }
   @media (max-width: 1023px) {

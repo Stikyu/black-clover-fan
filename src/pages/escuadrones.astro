@@ -2,10 +2,10 @@
 import { getEntry } from 'astro:content';
 import { todosLosEscuadrones, todosLosReyes } from '@/lib/orden';
 import Base from '@/layouts/Base.astro';
-import Escudo from '@/components/Escudo.astro';
 import Spoiler from '@/components/Spoiler.astro';
 import { ruta } from '@/lib/rutas';
 
+const FIGURA: Record<string, string> = { toro: 'una cabeza de toro con argolla', sol: 'un sol con rostro', leon: 'una cabeza de león', aguila: 'un águila con las alas abiertas', rosa: 'una rosa de tres coronas de pétalos', mantis: 'una mantis con los brazos en alto', orca: 'una orca sobre las olas', ciervo: 'una cabeza de ciervo', pavo: 'un pavo real con la cola abierta' };
 const escuadrones = await todosLosEscuadrones();
 const reyes = await todosLosReyes();
 const filas = await Promise.all(
@@ -30,7 +30,7 @@ const filas = await Promise.all(
           <ul class="escuadras">
             {filas.map(({ e, capitan, vice, integrantes }) => (
               <li class="escuadra" id={e.id} style={`--c:${e.data.color}`}>
-                <div class="escuadra__armas"><Escudo color={e.data.color} trama={e.data.trama} emblema={e.data.emblema} /></div>
+                <div class="escuadra__armas"><img src={ruta(`blasones/${e.id}-armas.svg`)} alt={`Blasón de ${e.data.nombre}: ${FIGURA[e.data.emblema]}`} width="280" height="350" loading="lazy" decoding="async" /></div>
                 <div class="escuadra__cuerpo">
                   <h2>{e.data.nombre}</h2>
                   <p class="lema">«{e.data.lema}»</p>
@@ -69,9 +69,8 @@ const filas = await Promise.all(
   .escuadras { display: grid; }
   .escuadra { display: grid; grid-template-columns: 302px minmax(0, 1fr); column-gap: 72px; padding: 48px 0; border-top: 1px solid var(--linea); scroll-margin-top: calc(var(--nav) + 8px); }
   .escuadra:first-child { border-top: 2px solid var(--line-strong); }
-  .escuadra__armas { display: grid; place-items: center; align-self: start; --esc: 184px; height: 264px; background: repeating-radial-gradient(circle at 50% 50%, transparent 0 9px, color-mix(in oklab, var(--oro) 30%, transparent) 9px 10px); -webkit-mask: none; position: relative; }
-  .escuadra__armas::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, transparent 30%, var(--bg) 70%); }
-  .escuadra__armas :global(.escudo) { z-index: 1; }
+  .escuadra__armas { display: grid; align-self: start; }
+  .escuadra__armas img { width: 100%; height: auto; display: block; filter: drop-shadow(0 16px 20px rgb(0 0 0 / 0.45)); }
   .escuadra h2 { font-size: clamp(32px, 1.500rem + 1.500vw, 46px); }
   .lema { font-style: normal; font-size: 22px; line-height: 1.35; color: var(--oro); margin: 8px 0 14px; max-width: 46ch; }
   .escuadra__cuerpo > p { max-width: 64ch; }
@@ -86,6 +85,6 @@ const filas = await Promise.all(
   .rey__orden { font-family: var(--f-titulo); font-size: 42px; line-height: 1; color: var(--oro); }
   .rey h3 { font-size: 28px; margin-bottom: 4px; }
   .rey p { max-width: 66ch; }
-  @media (max-width: 1023px) { .escuadra { grid-template-columns: 150px minmax(0, 1fr); column-gap: 32px; } .escuadra__armas { --esc: 120px; height: 180px; } }
-  @media (max-width: 639px) { .escuadra { grid-template-columns: 1fr; row-gap: 12px; padding: 36px 0; } .escuadra__armas { justify-content: start; background: none; height: auto; --esc: 96px; } .escuadra__armas::after { display: none; } .escuadra dl > div { grid-template-columns: 1fr; } .lista a { --u: 6px; padding: 6px 0; } .rey { grid-template-columns: 1fr; gap: 4px; } }
+  @media (max-width: 1023px) { .escuadra { grid-template-columns: 190px minmax(0, 1fr); column-gap: 32px; } }
+  @media (max-width: 639px) { .escuadra { grid-template-columns: 1fr; row-gap: 12px; padding: 36px 0; } .escuadra__armas { max-width: 220px; } .escuadra dl > div { grid-template-columns: 1fr; } .lista a { --u: 6px; padding: 6px 0; } .rey { grid-template-columns: 1fr; gap: 4px; } }
 </style>
